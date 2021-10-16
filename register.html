@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="login.css" rel="stylesheet" />
+    <link href="./register.css" rel="stylesheet" />
+    <title>Register</title>
+</head>
+
+<body style="background:rgba(254, 250, 220, 1); margin:0;">
+    <div class="titlebar">
+        <span class="baramiword">
+            Barami Library
+        </span>
+    </div>
+
+    <span class="registerword">
+        Register
+    </span>
+
+    <div class="greenboxforregister">
+        <form role="form">
+
+            <span class="title">Title</span>
+            <span class="firstname">Name</span>
+            <span class="surname">Surname</span>
+            <span class="age">Age</span>
+            <span class="gender">Gender</span>
+            <span class="email">Email</span>
+            <span class="usergroup">Usergroup</span>
+
+            <select name="title" class="titleopt">
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+            </select>
+            <div>
+                <input type="firstname" name="firstname" class="firstnamebox">
+                <input type="surname" name="surname" class="surnamebox">
+                <input type="age" name="age" class="agebox">
+            </div>
+
+            <select name="gender" class="genderopt">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <div>
+                <input type="email" name="email" class="emailbox">
+            </div>
+            <select name="usergroup" class="usergroupopt">
+                <option value="Student">Student</option>
+                <option value="Professor">Professor</option>
+                <option value="Normal">Normal</option>
+            </select>
+        </form>
+    </div>
+    <div class="registerbutton1">
+        <input type="button" name="Register" value="Register">
+    </div>
+</body>
+
+</html>
