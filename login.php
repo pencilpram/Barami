@@ -22,6 +22,7 @@ if (isset($_POST['username'])) {
     } 
     else {
         $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
+        echo($code_error);
         header("location: Final-Login.html"); //ไม่ถูกต้องให้กับไปหน้าเดิม
     }
 }
