@@ -159,9 +159,9 @@ body {
     width: 118px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 370px;
+    top: 300px;
     /* right: 61%; */
-    left: 10%;
+    left: 17.7%;
     font-family: Inter;
     font-weight: Light;
     font-size: 24px;
@@ -176,7 +176,7 @@ body {
     opacity: 1;
     position: relative;
     top: 26px;
-    right: 36.2%;
+    right: 60.6%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -297,13 +297,13 @@ body {
 }
 
 .usergroupopt {
-    width: 218px;
+    width: 260px;
     height: 41px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 200px;
-    left: 80%;
+    top: 195px;
+    left: 57.3%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -457,4 +457,68 @@ body {
     text-align: center;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.username {
+    width: 67px;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+    top: 30px;
+    left: 40px;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+}
+
+.usernamebox {
+    width: 260px;
+    height: 41px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: relative;
+    top: -110px;
+    left: 515px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 18px;
+}
+
+.password {
+    width: 67px;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+    top: 169px;
+    left: -8.2%;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+}
+
+.passwordbox {
+    width: 260px;
+    height: 41px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    position: relative;
+    top: -16px;
+    left: 515px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 18px;
 }
