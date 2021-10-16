@@ -22,7 +22,7 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 150px;
-    left: 146px;
+    left: 70px;
     font-family: Inter;
     font-size: 45px;
     opacity: 1;
@@ -30,7 +30,7 @@ body {
 }
 
 .greenboxforregister {
-    width: 600px;
+    width: 900px;
     height: 430px;
     background: rgba(42, 157, 143, 0.30000001192092896);
     opacity: 1;
@@ -121,7 +121,7 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 233px;
-    right: 27.5%;
+    right: 18%;
     font-family: Inter;
     font-weight: Light;
     font-size: 24px;
@@ -133,8 +133,8 @@ body {
     width: 83px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 233px;
-    left: 65px;
+    top: 360px;
+    right: 23.4%;
     font-family: Inter;
     font-weight: Light;
     font-size: 24px;
@@ -147,7 +147,7 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 300px;
-    right: 50%;
+    right: 33%;
     font-family: Inter;
     font-weight: Light;
     font-size: 24px;
@@ -160,7 +160,8 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 370px;
-    right: 61%;
+    /* right: 61%; */
+    left: 10%;
     font-family: Inter;
     font-weight: Light;
     font-size: 24px;
@@ -174,8 +175,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 0px;
-    left: 36.9%;
+    top: 26px;
+    right: 36.2%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -188,13 +189,13 @@ body {
 }
 
 .surnamebox {
-    width: 350px;
+    width: 200px;
     height: 41px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 51px;
-    left: 222px;
+    top: 124px;
+    left: 2.1%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -212,8 +213,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 116px;
-    right: 132px;
+    top: 190px;
+    right: 20.5%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -231,8 +232,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 74.7px;
-    left: 76.5%;
+    top: 277px;
+    left: 24.8%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -258,12 +259,12 @@ body {
 }
 
 .emailbox {
-    width: 350px;
+    width: 200px;
     height: 41px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 100px;
+    top: 174.5px;
     left: 222px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
@@ -277,12 +278,12 @@ body {
 }
 
 .firstnamebox {
-    width: 350px;
+    width: 200px;
     height: 41px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 24px;
+    top: 55px;
     left: 222px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
@@ -301,8 +302,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 130px;
-    left: 223px;
+    top: 200px;
+    left: 80%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
