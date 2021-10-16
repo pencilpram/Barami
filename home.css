@@ -1,0 +1,26 @@
+.menu-activebar{
+    width: 33.33%;
+    height: 50px;
+    background: rgba(252, 161, 125, 1);
+    top:110px;
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    background-color:rgba(252, 161, 125, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.menuword{
+    width: 510px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 1);
+    position: relative;
+    font-family: Inter;
+    font-weight: Light;
+    font-size: 22px;
+    opacity: 1;
+    text-align: center;
+}
