@@ -35,41 +35,43 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="row" style="margin-top: 10px; margin-right: 0px;">
-                    <div class="dropdown col">
-                        <button class="btn btn-secondary dropdown-toggle position-absolute top-0 start-50 translate-middle-x" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
+                    <div class="col-2" style="width:200px;">
+                        <select class="form-select" id="country" required="" style="font-family: Inter;
+    font-weight: Light;
+    font-size: 16px;">
+                            <option value="">Book Name</option>
+                            <option>Author Name</option>
+                            <option>Publisher</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="First name">
+                    <div class="col-6" style="padding: 0; width: 900px;">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;">
                     </div>
-                    <div class="dropdown col">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                    <div class="col-2" style="width:200px;">
+                        <select class="form-select" id="country" required="" style="font-family: Inter; font-weight: Light; font-size: 16px;">
+                            <option value="">Any</option>
+                            <option>Author Name</option>
+                            <option>Publisher</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
                     </div>
-                    <button type="button" class="col btn btn-primary">Primary</button>
-                    
+                    <button type="button" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px;
+    border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
+    font-weight: Light; font-size: 16px; background-color: #264653">Search</button>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
         </div>
-        
-        
+
+
 
 
     </div>
