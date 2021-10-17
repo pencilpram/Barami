@@ -13,11 +13,13 @@
 
 <body style="background:rgba(254, 250, 220, 1); margin:0;">
     <div class="container" style="margin: 0px; max-width: 100%; padding: 0px;">
+        <!-- Title Bar -->
         <div class="row" style="background-color: rgba(252, 161, 125, 1); max-width: 100%; margin:0px;">
             <span class="baramiword">
                 Barami Library
             </span>
         </div>
+        <!-- Menu Bar -->
         <nav style="background-color: rgba(252, 161, 125, 0.7); ">
             <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style="border-color: rgba(0, 0, 0, 0.5); font-family: Inter;
     font-weight: Light;
@@ -33,43 +35,41 @@
     border-top-right-radius: 0">Profile</button>
             </div>
         </nav>
+        <!-- Content -->
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <!-- Library Tab -->
+            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                action="search.php" method="post">
                 <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
-                        <select class="form-select" id="country" required="" style="font-family: Inter;
-    font-weight: Light;
-    font-size: 16px;">
+                        <select class="form-select" id="country"
+                            style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
                             <option value="">Select Search</option>
                             <option>Any</option>
                             <option>Book Name</option>
                             <option>Author Name</option>
                             <option>Publisher</option>
                         </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
                     </div>
                     <div class="col-6" style="padding: 0; width: 900px;">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="First name"
+                            style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query">
                     </div>
                     <div class="col-2" style="width:200px;">
-                        <select class="form-select" id="country" required="" style="font-family: Inter; font-weight: Light; font-size: 16px;">
-                            <option value="">Any</option>
+                        <select class="form-select" id="country"
+                            style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category">
+                            <option value="">Select Category</option>
                             <option>Any</option>
                             <option>Fantasy Fiction</option>
-                            <option>Publisher</option>
+                            <option>Child Book</option>
                         </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
                     </div>
-                    <button type="button" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px;
+                    <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px;
     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
-    font-weight: Light; font-size: 16px; background-color: #264653">Search</button>
+    font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
 
                 </div>
-            </div>
+            </form>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
         </div>
