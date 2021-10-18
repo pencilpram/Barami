@@ -26,6 +26,6 @@ if (isset($_POST['username'])) {
         header("location: Final-Login.html"); //ไม่ถูกต้องให้กับไปหน้าเดิม
     }
 }
-// else {
-//     header("Location: Final-Login.html");
-// }
+?>
+
+
