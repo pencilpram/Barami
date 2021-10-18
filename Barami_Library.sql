@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `booksinfomation` (
-  `booksinfomationid` varchar(50) NOT NULL,
+  `booksinfomationid` varchar(50) NOT NULL unsigned zerofill auto_increment,
   `booktitle` varchar(100) NOT NULL,
   `synopsis` varchar(250) NOT NULL,
   `authorsname` varchar(100) NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE `booksinfomation` (
 --
 
 CREATE TABLE `borrowid` (
-  `borrowid` varchar(50) NOT NULL,
-  `userid` varchar(50) NOT NULL,
+  `borrowid` varchar(50) NOT NULL unsigned zerofill auto_increment,
+  `userid` varchar(50) NOT NULL unsigned zerofill auto_increment,
   `booksinfomationid` varchar(50) NOT NULL,
   `borrowfromdate` date NOT NULL,
   `borrowtodate` date NOT NULL,
