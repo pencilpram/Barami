@@ -134,7 +134,7 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 201px;
-    left: 3%;
+    left: 2%;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -228,13 +228,13 @@ body {
 }
 
 .genderopt {
-    width: 115px;
+    width: 96px;
     height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 130px;
-    left: 36.5%;
+    top: 164px;
+    right: 29%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;

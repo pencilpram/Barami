@@ -51,7 +51,7 @@ if ($objResult) {
 
     echo "Register Completed!<br>";
 
-    echo "<br> Go to <a href='login.php'>Login page</a>";
+    echo "<br> Go to <a href='login.html'>Login page</a>";
 }
 
 mysqli_close($mysqli);
