@@ -5,65 +5,108 @@
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link href="login.css" rel="stylesheet" />
     <link href="./register.css" rel="stylesheet" />
+    <link href="cssofboostrap.css" rel="stylesheet">
     <title>Register</title>
 </head>
 
 <body style="background:rgba(254, 250, 220, 1); margin:0;">
-    <div class="titlebar">
-        <span class="baramiword">
-            Barami Library
-        </span>
-    </div>
-
-    <span class="registerword">
-        Register
-    </span>
-
-    <div class="greenboxforregister">
-        <form role="form" method="post" action="register.php">
-
-            <span class="title">Title</span>
-            <span class="firstname">Name</span>
-            <span class="surname">Surname</span>
-            <span class="age">Age</span>
-            <span class="gender">Gender</span>
-            <span class="email">Email</span>
-            <span class="usergroup">Usergroup</span>
-            <span class="username">Username</span>
-            <span class="password">Password</span>
-            <span class="birthdate">Birth date</span>
-
-            <select name="opttitle" class="titleopt">
-                <option value="Mr.">Mr.</option>
-                <option value="Ms.">Ms.</option>
-                <option value="Mrs.">Mrs.</option>
-            </select>
-
+    <div class="container" style="margin: 0px; max-width: 100%; padding: 0px;">
+        <!-- Title Bar -->
+        <div class="row" style="background-color: rgba(252, 161, 125, 1); max-width: 100%; margin:0px;">
+            <span class="baramiword">
+                Barami Library
+            </span>
+        </div>
+        <!-- Sign in title -->
+        <div class="row" style="height:100px; max-width: 100%;">
+            <span class="col"
+                style="margin-left: 100px;top: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
+                Register
+            </span>
+        </div>
+        <!-- Green box -->
+        <div class="row"
+            style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <div class="greenbox" style="width: 900px; height: 430px;">
+                <form role="form" name="formlogin" method="post" action="login.php">
+                    <div class="row" style="height:220px;">
+                        <div class="mt-3 ml-3 row">
+                            <label class="col-5 col-form-label "
+                                style="text-align: center; font-family: Inter; font-weight: Light; font-size: 22px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Username</label>
+                            <div class="col-7"
+                                style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" id="username" name="username">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-5 col-form-label"
+                                style="text-align: center; font-family: Inter; font-weight: Light; font-size: 22px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Password</label>
+                            <div class="col-7"
+                                style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                        </div>
+                        <div class="row" style="width:200px;">
+                            <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
+                                <option value="">Select Search</option>
+                                <option>Any</option>
+                                <option>Book Name</option>
+                                <option>Author Name</option>
+                                <option>Publisher</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="greenboxforregister">
+            <form role="form" method="post" action="register.php">
+        
+                <span class="title">Title</span>
+                <span class="firstname">Name</span>
+                <span class="surname">Surname</span>
+                <span class="age">Age</span>
+                <span class="gender">Gender</span>
+                <span class="email">Email</span>
+                <span class="usergroup">Usergroup</span>
+                <span class="username">Username</span>
+                <span class="password">Password</span>
+                <span class="birthdate">Birth date</span>
+        
+                <select name="opttitle" class="titleopt">
+                    <option value="Mr.">Mr.</option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Mrs.">Mrs.</option>
+                </select>
+        
                 <input type="firstname" name="txtFirstname" class="firstnamebox">
                 <input type="surname" name="txtLastname" class="surnamebox">
                 <input type="age" name="txtAge" class="agebox">
-
-            <select name="optGender" class="genderopt">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            
+        
+                <select name="optGender" class="genderopt">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+        
                 <input type="email" name="txtEmail" class="emailbox">
-
-            <select name="optusergroup" class="usergroupopt">
-                <option value="Student">Student</option>
-                <option value="Professor">Professor</option>
-                <option value="Normal">Normal</option>
-            </select>
-
+        
+                <select name="optusergroup" class="usergroupopt">
+                    <option value="Student">Student</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Normal">Normal</option>
+                </select>
+        
                 <input type="text" name="txtUsername" class="usernamebox">
                 <input type="password" name="txtPassword" class="passwordbox">
                 <input type="date" name="birthdate" class="birthdatebox">
                 <input type="submit" name="Register" value="Register" class="registerbutton1" formaction="register.php">
-
-        </form>
+        
+            </form>
+        </div>
     </div>
+    
 </body>
 
 </html>

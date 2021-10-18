@@ -18,39 +18,40 @@
                 Barami Library
             </span>
         </div>
+        <!-- Sign in title -->
         <div class="row" style="height:150px; max-width: 100%;">
             <span class="col"
                 style="padding: 0;top: 100px; text-align: center; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
                 Sign In
             </span>
         </div>
+        <!-- Green box -->
         <div class="row"
             style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
             <div class="greenbox" style="width: 500px; height: 220;">
                 <form role="form" name="formlogin" method="post" action="login.php">
                     <div class="row" style="height:220px;">
-                        <span class="username col"
-                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
-                            Username
-                        </span>
-                        <div class="col"
-                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
-                            <input type="email" name="username" id="username" class="usernamebox" />
+                        <div class="mt-3 ml-3 row">
+                            <label class="col-5 col-form-label "
+                                style="text-align: center; font-family: Inter;
+                                                                            font-weight: Light; font-size: 22px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Username</label>
+                            <div class="col-7" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="username">
+                            </div>
                         </div>
-                        <span class="password col"
-                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
-                            Password
-                        </span>
-                        <div class="col"
-                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
-                            <input type="password" name="password" id="password" class="passwordbox" />
+                        <div class="mb-3 row">
+                            <label class="col-5 col-form-label"
+                                style="text-align: center; font-family: Inter;
+                                                                            font-weight: Light; font-size: 22px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Password</label>
+                            <div class="col-7" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="password" class="form-control" name="password" >
+                            </div>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>
+        <!-- Sign in button -->
         <div class="row"
             style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
             <form role="form" name="formlogin" method="post" action="login.php"
@@ -62,6 +63,7 @@
             </form>
 
         </div>
+        <!-- Register Button -->
         <div class="row"
             style="max-width: 100%; display: flex; justify-content: center; align-content: flex-end; flex-direction: column; margin-right: 40px;">
             <form role="form" name="formregister" method="post" action="register.html"
@@ -73,17 +75,6 @@
     color: rgba(0, 0, 0, 1);" value="Register" name="register border-color">
             </form>
         </div>
-        <!-- <div class="signinbutton">
-        <input type="submit" name="Sign in" value="Sign in" />
-    </div> -->
-
-        <!-- <div class="registerbutton">
-            <input type="button" name="Register" value="Register" formaction="register.html"/>
-        </div> -->
-
-        <!-- <div class="registerbutton">
-        <input type="button" name="Register" value="Register"/>
-    </div> -->
 
 
 </body>
