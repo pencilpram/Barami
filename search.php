@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$mysqli = new mysqli("localhost", "root", null, "barami_library");
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
