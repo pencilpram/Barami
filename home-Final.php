@@ -63,7 +63,11 @@
     font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
                 </div>
             </form>
-
+    <row>
+        <span class="col-4" >Book Name</span>
+        <span class="col-8">Author Name</span>
+        <span class="col-12">Category</span>
+    </row>
 </html>
 <?php
     // Connect to the database
@@ -72,6 +76,7 @@
     if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
     }
+
                     
 
 ?>
