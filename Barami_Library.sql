@@ -62,7 +62,7 @@ CREATE TABLE `borrowid` (
 --
 
 CREATE TABLE `users` (
-  `userid` varchar(50) NOT NULL auto_increment,
+  `userid` varchar(50) NOT NULL,
   `username` varchar(250) NOT NULL,
   `password` varchar(100) NOT NULL,
   `usergroup` varchar(100) NOT NULL,
