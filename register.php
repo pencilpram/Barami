@@ -38,8 +38,8 @@ if (trim($_POST["txtEmail"]) == "") {
 }	
 
 $strSQL = "SELECT * FROM users WHERE username = '" . trim($_POST['txtUsername']) . "' ";
-$objQuery = mysql_query($strSQL);
-$objResult = mysql_fetch_array($objQuery);
+$objQuery = mysqli_query($mysqli,$strSQL);
+$objResult = mysqli_fetch_array($objQuery);
 if ($objResult) {
     echo "Username already exists!";
 } else {
@@ -47,12 +47,12 @@ if ($objResult) {
     $strSQL = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,Gender,email,birthdate) VALUES ('" . $_POST["txtUsername"] . "', 
 		'" . $_POST["txtPassword"] . "','" . $_POST["txtFirstname"] . "','" . $_POST["txtLastname"] . "','" .$_POST["optusergroup"] . "','" . $_POST["opttitle"] . "',
         '" . $_POST["optGender"] . "','" . $_POST["txtEmail"] . "','" .$_POST["birthdate"] ."')";
-    $objQuery = mysql_query($strSQL);
+    $objQuery = mysqli_query($mysqli,$strSQL);
 
     echo "Register Completed!<br>";
 
     echo "<br> Go to <a href='login.php'>Login page</a>";
 }
 
-mysql_close();
+mysqli_close($mysqli);
 ?>
