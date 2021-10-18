@@ -20,7 +20,7 @@
     </span>
 
     <div class="greenboxforregister">
-        <form role="form">
+        <form role="form" action="register.php">
 
             <span class="title">Title</span>
             <span class="firstname">Name</span>
@@ -31,8 +31,9 @@
             <span class="usergroup">Usergroup</span>
             <span class="username">Username</span>
             <span class="password">Password</span>
+            <span class="birthdate">Birth date</span>
 
-            <select name="title" class="titleopt">
+            <select name="opttitle" class="titleopt">
                 <option value="Mr.">Mr.</option>
                 <option value="Ms.">Ms.</option>
                 <option value="Mrs.">Mrs.</option>
@@ -52,7 +53,7 @@
             <div>
                 <input type="email" name="txtEmail" class="emailbox">
             </div>
-            <select name="usergroup" class="usergroupopt">
+            <select name="optusergroup" class="usergroupopt">
                 <option value="Student">Student</option>
                 <option value="Professor">Professor</option>
                 <option value="Normal">Normal</option>
@@ -61,13 +62,16 @@
             <div>
                 <input type="text" name="txtUsername" class="usernamebox">
                 <input type="password" name="txtPassword" class="passwordbox">
+                <input type="date" name="birthdate" class="birthdatebox">
             </div>
-            
-        </form>
     </div>
     <div class="registerbutton1">
         <input type="button" name="Register" value="Register">
     </div>
+    </form>
+    <!-- <div class="registerbutton1">
+        <input type="button" name="Register" value="Register">
+    </div> -->
 </body>
 
 </html>

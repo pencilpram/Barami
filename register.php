@@ -22,8 +22,8 @@ if (trim($_POST["txtFirstname"]) == "") {
     exit();
 }
 
-if (trim($_POST["txtSurname"]) == "") {
-    echo "Please input Surname!";
+if (trim($_POST["txtLastname"]) == "") {
+    echo "Please input Lastname!";
     exit();
 }
 
@@ -37,20 +37,22 @@ if (trim($_POST["txtEmail"]) == "") {
     exit();
 }	
 
-$strSQL = "SELECT * FROM member WHERE Username = '" . trim($_POST['txtUsername']) . "' ";
-$objQuery = mysql_query($strSQL);
-$objResult = mysql_fetch_array($objQuery);
+$strSQL = "SELECT * FROM users WHERE username = '" . trim($_POST['txtUsername']) . "' ";
+$objQuery = mysqli_query($mysqli,$strSQL);
+$objResult = mysqli_fetch_array($objQuery);
 if ($objResult) {
     echo "Username already exists!";
 } else {
 
-    $strSQL = "INSERT INTO member (Username,Password,Name,Status) VALUES ('" . $_POST["txtUsername"] . "', 
-		'" . $_POST["txtPassword"] . "','" . $_POST["txtName"] . "','" . $_POST["ddlStatus"] . "')";
-    $objQuery = mysql_query($strSQL);
+    $strSQL = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,Gender,email,birthdate) VALUES ('" . $_POST["txtUsername"] . "', 
+		'" . $_POST["txtPassword"] . "','" . $_POST["txtFirstname"] . "','" . $_POST["txtLastname"] . "','" .$_POST["optusergroup"] . "','" . $_POST["opttitle"] . "',
+        '" . $_POST["optGender"] . "','" . $_POST["txtEmail"] . "','" .$_POST["birthdate"] ."')";
+    $objQuery = mysqli_query($mysqli,$strSQL);
 
     echo "Register Completed!<br>";
 
     echo "<br> Go to <a href='login.php'>Login page</a>";
 }
 
-mysql_close();
+mysqli_close($mysqli);
+?>
