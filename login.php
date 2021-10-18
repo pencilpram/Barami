@@ -28,8 +28,8 @@ if ($mysqli->connect_errno) {
 //     }
 // }
 
-$strSQL = "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($mysqli,$_POST['txtUsername']) . "' 
-	and password = '" . mysqli_real_escape_string($mysqli,$_POST['txtPassword']) . "'";
+$strSQL = "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($mysqli,$_POST['username']) . "' 
+	and password = '" . mysqli_real_escape_string($mysqli,$_POST['password']) . "'";
 $objQuery = mysqli_query($mysqli,$strSQL);
 $objResult = mysqli_fetch_array($objQuery);
 if (!$objResult) {
