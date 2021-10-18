@@ -133,8 +133,8 @@ body {
     width: 83px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 310px;
-    right: 17.9%;
+    top: 201px;
+    left: 3%;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -159,7 +159,7 @@ body {
     width: 118px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 360px;
+    top: 315px;
     right: 30.6%;
     /* left: 17.7%; */
     font-family: Inter;
@@ -176,7 +176,7 @@ body {
     opacity: 1;
     position: relative;
     top: 26px;
-    right: 55%;
+    right: 51.9%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -233,8 +233,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 239px;
-    left: 17.5%;
+    top: 130px;
+    left: 36.5%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -303,8 +303,8 @@ body {
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 220px;
-    left: 17.5%;
+    top: 173px;
+    left: 17.6%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
