@@ -82,7 +82,7 @@ body {
     color: rgba(0, 0, 0, 1);
     position: relative;
     top: 30px;
-    left: 60px;
+    left: 50px;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -94,7 +94,7 @@ body {
     width: 67px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 98px;
+    top: 90px;
     left: 10px;
     font-family: Inter;
     font-weight: Light;
@@ -107,8 +107,8 @@ body {
     width: 100px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 167px;
-    left: -60px;
+    top: 146px;
+    left: -44px;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -120,8 +120,8 @@ body {
     width: 45px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 233px;
-    right: 18%;
+    top: 201px;
+    right: 13.6%;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -133,8 +133,8 @@ body {
     width: 83px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 360px;
-    right: 23.4%;
+    top: 310px;
+    right: 17.9%;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -146,8 +146,8 @@ body {
     width: 60px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 300px;
-    right: 33%;
+    top: 257px;
+    right: 25.2%;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -159,9 +159,9 @@ body {
     width: 118px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 300px;
-    /* right: 61%; */
-    left: 17.7%;
+    top: 360px;
+    right: 30.6%;
+    /* left: 17.7%; */
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -170,13 +170,13 @@ body {
 }
 
 .titleopt {
-    width: 115px;
-    height: 41px;
+    width: 95px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
     top: 26px;
-    right: 60.6%;
+    right: 55%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -189,13 +189,13 @@ body {
 }
 
 .surnamebox {
-    width: 200px;
-    height: 41px;
+    width: 210px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 124px;
-    left: 2.1%;
+    top: 110px;
+    right: 6.3%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -209,12 +209,12 @@ body {
 
 .agebox {
     width: 100px;
-    height: 41px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 190px;
-    right: 20.5%;
+    top: 165px;
+    right: 29.9%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -224,16 +224,17 @@ body {
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
+    text-align: center;
 }
 
 .genderopt {
     width: 115px;
-    height: 41px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 277px;
-    left: 24.8%;
+    top: 239px;
+    left: 17.5%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -259,13 +260,13 @@ body {
 }
 
 .emailbox {
-    width: 200px;
-    height: 41px;
+    width: 210px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 174.5px;
-    left: 222px;
+    top: 150px;
+    left: 158px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -278,13 +279,13 @@ body {
 }
 
 .firstnamebox {
-    width: 200px;
-    height: 41px;
+    width: 210px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
     top: 55px;
-    left: 222px;
+    left: 156px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -297,13 +298,13 @@ body {
 }
 
 .usergroupopt {
-    width: 260px;
-    height: 41px;
+    width: 115px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: 195px;
-    left: 57.3%;
+    top: 220px;
+    left: 17.5%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -495,23 +496,23 @@ body {
     width: 67px;
     color: rgba(0, 0, 0, 1);
     position: relative;
-    top: 169px;
-    left: -8.2%;
+    top: 360px;
+    left: -11%;
     font-family: Inter;
     font-weight: Light;
-    font-size: 24px;
+    font-size: 18px;
     opacity: 1;
     text-align: center;
 }
 
 .passwordbox {
     width: 260px;
-    height: 41px;
+    height: 35px;
     background: rgba(255, 255, 255, 1);
     opacity: 1;
     position: relative;
-    top: -16px;
-    left: 515px;
+    top: 144px;
+    left: 63%;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
