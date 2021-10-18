@@ -25,20 +25,13 @@
 }
 
 .greenbox {
-    width: 500px;
-    height: 220px;
     background: rgba(42, 157, 143, 0.30000001192092896);
     opacity: 1;
-    position: relative;
-    top: 180px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .v2_3 {
@@ -65,9 +58,6 @@
 .username {
     width: 220px;
     color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 48px;
-    left: 5px;
     font-family: Inter;
     font-weight: Light;
     font-size: 22px;
@@ -78,9 +68,6 @@
 .password {
     width: 220px;
     color: rgba(0, 0, 0, 1);
-    position: absolute;
-    top: 148px;
-    left: 5px;
     font-family: Inter;
     font-weight: Light;
     font-size: 22px;
@@ -93,15 +80,11 @@
     width: 240px;
     height: 50px;
     opacity: 1;
-    position: absolute;
-    top: 35px;
-    left: 230px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    overflow: hidden;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -112,15 +95,11 @@
     width: 240px;
     height: 50px;
     opacity: 1;
-    position: absolute;
-    top: 135px;
-    left: 230px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    overflow: hidden;
     font-family: Inter;
     font-weight: Light;
     font-size: 18px;
@@ -129,24 +108,17 @@
 .signinbutton input[type="submit"]{
     width: 140px;
     height: 50px;
-    margin: 0;
     background: rgba(38, 70, 83, 1);
-    position: relative;
-    top: 250px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
     color: rgba(255, 255, 255, 1);
     font-family: Inter;
     font-size: 18px;
     opacity: 1;
     text-align: center;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 .registerbutton input[type="button"]{

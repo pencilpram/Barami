@@ -6,46 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barami Library</title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="cssofboostrap.css" rel="stylesheet">
     <link href="login.css" rel="stylesheet" />
 </head>
 
 <body style="background:rgba(254, 250, 220, 1); margin:0;">
-    <div class="titlebar">
-        <span class="baramiword">
-            Barami Library
-        </span>
-
-    </div>
-
-    <p class="titlesignin">
-        Sign In
-    </p>
-    <div class="greenbox">
-        <form role="form" name="formlogin" method="post" action="login.php">
-
-            <span class="username">
-                Username
+    <div class="container" style="margin: 0px; max-width: 100%; padding: 0px;">
+        <!-- Title Bar -->
+        <div class="row" style="background-color: rgba(252, 161, 125, 1); max-width: 100%; margin:0px;">
+            <span class="baramiword">
+                Barami Library
             </span>
-            <span class="password">
-                Password
+        </div>
+        <div class="row" style="height:150px; max-width: 100%;">
+            <span class="col"
+                style="padding: 0;top: 100px; text-align: center; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                Sign In
             </span>
+        </div>
+        <div class="row"
+            style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <div class="greenbox" style="width: 500px; height: 220;">
+                <form role="form" name="formlogin" method="post" action="login.php">
+                    <div class="row" style="height:220px;">
+                        <span class="username col"
+                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
+                            Username
+                        </span>
+                        <div class="col"
+                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
+                            <input type="email" name="username" id="username" class="usernamebox" />
+                        </div>
+                        <span class="password col"
+                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
+                            Password
+                        </span>
+                        <div class="col"
+                            style="display: flex; justify-content: center; align-content: center; flex-direction: column; margin-right: 20px;">
+                            <input type="password" name="password" id="password" class="passwordbox" />
+                        </div>
+                    </div>
 
-            <div>
-                <input type="email" name="username" id="username" class="usernamebox" />
-                <input type="password" name="password" id="password" class="passwordbox" />
+
+                </form>
             </div>
-            <div class="signinbutton">
-                <input type="submit" name="Sign in" value="Sign in" />
-            </div>
-        </form>
-    </div>
-        <form action="register.php" method="post">
-            <div class="registerbutton">
-                <input type="submit" name="Register" value="Register" formaction="register.html" />
-            </div>
-        </form>
-            
-    <!-- <div class="signinbutton">
+        </div>
+        <div class="row"
+            style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <form role="form" name="formlogin" method="post" action="login.php"
+                style="width: 140px; height: 50px; margin-top: 60px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
+                                                    border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
+                                                    font-weight: Light; font-size: 18px; background-color: #264653"
+                    value="Search" name="search">
+            </form>
+
+        </div>
+        <div class="row"
+            style="max-width: 100%; display: flex; justify-content: center; align-content: flex-end; flex-direction: column; margin-right: 40px;">
+            <form role="form" name="formlogin" method="post" action="login.php"
+                style="width: 140px; height: 50px; margin-top: 30px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
+                                                            border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
+                                                            font-weight: Light; font-size: 18px;
+    background-color: rgba(38, 70, 83, 0.5); 
+    color: rgba(0, 0, 0, 1);" value="Register" name="register border-color">
+            </form>
+        </div>
+        <!-- <div class="signinbutton">
         <input type="submit" name="Sign in" value="Sign in" />
     </div> -->
 
@@ -53,9 +81,10 @@
             <input type="button" name="Register" value="Register" formaction="register.html"/>
         </div> -->
 
-    <!-- <div class="registerbutton">
+        <!-- <div class="registerbutton">
         <input type="button" name="Register" value="Register"/>
     </div> -->
+
 
 </body>
 
