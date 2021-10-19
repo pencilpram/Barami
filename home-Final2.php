@@ -89,9 +89,8 @@ $category = $_POST["category"];
 $submit = $_POST["search"];
 
 
-if (isset($type) == "Select Search" && (isset($submit) == "Select Category"){
-    $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle LIKE '" . $search . "',
-    "
+if (isset($type) == "Select Search" && (isset($submit) == "Select Category")){
+    $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle LIKE '" . %$search% . "'";
 
 }
 
