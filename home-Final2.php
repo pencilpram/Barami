@@ -92,24 +92,25 @@ if (isset($_GET['query'])) {
         OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
         $result = $mysqli->query($query);
         if ($result) {
+            echo "<table class='table'>";
             while ($row = $result->fetch_array()) {
                 echo "<tr>";
-                echo "<td class='col-2'>" . $row["booktitle"] . "</td>";
+                echo "<td class='col-2' margin-left:10px text-align:center>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
                 echo "<td class='col-2'>" . $row["genre"] . "</td>";
-                if ($row["available_amount"] == 0){
-                    echo "<td class='col-1' background-color:red>B</td>"; 
-                }else{
-                    echo "<td class='col-1' background-color:green>B</td>"; 
+                if ($row["available_amount"] == 0) {
+                    echo "<td class='col-1' background-color:red>B</td>";
+                } else {
+                    echo "<td class='col-1' background-color:green>B</td>";
                 }
-                echo "<td class='col-1'>img src='loupe.png' width='24' height='24'</td>";
+                echo "<td class='col-1'><img src='loupe.png' width='24' height='24'></td>";
                 echo "</tr>";
             }
+            echo "</table>";
         } else {
             echo "Error:" . $mysqli->error;
         }
     }
-
 }
 
 
@@ -127,3 +128,5 @@ if (isset($_GET['query'])) {
 </body>
 
 </html>
+
+
