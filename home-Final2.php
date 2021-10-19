@@ -64,39 +64,36 @@
 
             <div class="row" style="margin-top: 30px; margin-left: 10px; margin-right:10;">
                 <div class="col-2" style="width:200px; text-align:center">
-                    <span class="col-4">Book Name</span>
+                    <span>Book Name</span>
                 </div>
                 <div class="col-4" style="width:900px; text-align:center">
-                    <span class="col-8">Author Name</span>
+                    <span">Author Name</span>
                 </div>
                 <div class="col-2" style="width:200px; text-align:center">
-                    <span class="col-12">Category</span>
+                    <span">Category</span>
                 </div>
             </div>
+            <?php
+            // Connect to the database
+            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+
+            if ($mysqli->connect_errno) {
+                echo $mysqli->connect_error;
+            }
+
+            if (isset($_POST["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
+                $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle OR authorsname OR genre LIKE '" % $search % "'";
+                echo "<tr>";
+                echo "<td class='col-2'>$query</td>";
+                echo "<td class='col-4'>$query</td>";
+                echo "<td class='col-2'>$query</td>";
+                echo "</tr>";
+            }
+
+
+            ?>
 
 </html>
-<?php
-// Connect to the database
-$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-
-if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
-}
-
-$type = $_POST["querytype"];
-$search = $_GET["query"];
-$category = $_POST["category"];
-$submit = $_POST["search"];
-
-
-if (isset($type) == "Select Search" && (isset($submit) == "Select Category")){
-    $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle LIKE '" . %$search% . "'";
-
-}
-
-
-?>
-
 <html>
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
