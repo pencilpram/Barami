@@ -5,7 +5,7 @@ $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 if ($mysqli->connect_errno) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-// $search = $_GET['query'];
+// $search = $_POST['query'];
 ?>
 <html lang="en">
 
@@ -85,8 +85,9 @@ if ($mysqli->connect_errno) {
 
 </html>
 <?php
+$search = $_POST['query'];
 if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
-    $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%%')
+    $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%$search%')
 OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
     $result = $mysqli->query($query);
     if ($result) {
