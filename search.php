@@ -9,13 +9,20 @@
     $search = $_GET['query'];
 
     if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
-        $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE (booktitle LIKE '$search')
-        OR (authorsname LIKE '$search') OR (genre LIKE '$search')";
-        echo "<tr>";
-        echo "<td class='col-2'>$query</td>";
-        echo "<td class='col-4'>$query</td>";
-        echo "<td class='col-2'>$query</td>";
-        echo "</tr>";
+        $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%$search%')
+        OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
+        $result = $mysqli->query($query);
+        if ($result) {
+            while ($row = $result->fetch_array()) {
+            echo "<tr>";
+            echo "<td class='col-2'>" . $row["booktitle"] ."</td>";
+            echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
+            echo "<td class='col-2'>" . $row["genre"] . "</td>";
+            echo "</tr>";
+            }
+        }else{
+            echo "Error:" . $mysqli->error;
+        }
     }
 
 
