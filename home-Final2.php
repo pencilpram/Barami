@@ -44,7 +44,7 @@ if ($mysqli->connect_errno) {
         <!-- Content -->
         <div class="tab-content" id="nav-tabContent">
             <!-- Library Tab -->
-            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="search.php" method="get">
+            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="home-Final2.php" method="get">
                 <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
@@ -85,22 +85,25 @@ if ($mysqli->connect_errno) {
 
 </html>
 <?php
-$search = $_POST['query'];
-if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
-    $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%$search%')
-OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
-    $result = $mysqli->query($query);
-    if ($result) {
-        while ($row = $result->fetch_array()) {
-            echo "<tr>";
-            echo "<td class='col-2'>" . $row["booktitle"] . "</td>";
-            echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
-            echo "<td class='col-2'>" . $row["genre"] . "</td>";
-            echo "</tr>";
+if (isset($_GET['query'])) {
+    $search = $_GET['query'];
+    if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
+        $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%$search%')
+        OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
+        $result = $mysqli->query($query);
+        if ($result) {
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+                echo "<td class='col-2'>" . $row["booktitle"] . "</td>";
+                echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
+                echo "<td class='col-2'>" . $row["genre"] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "Error:" . $mysqli->error;
         }
-    } else {
-        echo "Error:" . $mysqli->error;
     }
+    
 }
 
 
