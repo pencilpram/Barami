@@ -1,3 +1,12 @@
+<?php
+// Connect to the database
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+
+if ($mysqli->connect_errno) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+// $search = $_GET['query'];
+?>
 <html lang="en">
 
 <head>
@@ -73,24 +82,28 @@
                     <span>Category</span>
                 </div>
             </div>
-            <!-- 
-            // Connect to the database
-            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-
-            if ($mysqli->connect_errno) {
-                echo $mysqli->connect_error;
-            }
-
-            if (isset($_POST["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
-                $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle OR authorsname OR genre LIKE '" % $search % "'";
-                echo "<tr>";
-                echo "<td class='col-2'>$query</td>";
-                echo "<td class='col-4'>$query</td>";
-                echo "<td class='col-2'>$query</td>";
-                echo "</tr>";
-            } -->
 
 </html>
+<?php
+if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
+    $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%%')
+OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
+    $result = $mysqli->query($query);
+    if ($result) {
+        while ($row = $result->fetch_array()) {
+            echo "<tr>";
+            echo "<td class='col-2'>" . $row["booktitle"] . "</td>";
+            echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
+            echo "<td class='col-2'>" . $row["genre"] . "</td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "Error:" . $mysqli->error;
+    }
+}
+
+
+?>
 <html>
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
