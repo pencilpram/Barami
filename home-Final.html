@@ -35,7 +35,7 @@
         <!-- Content -->
         <div class="tab-content" id="nav-tabContent">
             <!-- Library Tab -->
-            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="search.php" method="post">
+            <form class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="search.php" method="post">
                 <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
@@ -63,34 +63,33 @@
     font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
                 </div>
             </form>
-    <row>
-        <span class="col-4" >Book Name</span>
-        <span class="col-8">Author Name</span>
-        <span class="col-12">Category</span>
-    </row>
-</html>
-<?php
-    // Connect to the database
-    $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+            <!-- Library Map Tab -->
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                Library Map
+            </div>
+            <!-- Profile Tab -->
+            <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <div class="row" style="height:100px; max-width: 100%;">
                     
-    if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
-    }
+                    <span class="col-8" style="margin-left: 100px;top: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
+                        Profile
+                    </span>
+                    <form role="form col-4" method="post" action="returnbook.php"
+                        style="margin-top: 50px; width: 140px; height: 50px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                        <input type="submit" class="col btn btn-primary"
+                            style="width: 170px; height: 50px; border-top-left-radius: 35px;
+                                                                                border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
+                                                                                font-weight: Light; font-size: 18px; background-color: #264653" value="Return Book" name="returnbook">
+                    </form>
+                </div>
+                <form action="">
 
-                    
+                </form>
+            </div>
+        </div>
 
-?>
-
-<html>
-<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-</div>
-
-
-
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
