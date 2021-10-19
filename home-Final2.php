@@ -88,7 +88,7 @@ if ($mysqli->connect_errno) {
 if (isset($_GET['query'])) {
     $search = $_GET['query'];
     if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
-        $query = "SELECT booktitle, authorsname, genre FROM booksinfomation WHERE (booktitle LIKE '%$search%')
+        $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
         OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
         $result = $mysqli->query($query);
         if ($result) {
@@ -97,13 +97,19 @@ if (isset($_GET['query'])) {
                 echo "<td class='col-2'>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
                 echo "<td class='col-2'>" . $row["genre"] . "</td>";
+                if ($row["available_amount"] == 0){
+                    echo "<td class='col-1' background-color:red>B</td>"; 
+                }else{
+                    echo "<td class='col-1' background-color:green>B</td>"; 
+                }
+                echo "<td class='col-1'>img src='loupe.png' width='24' height='24'</td>";
                 echo "</tr>";
             }
         } else {
             echo "Error:" . $mysqli->error;
         }
     }
-    
+
 }
 
 
