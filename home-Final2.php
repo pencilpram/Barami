@@ -71,16 +71,19 @@ if ($mysqli->connect_errno) {
                 </div>
             </form>
 
-            <div class="row" style="margin-top: 30px; margin-left: 10px; margin-right:10;">
-                <div class="col-2" style="width:200px; text-align:center">
+            <div class="row" style="margin-top: 30px; padding:8px;">
+                <div class="col-4" style="width:480px; text-align:center;">
                     <span>Book Name</span>
                 </div>
-                <div class="col-4" style="width:900px; text-align:center">
+                <div class="col-4" style="width:480px; text-align:center">
                     <span>Author Name</span>
                 </div>
-                <div class="col-2" style="width:200px; text-align:center">
+                <div class="col-2" style="width:240px; text-align:center">
                     <span>Category</span>
                 </div>
+                <div class="col-1" style="width: 120px;"></div>
+                <div class="col-1" style="width: 120px;"></div>
+                
             </div>
 
 </html>
@@ -95,15 +98,15 @@ if (isset($_GET['query'])) {
             echo "<table class='table'>";
             while ($row = $result->fetch_array()) {
                 echo "<tr>";
-                echo "<td class='col-2' margin-left:10px text-align:center>" . $row["booktitle"] . "</td>";
-                echo "<td class='col-4'>" . $row["authorsname"] . "</td>";
-                echo "<td class='col-2'>" . $row["genre"] . "</td>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
                 if ($row["available_amount"] == 0) {
-                    echo "<td class='col-1' background-color:red>B</td>";
+                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
                 } else {
-                    echo "<td class='col-1' background-color:green>B</td>";
+                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                 }
-                echo "<td class='col-1'><img src='loupe.png' width='24' height='24'></td>";
+                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                 echo "</tr>";
             }
             echo "</table>";
