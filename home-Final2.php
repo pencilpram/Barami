@@ -40,7 +40,6 @@
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
                             <option value="">Select Search</option>
-                            <option>Any</option>
                             <option>Book Name</option>
                             <option>Author Name</option>
                             <option>Publisher</option>
@@ -52,7 +51,6 @@
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category">
                             <option value="">Select Category</option>
-                            <option>Any</option>
                             <option>Fantasy Fiction</option>
                             <option>Child Book</option>
                         </select>
@@ -85,11 +83,15 @@ if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
 
+$type = $_POST["querytype"];
 $search = $_GET["query"];
+$category = $_POST["category"];
 $submit = $_POST["search"];
 
-if (isset($search) && (isset($submit)){
-$query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE $book"
+
+if (isset($type) == "Select Search" && (isset($submit) == "Select Category"){
+    $query = "SELECT booktitle, authorsname, genre FROM booksinformation WHERE booktitle LIKE '" . $search . "',
+    "
 
 }
 
