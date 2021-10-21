@@ -89,8 +89,7 @@ if ($mysqli->connect_errno) {
                 <div class="col-1" style="width: 120px;"></div>
                 
             </div>
-
-</html>
+            
 <?php
 if (isset($_GET['query'])) {
     $search = $_GET['query'];
@@ -205,9 +204,8 @@ if (isset($_GET['query'])) {
     }
 }
 
-
 ?>
-<html>
+        
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
