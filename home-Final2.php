@@ -139,7 +139,7 @@ if (isset($_GET['query'])) {
         }
 
     }elseif (isset($_GET["querytype"]) != "Book Name" && (isset($_GET["category"]) == "Select Category")) {
-        $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%') AND (booktitle LIKE '%$search%'))";
+        $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%')";
         $result = $mysqli->query($query);
         if ($result) {
             echo "<table class='table'>";
@@ -147,7 +147,7 @@ if (isset($_GET['query'])) {
                 echo "<tr>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["publish"] . "</td>";
                 if ($row["available_amount"] == 0) {
                     echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
                 } else {
@@ -167,7 +167,7 @@ if (isset($_GET['query'])) {
                 echo "<tr>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
                 if ($row["available_amount"] == 0) {
                     echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
                 } else {
@@ -188,7 +188,7 @@ if (isset($_GET['query'])) {
             echo "<tr>";
             echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
             echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-            echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+            echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
             if ($row["available_amount"] == 0) {
                 echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
             } else {
