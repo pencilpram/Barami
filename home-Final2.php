@@ -49,8 +49,8 @@ if ($mysqli->connect_errno) {
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
                             <option value="">Select Search</option>
-                            <option>Book Name</option>
-                            <option>Author Name</option>
+                            <option>BookTitle</option>
+                            <option>AuthorsName</option>
                             <option>Publisher</option>
                         </select>
                     </div>
@@ -60,8 +60,13 @@ if ($mysqli->connect_errno) {
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category">
                             <option value="">Select Category</option>
+                            <option>Comic Book</option>
+                            <option>Encyclopedia</option>
                             <option>Fantasy Fiction</option>
-                            <option>Child Book</option>
+                            <option>Magazine</option>
+                            <option>Philosophy</option>
+                            <option>Religion</option>
+                            <option>Travel</option>
                         </select>
                     </div>
 
