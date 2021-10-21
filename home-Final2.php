@@ -94,7 +94,7 @@ if (isset($_GET['query'])) {
     $category = $_GET["category"];
     if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
         $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
-        OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
+        OR (authorsname LIKE '%$search%') OR (publisher LIKE '%$search%')";
         $result = $mysqli->query($query);
         if ($result) {
             echo "<table class='table'>";
@@ -102,7 +102,7 @@ if (isset($_GET['query'])) {
                 echo "<tr>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
                 if ($row["available_amount"] == 0) {
                     echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
                 } else {
@@ -116,9 +116,9 @@ if (isset($_GET['query'])) {
             echo "Error:" . $mysqli->error;
         }
     
-    }elseif (isset($_GET["querytype"])=="Select Search"&& (isset($_GET["category"]) != "Select Category")) {
-        $query = "SELECT * FROM booksinfomation WHERE ((genre LIKE '%$category%') and (booktitle LIKE '%$search%'))
-        OR ((genre LIKE '%$category%') and (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') and (publisher LIKE '%$search%'))";
+    }elseif (isset($_GET["querytype"])== "Select Search" && (isset($_GET["category"]) != "Select Category")) {
+        $query = "SELECT * FROM booksinfomation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
+        OR ((genre LIKE '%$category%') AND (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') AND (publisher LIKE '%$search%'))";
         $result = $mysqli->query($query);
         if ($result) {
             echo "<table class='table'>";
@@ -126,7 +126,7 @@ if (isset($_GET['query'])) {
                 echo "<tr>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
                 echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
                 if ($row["available_amount"] == 0) {
                     echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
                 } else {
@@ -138,8 +138,9 @@ if (isset($_GET['query'])) {
             echo "</table>";
         }
 
-    }elseif (isset($_GET["querytype"]) == "Author Name" && (isset($_GET["category"]) == "Select Category")) {
-        $query = "SELECT * FROM booksinfomation WHERE (authorsname LIKE '%$search%')";
+    }elseif (isset($_GET["querytype"]) != "Book Name" && (isset($_GET["category"]) == "Select Category")) {
+        $query = "SELECT * FROM booksinfomation WHERE (((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
+        OR ((genre LIKE '%$category%') AND (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') AND (publisher LIKE '%$search%'))";
         $result = $mysqli->query($query);
         if ($result) {
             echo "<table class='table'>";
