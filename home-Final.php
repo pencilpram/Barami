@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,8 +35,8 @@
         <!-- Content -->
         <div class="tab-content" id="nav-tabContent">
             <!-- Library Tab -->
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <form class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;" action="home-Final.php" method="post">
+            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="home-Final.php" method="post">
+                <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
                             <option value="">Select Search</option>
@@ -63,8 +64,8 @@
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
-                </form>
-                <div class="row" style="margin-top: 30px; padding:8px;">
+                </div>
+                <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
                     <div class="col-4" style="width:480px; text-align:center;">
                         <span>Book Name</span>
                     </div>
@@ -79,12 +80,13 @@
 
                 </div>
                 <?php
-                if(isset($_GET['search'])){
-                    if (isset($_GET['query'])) {
-                        $search = $_GET['query'];
-                        $searchby = $_GET["querytype"];
-                        $category = $_GET["category"];
-                        if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
+                $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+                if (isset($_POST['search'])) {
+                    if (isset($_POST['query'])) {
+                        $search = $_POST['query'];
+                        $searchby = $_POST["querytype"];
+                        $category = $_POST["category"];
+                        if (isset($_POST["querytype"]) == "Select Search" && (isset($_POST["category"]) == "Select Category")) {
                             $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
                         OR (authorsname LIKE '%$search%') OR (publisher LIKE '%$search%')";
                             $result = $mysqli->query($query);
@@ -107,7 +109,7 @@
                             } else {
                                 echo "Error:" . $mysqli->error;
                             }
-                        } elseif (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) != "Select Category")) {
+                        } elseif (isset($_POST["querytype"]) == "Select Search" && (isset($_POST["category"]) != "Select Category")) {
                             $query = "SELECT * FROM booksinfomation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
                         OR ((genre LIKE '%$category%') AND (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') AND (publisher LIKE '%$search%'))";
                             $result = $mysqli->query($query);
@@ -128,7 +130,7 @@
                                 }
                                 echo "</table>";
                             }
-                        } elseif (isset($_GET["querytype"]) != "Book Name" && (isset($_GET["category"]) == "Select Category")) {
+                        } elseif (isset($_POST["querytype"]) != "Book Name" && (isset($_POST["category"]) == "Select Category")) {
                             $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%')";
                             $result = $mysqli->query($query);
                             if ($result) {
@@ -192,7 +194,8 @@
                     }
                 }
                 ?>
-            </div>
+            </form>
+
             <!-- Library Map Tab -->
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 Library Map
@@ -329,11 +332,9 @@
                                                                     background-color: #eb7179; " value="Log Out" name="logout">
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
