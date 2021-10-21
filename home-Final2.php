@@ -90,6 +90,8 @@ if ($mysqli->connect_errno) {
 <?php
 if (isset($_GET['query'])) {
     $search = $_GET['query'];
+    $searchby = $_GET["querytype"];
+    $category = $_GET["category"];
     if (isset($_GET["querytype"]) == "Select Search" && (isset($_GET["category"]) == "Select Category")) {
         $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
         OR (authorsname LIKE '%$search%') OR (genre LIKE '%$search%')";
@@ -114,7 +116,7 @@ if (isset($_GET['query'])) {
             echo "Error:" . $mysqli->error;
         }
     
-    }elseif (isset($_GET["querytype"]) == "Book Name" && (isset($_GET["category"]) == "Select Category")) {
+    }elseif (isset($searchby)) {
         $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')";
         $result = $mysqli->query($query);
         if ($result) {
