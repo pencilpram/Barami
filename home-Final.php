@@ -111,7 +111,7 @@
                                 }
                                 echo "</table>";
                             } else {
-                                echo "Error:" . $mysqli->error;
+                                echo "No result";
                             }
                         } elseif ($searchby == "Select Search" && $category != "Select Category") {
                             //echo "2";
@@ -133,7 +133,9 @@
                                     echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
-                                echo "</table>";
+                                echo "</table>"; 
+                            }else{
+                                echo "No result";
                             }
                         } elseif ($searchby != "Select Search" && $category == "Select Category") {
                             //echo "3";
@@ -155,6 +157,8 @@
                                     echo "</tr>";
                                 }
                                 echo "</table>";
+                            }else {
+                                echo "No result";
                             }
                         } else {
                             //echo "4";
@@ -176,6 +180,8 @@
                                     echo "</tr>";
                                 }
                                 echo "</table>";
+                            }else{
+                                echo "No result";
                             }
                         }
                     }
@@ -198,7 +204,10 @@
                             echo "</tr>";
                         }
                         echo "</table>";
-                    } else {
+                    }else{
+                        echo "No result";
+                    }
+                } else {
                         //echo "5";
                         $query = "SELECT * FROM booksinfomation";
                         $result = $mysqli->query($query);
@@ -218,9 +227,11 @@
                                 echo "</tr>";
                             }
                             echo "</table>";
+                        }else{
+                            echo "No result";
                         }
                     }
-                }
+
                 ?>
             </form>
 
