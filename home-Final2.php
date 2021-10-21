@@ -116,8 +116,9 @@ if (isset($_GET['query'])) {
             echo "Error:" . $mysqli->error;
         }
     
-    }elseif (isset($searchby)) {
-        $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')";
+    }elseif (isset($_GET["querytype"])=="Select Search"&& (isset($_GET["category"]) != "Select Category")) {
+        $query = "SELECT * FROM booksinfomation WHERE ((genre LIKE '%$category%') and (booktitle LIKE '%$search%'))
+        OR ((genre LIKE '%$category%') and (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') and (publisher LIKE '%$search%'))";
         $result = $mysqli->query($query);
         if ($result) {
             echo "<table class='table'>";
