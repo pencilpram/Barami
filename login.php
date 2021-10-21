@@ -1,16 +1,16 @@
-<!-- // Connect to the database
+// Connect to the database
+<?php
 session_start();
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-mysqli_select_db($mysqli,"Barami_Library");
 
 if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
-if (isset($_POST['username'])&&isset($_POST['password'])) {
+if (isset($_GET['username'])&&isset($_GET['password'])) {
     //รับค่า user & password
-    $username = $_POST['username'];
-    $password = ($_POST['password']);
+    $username = $_GET['username'];
+    $password = $_GET['password'];
 
     //query 
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
@@ -25,7 +25,8 @@ if (isset($_POST['username'])&&isset($_POST['password'])) {
         echo ($code_error);
         header("location: Final-Login.html"); //ไม่ถูกต้องให้กับไปหน้าเดิม
     }
-} -->
+}
+?>
 
 
 <!-- // $strSQL = "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($mysqli,$_POST['username']) . "' 
