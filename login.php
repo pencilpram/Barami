@@ -14,12 +14,11 @@ if (isset($_GET['username'])&&isset($_GET['password'])) {
 
     //query 
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-
     $result = mysqli_query($mysqli, $sql);
 
     // หาจำนวนเรกคอร์ดข้อมูล
     if (mysqli_num_rows($result) == 1) {
-        header("location: home-Final.html"); //ไปไปตามหน้าที่คุณต้องการ
+        header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
     } else {
         $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
         echo ($code_error);
