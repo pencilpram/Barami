@@ -16,6 +16,7 @@ if ($mysqli->connect_errno) {
     <title>Barami Library</title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link href="cssofboostrap.css" rel="stylesheet">
+    <link href="login.css" rel="stylesheet" />
 </head>
 
 <body style="background:rgba(254, 250, 220, 1); margin:0;">
