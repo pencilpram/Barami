@@ -113,6 +113,48 @@ if (isset($_GET['query'])) {
         } else {
             echo "Error:" . $mysqli->error;
         }
+    
+    }elseif (isset($_GET["querytype"]) == "Book Name" && (isset($_GET["category"]) == "Select Category")) {
+        $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')";
+        $result = $mysqli->query($query);
+        if ($result) {
+            echo "<table class='table'>";
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                if ($row["available_amount"] == 0) {
+                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
+                } else {
+                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                }
+                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+
+    }elseif (isset($_GET["querytype"]) == "Author Name" && (isset($_GET["category"]) == "Select Category")) {
+        $query = "SELECT * FROM booksinfomation WHERE (authorsname LIKE '%$search%')";
+        $result = $mysqli->query($query);
+        if ($result) {
+            echo "<table class='table'>";
+            while ($row = $result->fetch_array()) {
+                echo "<tr>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                echo "<td class='col-2' style='text-align:center;'>" . $row["genre"] . "</td>";
+                if ($row["available_amount"] == 0) {
+                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
+                } else {
+                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                }
+                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+    }
     }
 }
 
