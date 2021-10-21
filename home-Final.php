@@ -130,7 +130,7 @@
                                 }
                                 echo "</table>";
                             }
-                        } elseif (isset($_POST["querytype"]) != "Book Name" && (isset($_POST["category"]) == "Select Category")) {
+                        } elseif (isset($_POST["querytype"]) != "Select Search" && (isset($_POST["category"]) == "Select Category")) {
                             $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%')";
                             $result = $mysqli->query($query);
                             if ($result) {
