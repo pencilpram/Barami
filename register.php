@@ -114,7 +114,7 @@
             <div class="row" style=" max-width: 100%; height:50px; margin-top:20px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
                 <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
                                                                         border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
-                                                                        font-weight: Light; font-size: 18px; background-color: #264653" value="Register" name="register">
+                                                                        font-weight: Light; font-size: 18px; background-color: #264653" value="Register" name="register2">
 
             </div>
         </form>
@@ -122,7 +122,7 @@
     </div>
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-    if (isset($_POST['register'])) {
+    if (isset($_POST['register2'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $firstname = $_POST['firstname'];
@@ -134,15 +134,15 @@
         $gender = $_POST['gender'];
         $birthdate = $_POST['birthdate'];
 
-        $query = "SELECT MAX(TRIM(LEADING 'U' FROM 'userid')) as user_id FROM 'users';";
+        $query = "SELECT MAX(TRIM(LEADING 'U' FROM userid)) as user_id FROM users;";
         $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
         $last_user_id = empty($row['user_id']) ? 00 : $row['user_id'];
         $next_user_id = 'U' . ($last_user_id + 1);
 
-        $query1 = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,gender,email,birthdate) 
-    VALUES ('$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$birthdate',)";
+        $query1 = "INSERT INTO users (userid,username,password,firstname,lastname,usergroup,title,gender,email,age,birthdate) 
+    VALUES ('$next_user_id','$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$age','$birthdate')";
 
-        $result1 = mysqli_query($mysqli, $strSQL);
+        $result2 = $mysqli->query($query1);
 
         echo "Register Completed!<br>";
 
