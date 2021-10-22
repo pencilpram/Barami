@@ -292,9 +292,6 @@
                 $gender = $user['gender'];
                 $birthdate = $user['birthdate'];
 
-                //Update Database
-                $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
-                $result = $mysqli->query($update_sql);
 
                 ?>
                 <div class="row" style="height:100px; max-width: 100%;">
@@ -431,7 +428,7 @@
 
                     </div>
                     <div class="col-2" style="width: 15%; margin-top: 25px;">
-                        <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
+                        <form role="form" method="post" action="edit_profile.php" style="height: 50px; display: flex; 
                                             justify-content: center; align-content: center; flex-direction: column;">
                             <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                 border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
