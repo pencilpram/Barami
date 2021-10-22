@@ -60,10 +60,11 @@
                             <option>Travel</option>
                         </select>
                     </div>
-
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
+
+
                 </div>
                 <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
                     <div class="col-4" style="width:480px; text-align:center;">
@@ -184,51 +185,51 @@
                                 echo "No result";
                             }
                         }
-                    }
-                } elseif ($searchby  == "Select Search" && $category != "Select Category") {
-                    $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        echo "<table class='table'>";
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] == 0) {
-                                echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                    } elseif ($searchby  == "Select Search" && $category != "Select Category") {
+                        $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            echo "<table class='table'>";
+                            while ($row = $result->fetch_array()) {
+                                echo "<tr>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] == 0) {
+                                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                                }
+                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
                             }
-                            echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
+                            echo "</table>";
+                        } else {
+                            echo "No result";
                         }
-                        echo "</table>";
                     } else {
-                        echo "No result";
-                    }
-                } else {
-                    //echo "5";
-                    $query = "SELECT * FROM booksinfomation";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        echo "<table class='table'>";
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] == 0) {
-                                echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                        //echo "5";
+                        $query = "SELECT * FROM booksinfomation";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            echo "<table class='table'>";
+                            while ($row = $result->fetch_array()) {
+                                echo "<tr>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] == 0) {
+                                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                                }
+                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
                             }
-                            echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
+                            echo "</table>";
+                        } else {
+                            echo "No result";
                         }
-                        echo "</table>";
-                    } else {
-                        echo "No result";
                     }
                 }
 
@@ -246,14 +247,7 @@
                 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 
                 echo $_SESSION['userid'];
-                // $sql = "SELECT * FROM users WHERE userid = '$userid";
-                // $result = $mysqli->query($query);
-                // if (!$result) {
-                //     echo "Select failed!<br/>";
-                //     echo $mysqli->error;
-                // } else {
-                //     $user = $result->fetch_array();
-                // }
+
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $firstname = $_POST['firstname'];
@@ -268,7 +262,7 @@
                 //Update Database
                 $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
                 $result = $mysqli->query($update_sql);
-                
+
                 $sql = "SELECT * FROM users WHERE userid = '$userid";
                 $result = $mysqli->query($query);
                 if (!$result) {
