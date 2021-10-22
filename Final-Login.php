@@ -71,7 +71,10 @@
             // หาจำนวนเรกคอร์ดข้อมูล
             if (mysqli_num_rows($result) > 0) {
                 session_start();
+                $item=$result->fetch_array();
+                $_SESSION['userid']=$item['userid'];
                 header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
+
             } else {
                 $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
                 echo ($code_error);
