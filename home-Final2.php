@@ -240,24 +240,44 @@
                 Library Map
             </div>
             <!-- Profile Tab -->
-            <?php
-            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-            
-            $sql = "SELECT * FROM users";
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $age = $_POST['age'];
-            $email = $_POST['email'];
-            $usergroup = $_POST['usergroup'];
-            $title = $_POST['title'];
-            $gender = $_POST['gender'];
-            $birthdate = $_POST['birthdate'];
-
-            ?>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <!-- Profile title + Returnbook -->
+                <?php
+                $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+
+                echo $_SESSION['userid'];
+                // $sql = "SELECT * FROM users WHERE userid = '$userid";
+                // $result = $mysqli->query($query);
+                // if (!$result) {
+                //     echo "Select failed!<br/>";
+                //     echo $mysqli->error;
+                // } else {
+                //     $user = $result->fetch_array();
+                // }
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $age = $_POST['age'];
+                $email = $_POST['email'];
+                $usergroup = $_POST['usergroup'];
+                $title = $_POST['title'];
+                $gender = $_POST['gender'];
+                $birthdate = $_POST['birthdate'];
+
+                //Update Database
+                $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
+                $result = $mysqli->query($update_sql);
+                
+                $sql = "SELECT * FROM users WHERE userid = '$userid";
+                $result = $mysqli->query($query);
+                if (!$result) {
+                    echo "Select failed!<br/>";
+                    echo $mysqli->error;
+                } else {
+                    $user = $result->fetch_array();
+                }
+                ?>
                 <div class="row" style="height:100px; max-width: 100%;">
                     <span class="col-8" style="margin-left: 200px;top: 100px; text-align: left; font-family: Inter; 
                     font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; 
@@ -286,10 +306,18 @@
                                         Title</label>
                                     <div class="col-4">
                                         <select class="form-select" style="width: 100px; font-family: Inter; font-weight: Light; font-size: 18px;" name="title">
-                                            <option value="">Title</option>
-                                            <option>Mr.</option>
-                                            <option>Mrs.</option>
-                                            <option>Ms.</option>
+                                            <option value="" <?php if ($user["title"] == "Mr.") {
+                                                                    echo "selected";
+                                                                } ?>>Title</option>
+                                            <option <?php if ($user["title"] == "Mr.") {
+                                                        echo "selected";
+                                                    } ?>>Mr.</option>
+                                            <option <?php if ($user["title"] == "Mrs.") {
+                                                        echo "selected";
+                                                    } ?>>Mrs.</option>
+                                            <option <?php if ($user["title"] == "Ms.") {
+                                                        echo "selected";
+                                                    } ?>>Ms.</option>
                                         </select>
                                     </div>
                                 </div>
@@ -299,7 +327,7 @@
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         Name</label>
                                     <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="text" class="form-control" name="firstname">
+                                        <input type="text" class="form-control" name="firstname" value="<?php echo $user["firstname"] ?>">
                                     </div>
                                 </div>
                                 <!-- Surname -->
@@ -308,7 +336,7 @@
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         Surname</label>
                                     <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="text" class="form-control" name="lastname">
+                                        <input type="text" class="form-control" name="lastname" value="<?php echo $user["lastname"] ?>">
                                     </div>
                                 </div>
                                 <!-- Age + BirthDate-->
@@ -317,13 +345,13 @@
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         Age</label>
                                     <div class="col-2" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="text" class="form-control" name="age">
+                                        <input type="text" class="form-control" name="age" value="<?php echo $user["email"] ?>">
                                     </div>
                                     <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         BirthDate</label>
                                     <div class="col-3" style="width: 31%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="date" class="form-control" name="birthdate">
+                                        <input type="date" class="form-control" name="birthdate" value="<?php echo $user["birthdate"] ?>">
                                     </div>
 
                                 </div>
@@ -334,9 +362,15 @@
                                         Gender</label>
                                     <div class="col-3">
                                         <select class="form-select" style=" font-family: Inter; font-weight: Light; font-size: 18px;" name="gender">
-                                            <option value="">Gender</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
+                                            <option value="" <?php if ($user["gender"] == "Male") {
+                                                                    echo "selected";
+                                                                } ?>>Gender</option>
+                                            <option <?php if ($user["gender"] == "Male") {
+                                                        echo "selected";
+                                                    } ?>>Male</option>
+                                            <option <?php if ($user["gender"] == "Female") {
+                                                        echo "selected";
+                                                    } ?>>Female</option>
                                         </select>
                                     </div>
                                     <label class="col-3 col-form-label" style="width:25%; text-align: center; font-family: Inter; font-weight: Light; 
@@ -344,10 +378,18 @@
                                         flex-direction: column;">User Group</label>
                                     <div class="col-3">
                                         <select class="form-select" style=" width: 170px; font-family: Inter; font-weight: Light; font-size: 18px;" name="usergroup">
-                                            <option value="">User Group</option>
-                                            <option>Student</option>
-                                            <option>Professor</option>
-                                            <option>Other</option>
+                                            <option value="" <?php if ($user["usergroup"] == "Student") {
+                                                                    echo "selected";
+                                                                } ?>>User Group</option>
+                                            <option <?php if ($user["usergroup"] == "Student") {
+                                                        echo "selected";
+                                                    } ?>>Student</option>
+                                            <option <?php if ($user["usergroup"] == "Professor") {
+                                                        echo "selected";
+                                                    } ?>>Professor</option>
+                                            <option <?php if ($user["usergroup"] == "Other") {
+                                                        echo "selected";
+                                                    } ?>>Other</option>
                                         </select>
                                     </div>
 
@@ -358,7 +400,7 @@
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         Email</label>
                                     <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="text" class="form-control" name="email">
+                                        <input type="text" class="form-control" name="email" value="<?php echo $user["email"] ?>">
                                     </div>
                                 </div>
                             </div>
