@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -272,6 +273,15 @@
 
                 echo $_SESSION['userid'];
 
+                $sql = "SELECT * FROM users WHERE userid = '$userid'";
+                $result = $mysqli->query($sql);
+                if (!$result) {
+                    echo "Select failed!<br/>";
+                    echo $mysqli->error;
+                } else {
+                    $user = $result->fetch_array();
+                }
+                
                 $username = $_POST['username'];
                 $password = $_POST['password'];
                 $firstname = $_POST['firstname'];
@@ -287,14 +297,6 @@
                 $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
                 $result = $mysqli->query($update_sql);
 
-                $sql = "SELECT * FROM users WHERE userid = '$userid'";
-                $result = $mysqli->query($sql);
-                if (!$result) {
-                    echo "Select failed!<br/>";
-                    echo $mysqli->error;
-                } else {
-                    $user = $result->fetch_array();
-                }
                 ?>
                 <div class="row" style="height:100px; max-width: 100%;">
                     <span class="col-8" style="margin-left: 200px;top: 100px; text-align: left; font-family: Inter; 

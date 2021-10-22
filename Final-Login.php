@@ -71,12 +71,12 @@
                 session_start();
                 $item = $result->fetch_array();
                 $_SESSION['userid'] = $item['userid'];
-                header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
+                header("location: home-Final.php"); //ไปตามหน้าที่คุณต้องการ
 
             } else {
                 $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
                 echo ($code_error);
-                header("location: Final-Login.html"); //ไม่ถูกต้องให้กับไปหน้าเดิม
+                header("location: Final-Login.html"); //ไม่ถูกต้องให้กลับไปหน้าเดิม
             }
         }
         ?>
