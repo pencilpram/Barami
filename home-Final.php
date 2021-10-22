@@ -40,30 +40,54 @@
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
                             <option>Select Search</option>
-                            <option value="booktitle">Book Title</option>
-                            <option value="authorsname">Authors Name</option>
-                            <option value="publisher">Publisher</option>
+                            <option value="booktitle" <?php if ($_POST["querytype"] == "booktitle") {
+                                                            echo "selected";
+                                                        } ?>>Book Title</option>
+                            <option value="authorsname" <?php if ($_POST["querytype"] == "authorsname") {
+                                                            echo "selected";
+                                                        } ?>>Authors Name</option>
+                            <option value="publisher" <?php if ($_POST["querytype"] == "publisher") {
+                                                            echo "selected";
+                                                        } ?>>Publisher</option>
                         </select>
                     </div>
                     <div class="col-6" style="padding: 0; width: 900px;">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query" <?php if (isset($_POST['query'])) {
+                                                                                                                                                                                                echo 'value=' . $_POST['query'];
+                                                                                                                                                                                            } ?>>
                     </div>
                     <div class="col-2" style="width:200px;">
-                        <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category">
-                            <option>Select Category</option>
-                            <option>Comic Book</option>
-                            <option>Encyclopedia</option>
-                            <option>Fantasy Fiction</option>
-                            <option>Magazine</option>
-                            <option>Philosophy</option>
-                            <option>Religion</option>
-                            <option>Travel</option>
+                        <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category" value="Comic Book">
+                            <option <?php if ($_POST["category"] == "Select Category") {
+                                        echo "selected";
+                                    } ?>>Select Category</option>
+                            <option <?php if ($_POST["category"] == "Child Book") {
+                                        echo "selected";
+                                    } ?>>Child Book</option>
+                            <option <?php if ($_POST["category"] == "Encyclopedia") {
+                                        echo "selected";
+                                    } ?>>Encyclopedia</option>
+                            <option <?php if ($_POST["category"] == "Fantasy Fiction") {
+                                        echo "selected";
+                                    } ?>>Fantasy Fiction</option>
+                            <option <?php if ($_POST["category"] == "Magazine") {
+                                        echo "selected";
+                                    } ?>>Magazine</option>
+                            <option <?php if ($_POST["category"] == "Philosophy") {
+                                        echo "selected";
+                                    } ?>>Philosophy</option>
+                            <option <?php if ($_POST["category"] == "Religion") {
+                                        echo "selected";
+                                    } ?>>Religion</option>
+                            <option <?php if ($_POST["category"] == "Travel") {
+                                        echo "selected";
+                                    } ?>>Travel</option>
                         </select>
                     </div>
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
-                    
+
 
                 </div>
                 <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
@@ -83,10 +107,10 @@
                 <?php
                 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
                 if (isset($_POST['search'])) {
+                    $searchby = $_POST["querytype"];
+                    $category = $_POST["category"];
                     if (isset($_POST['query'])) {
                         $search = $_POST['query'];
-                        $searchby = $_POST["querytype"];
-                        $category = $_POST["category"];
                         //echo $search;
                         //echo $searchby;
                         //echo $category;
@@ -163,7 +187,7 @@
                             }
                         } else {
                             //echo "4";
-                            $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%') AND (genre LIKE '%$category%'))";
+                            $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%' AND genre LIKE '%$category%')";
                             $result = $mysqli->query($query);
                             if ($result) {
                                 echo "<table class='table'>";
@@ -185,7 +209,7 @@
                                 echo "No result";
                             }
                         }
-                    } elseif ($searchby  == "Select Search" && $category != "Select Category") {
+                    } elseif ($category != "Select Category") {
                         $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
                         $result = $mysqli->query($query);
                         if ($result) {
