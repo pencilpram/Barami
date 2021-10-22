@@ -56,11 +56,9 @@
         </form>
 
         <?php
-        echo "1";
         $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
         if (isset($_POST['signin'])) {
             //รับค่า user & password
-            echo "3";
             $username = $_POST['username'];
             $password = $_POST['password'];
 
@@ -71,8 +69,8 @@
             // หาจำนวนเรกคอร์ดข้อมูล
             if (mysqli_num_rows($result) > 0) {
                 session_start();
-                $item=$result->fetch_array();
-                $_SESSION['userid']=$item['userid'];
+                $item = $result->fetch_array();
+                $_SESSION['userid'] = $item['userid'];
                 header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
 
             } else {

@@ -1,77 +1,157 @@
-<?php
-$mysqli = new mysqli("localhost", "root", null, "Barami_Library2");
+<!DOCTYPE html>
+<html>
 
-if ($mysqli->connect_errno) {
-    echo $mysqli->connect_error;
-}
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="login.css" rel="stylesheet" />
+    <link href="./register.css" rel="stylesheet" />
+    <link href="cssofboostrap.css" rel="stylesheet">
+    <title>Register</title>
+</head>
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$age = $_POST['age'];
-$email = $_POST['email'];
-$usergroup = $_POST['usergroup'];
-$title = $_POST['title'];
-$gender = $_POST['gender'];
-$birthdate = $_POST['birthdate'];
+<body style="background:rgba(254, 250, 220, 1); margin:0;">
+    <div class="container" style="margin: 0px; max-width: 100%; padding: 0px;">
+        <!-- Title Bar -->
+        <div class="row" style="background-color: rgba(252, 161, 125, 1); max-width: 100%; margin:0px;">
+            <span class="baramiword" style="width:539px;">
+                Barami Library
+            </span>
+        </div>
+        <!-- Register title -->
+        <div class="row" style="height:100px; max-width: 100%;">
+            <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
+                Register
+            </span>
+        </div>
+        <!-- Green box -->
+        <form role="form" method="post" action="register.php">
+            <div class="row" style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                <div class="greenbox" style="width: 900px; height: 420px;">
 
-if (trim($username) == "") {
-    echo "Please input Username!";
-    exit();
-}
+                    <div class="row">
+                        <!-- Title -->
+                        <div class="mt-3 mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Title</label>
+                            <div class="col-3">
+                                <select class="form-select" style="width: 100px; font-family: Inter; font-weight: Light; font-size: 18px;" name="title">
+                                    <option value="">Title</option>
+                                    <option>Mr.</option>
+                                    <option>Mrs.</option>
+                                    <option>Ms.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Name -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Name</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="firstname">
+                            </div>
+                        </div>
+                        <!-- Surname -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Surname</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="lastname">
+                            </div>
+                        </div>
+                        <!-- Age + Gender-->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Age</label>
+                            <div class="col-2" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="age">
+                            </div>
+                            <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Gender</label>
+                            <div class="col-2">
+                                <select class="form-select" style=" width: 150px; font-family: Inter; font-weight: Light; font-size: 18px;" name="gender">
+                                    <option value="">Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
 
-if (trim($password) == "") {
-    echo "Please input Password!";
-    exit();
-}
+                        </div>
+                        <!-- email -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Email</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                        </div>
+                        <!-- Usergroup + BirthDate -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">User
+                                Group</label>
+                            <div class="col-3">
+                                <select class="form-select" style=" width: 200px; font-family: Inter; font-weight: Light; font-size: 18px;" name="usergroup">
+                                    <option value="">User Group</option>
+                                    <option>Student</option>
+                                    <option>Professor</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">BirthDate</label>
+                            <div class="col-3" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="date" class="form-control" name="birthdate">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 10px;">
+                            <!-- username -->
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Username</label>
+                            <div class="col-3" style="width: 30%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                            <!-- Password -->
+                            <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Password</label>
+                            <div class="col-3" style=" width: 30%;display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Register button -->
+            <div class="row" style=" max-width: 100%; height:50px; margin-top:20px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
+                                                                        border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
+                                                                        font-weight: Light; font-size: 18px; background-color: #264653" value="Register" name="register">
 
-if (trim($firstname) == "") {
-    echo "Please input Firstname!";
-    exit();
-}
+            </div>
+        </form>
 
-if (trim($lastname) == "") {
-    echo "Please input Lastname!";
-    exit();
-}
+    </div>
+    <?php
+    $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+    if (isset($_POST['register'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $age = $_POST['age'];
+        $email = $_POST['email'];
+        $usergroup = $_POST['usergroup'];
+        $title = $_POST['title'];
+        $gender = $_POST['gender'];
+        $birthdate = $_POST['birthdate'];
 
-if (trim($age) == "") {
-    echo "Please input Age!";
-    exit();
-}
+        $query = "SELECT MAX(TRIM(LEADING 'U' FROM 'userid')) as user_id FROM 'users';";
+        $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
+        $last_user_id = empty($row['user_id']) ? 00 : $row['user_id'];
+        $next_user_id = 'U' . ($last_user_id + 1);
 
-if (trim($email) == "") {
-    echo "Please input Email!";
-    exit();
-}
-
-//เมื่อทุกอย่างผ่านหมดแล้ว เช็คข้อมูลซ้ำจากฐานข้อมูล
-$sql = "SELECT * FROM users WHERE username = '$username'|| email = '$email'";
-$result = mysqli_query($mysqli, $sql);
-$num = mysqli_num_rows($result);
-
-if ($num > 0) {
-    echo "Username or Email already exists!";
-} else {
-    // GET LAST UNIQUE ID
-    $query = "SELECT MAX(TRIM(LEADING 'U' FROM `userid`)) as user_id FROM `users`;";
-    $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
-    // ADD +1 WITH LAST UNIQUE ID
-    $row = $result->fetch_assoc();
-    $last_user_id = empty($row['user_id']) ? 00 : $row['user_id'];
-    $next_user_id = 'U' . ($last_user_id + 1);
-
-    $query1 = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,gender,email,birthdate) 
+        $query1 = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,gender,email,birthdate) 
     VALUES ('$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$birthdate',)";
-    
-    $result1 = mysqli_query($mysqli, $strSQL);
 
-    echo "Register Completed!<br>";
+        $result1 = mysqli_query($mysqli, $strSQL);
 
-    echo "<br> Go to <a href='Final-Login.html'>Login page</a>";
-}
+        echo "Register Completed!<br>";
 
-mysqli_close($mysqli);
-?>
+        echo "<br> Go to <a href='Final-Login.html'>Login page</a>";
 
+
+        mysqli_close($mysqli);
+    }
+    ?>
+</body>
+
+</html>
