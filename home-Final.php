@@ -287,7 +287,7 @@
                 $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
                 $result = $mysqli->query($update_sql);
 
-                $sql = "SELECT * FROM users WHERE userid = '$userid";
+                $sql = "SELECT * FROM users WHERE userid = '$userid'";
                 $result = $mysqli->query($sql);
                 if (!$result) {
                     echo "Select failed!<br/>";
