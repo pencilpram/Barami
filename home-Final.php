@@ -294,7 +294,7 @@
 
                 //Update Database
                 $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
-                $result = $mysqli->query($update_sql);
+                $update_result = $mysqli->query($update_sql);
 
                 ?>
                 <div class="row" style="height:100px; max-width: 100%;">
