@@ -136,20 +136,16 @@
 
         $query = "SELECT MAX(TRIM(LEADING 'U' FROM userid)) as user_id FROM users;";
         $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
-        $last_user_id = empty($row['user_id']) ? 00 : $row['user_id'];
-        $next_user_id = 'U' . ($last_user_id + 1);
+        $row = $result->fetch_assoc();
+        $last_user_id = empty($row['user_id']) ? 0 : $row['user_id'];
+        $lastnumid = ltrim($last_user_id,"0");
+        $next_user_id = 'U' .str_pad($lastnumid+1,4,"0",STR_PAD_LEFT);
 
         $query1 = "INSERT INTO users (userid,username,password,firstname,lastname,usergroup,title,gender,email,age,birthdate) 
     VALUES ('$next_user_id','$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$age','$birthdate')";
 
         $result2 = $mysqli->query($query1);
 
-        echo "Register Completed!<br>";
-
-        echo "<br> Go to <a href='Final-Login.html'>Login page</a>";
-
-
-        mysqli_close($mysqli);
     }
     ?>
 </body>
