@@ -1,16 +1,16 @@
 <?php
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 
-$username = $user['username'];
-$password = $user['password'];
-$firstname = $user['firstname'];
-$lastname = $user['lastname'];
-$age = $user['age'];
-$email = $user['email'];
-$usergroup = $user['usergroup'];
-$title = $user['title'];
-$gender = $user['gender'];
-$birthdate = $user['birthdate'];
+$username = $_POST['username'];
+$password = $_POST['password'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$age = $_POST['age'];
+$email = $_POST['email'];
+$usergroup = $_POST['usergroup'];
+$title = $_POST['title'];
+$gender = $_POST['gender'];
+$birthdate = $_POST['birthdate'];
 
 
 //Update Database
