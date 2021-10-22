@@ -60,10 +60,11 @@
                             <option>Travel</option>
                         </select>
                     </div>
-
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
+                    
+
                 </div>
                 <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
                     <div class="col-4" style="width:480px; text-align:center;">
@@ -89,7 +90,7 @@
                         //echo $search;
                         //echo $searchby;
                         //echo $category;
-                        if ($searchby== "Select Search" && $category== "Select Category") {
+                        if ($searchby == "Select Search" && $category == "Select Category") {
                             //echo "1";
                             $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
                         OR (authorsname LIKE '%$search%') OR (publisher LIKE '%$search%')";
@@ -133,8 +134,8 @@
                                     echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
-                                echo "</table>"; 
-                            }else{
+                                echo "</table>";
+                            } else {
                                 echo "No result";
                             }
                         } elseif ($searchby != "Select Search" && $category == "Select Category") {
@@ -157,7 +158,7 @@
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                            }else {
+                            } else {
                                 echo "No result";
                             }
                         } else {
@@ -180,34 +181,33 @@
                                     echo "</tr>";
                                 }
                                 echo "</table>";
-                            }else{
+                            } else {
                                 echo "No result";
                             }
                         }
-                    }
-                } elseif ($searchby  == "Select Search" && $category != "Select Category") {
-                    $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        echo "<table class='table'>";
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] == 0) {
-                                echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                    } elseif ($searchby  == "Select Search" && $category != "Select Category") {
+                        $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            echo "<table class='table'>";
+                            while ($row = $result->fetch_array()) {
+                                echo "<tr>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] == 0) {
+                                    echo "<td class='col-1' style='background-color:red; text-align:center;'>B</td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
+                                }
+                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
                             }
-                            echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
+                            echo "</table>";
+                        } else {
+                            echo "No result";
                         }
-                        echo "</table>";
-                    }else{
-                        echo "No result";
-                    }
-                } else {
+                    } else {
                         //echo "5";
                         $query = "SELECT * FROM booksinfomation";
                         $result = $mysqli->query($query);
@@ -227,10 +227,11 @@
                                 echo "</tr>";
                             }
                             echo "</table>";
-                        }else{
+                        } else {
                             echo "No result";
                         }
                     }
+                }
 
                 ?>
             </form>

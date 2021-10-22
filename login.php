@@ -1,23 +1,24 @@
-// Connect to the database
+
 <?php
-session_start();
+echo "1";
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 
 if ($mysqli->connect_errno) {
     die("Connection failed: " . $mysqli->connect_error);
 }
-
-if (isset($_GET['username'])&&isset($_GET['password'])) {
+if (isset($_POST['signin'])) {
     //รับค่า user & password
-    $username = $_GET['username'];
-    $password = $_GET['password'];
+    echo "3";
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     //query 
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($mysqli, $sql);
+    $result = $mysqli->query($sql);
 
     // หาจำนวนเรกคอร์ดข้อมูล
-    if (mysqli_num_rows($result) == 1) {
+    if (mysqli_num_rows($result)>0) {
+        session_start();
         header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
     } else {
         $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
@@ -106,7 +107,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     exit();
 } -->
 
-<?php
+<!--  
 session_start();
 if (isset($_POST['username'])) {
     include("db_conn.php");
@@ -148,7 +149,7 @@ if (isset($_POST['username'])) {
     }
 }else {
 
-    Header("Location: Final-Login.html"); //user & password incorrect back to login again
+    header("Location: Final-Login.html"); //user & password incorrect back to login again
 
 }
-?>
+?>-->
