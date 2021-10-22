@@ -1,53 +1,59 @@
 <?php
-$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library2");
 
 if ($mysqli->connect_errno) {
     echo $mysqli->connect_error;
 }
 
-if (trim($_POST["txtUsername"]) == "") {
+$username = $_POST['username'];
+$password = $_POST['password'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$age = $_POST['age'];
+$email = $_POST['email'];
+$usergroup = $_POST['usergroup'];
+$title = $_POST['title'];
+$gender = $_POST['gender'];
+$birthdate = $_POST['birthdate'];
+
+if (trim($username) == "") {
     echo "Please input Username!";
     exit();
 }
 
-if (trim($_POST["txtPassword"]) == "") {
+if (trim($password) == "") {
     echo "Please input Password!";
     exit();
 }
 
-// if($_POST["txtPassword"] != $_POST["txtConPassword"])
-// {
-// 	echo "Password not Match!";
-// 	exit();
-// }
-
-if (trim($_POST["txtFirstname"]) == "") {
+if (trim($firstname) == "") {
     echo "Please input Firstname!";
     exit();
 }
 
-if (trim($_POST["txtLastname"]) == "") {
+if (trim($lastname) == "") {
     echo "Please input Lastname!";
     exit();
 }
 
-if (trim($_POST["txtAge"]) == "") {
+if (trim($age) == "") {
     echo "Please input Age!";
     exit();
 }
 
-if (trim($_POST["txtEmail"]) == "") {
+if (trim($email) == "") {
     echo "Please input Email!";
     exit();
 }
 
-$strSQL = "SELECT * FROM users WHERE username = '" . trim($_POST['txtUsername']) . "' ";
-$objQuery = mysqli_query($mysqli, $strSQL);
-$objResult = mysqli_fetch_array($objQuery);
-if ($objResult) {
-    echo "Username already exists!";
-} else {
+//เมื่อทุกอย่างผ่านหมดแล้ว เช็คข้อมูลซ้ำจากฐานข้อมูล
+$sql = "SELECT * FROM users WHERE username = '$username'|| email = '$email'";
+$result = mysqli_query($mysqli, $sql);
+$num = mysqli_num_rows($result);
 
+if ($num > 0) {
+    echo "Username or Email already exists!";
+} else {
     // GET LAST UNIQUE ID
     $query = "SELECT MAX(TRIM(LEADING 'U' FROM `userid`)) as user_id FROM `users`;";
     $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
@@ -56,12 +62,10 @@ if ($objResult) {
     $last_user_id = empty($row['user_id']) ? 00 : $row['user_id'];
     $next_user_id = 'U' . ($last_user_id + 1);
 
-    $strSQL = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,Gender,email,birthdate) 
-    VALUES ('" . $_POST["txtUsername"] . "','" . $_POST["txtPassword"] . "','" . $_POST["txtFirstname"] . "',
-    '" . $_POST["txtLastname"] . "','" . $_POST["optusergroup"] . "','" . $_POST["opttitle"] . "',
-    '" . $_POST["optGender"] . "','" . $_POST["txtEmail"] . "','" . $_POST["birthdate"] . "')";
+    $query1 = "INSERT INTO users (username,password,firstname,lastname,usergroup,title,gender,email,birthdate) 
+    VALUES ('$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$birthdate',)";
     
-    $objQuery = mysqli_query($mysqli, $strSQL);
+    $result1 = mysqli_query($mysqli, $strSQL);
 
     echo "Register Completed!<br>";
 
