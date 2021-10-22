@@ -270,8 +270,7 @@
                 <!-- Profile title + Returnbook -->
                 <?php
                 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-
-                echo $_SESSION['userid'];
+                $userid = $_SESSION['userid'];
 
                 $sql = "SELECT * FROM users WHERE userid = '$userid'";
                 $result = $mysqli->query($sql);
@@ -281,17 +280,17 @@
                 } else {
                     $user = $result->fetch_array();
                 }
-                
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $age = $_POST['age'];
-                $email = $_POST['email'];
-                $usergroup = $_POST['usergroup'];
-                $title = $_POST['title'];
-                $gender = $_POST['gender'];
-                $birthdate = $_POST['birthdate'];
+            
+                $username = $user['username'];
+                $password = $user['password'];
+                $firstname = $user['firstname'];
+                $lastname = $user['lastname'];
+                $age = $user['age'];
+                $email = $user['email'];
+                $usergroup = $user['usergroup'];
+                $title = $user['title'];
+                $gender = $user['gender'];
+                $birthdate = $user['birthdate'];
 
                 //Update Database
                 $update_sql = "UPDATE users SET title='$title', firstname='$firstname', lastname='$lastname', age='$age', birthdate='$birthdate', gender='$gender', usergroup='$usergroup', email='$email'  WHERE userid='$userid'";
@@ -365,7 +364,7 @@
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                         Age</label>
                                     <div class="col-2" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                        <input type="text" class="form-control" name="age" value="<?php echo $user["email"] ?>">
+                                        <input type="text" class="form-control" name="age" value="<?php echo $user["age"] ?>">
                                     </div>
                                     <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
