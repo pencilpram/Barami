@@ -40,16 +40,40 @@
                 <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
-                            <option>Select Search</option>
-                            <option value="booktitle" <?php if ($_POST["querytype"] == "booktitle") {
-                                                            echo "selected";
-                                                        } ?>>Book Title</option>
-                            <option value="authorsname" <?php if ($_POST["querytype"] == "authorsname") {
-                                                            echo "selected";
-                                                        } ?>>Authors Name</option>
-                            <option value="publisher" <?php if ($_POST["querytype"] == "publisher") {
-                                                            echo "selected";
-                                                        } ?>>Publisher</option>
+                            <?php
+                            if (isset($_POST['search'])) {
+                                if ($_POST["querytype"] == "Select Search") {
+                                    echo '<option selected>Select Search</option>';
+                                    echo '<option value="booktitle">Book Title</option>';
+                                    echo '<option value="authorsname">Authors Name</option>';
+                                    echo '<option value="publisher">Publisher</option>';
+                                }
+                                if ($_POST["querytype"] == "booktitle") {
+                                    echo '<option>Select Search</option>';
+                                    echo '<option value="booktitle" selected>Book Title</option>';
+                                    echo '<option value="authorsname">Authors Name</option>';
+                                    echo '<option value="publisher">Publisher</option>';
+                                }
+                                if ($_POST["querytype"] == "authorsname") {
+                                    echo '<option>Select Search</option>';
+                                    echo '<option value="booktitle">Book Title</option>';
+                                    echo '<option value="authorsname" selected>Authors Name</option>';
+                                    echo '<option value="publisher">Publisher</option>';
+                                }
+                                if ($_POST["querytype"] == "publisher") {
+                                    echo '<option>Select Search</option>';
+                                    echo '<option value="booktitle">Book Title</option>';
+                                    echo '<option value="authorsname">Authors Name</option>';
+                                    echo '<option value="publisher" selected>Publisher</option>';
+                                }
+                            } else {
+                                echo '<option>Select Search</option>';
+                                echo '<option value="booktitle">Book Title</option>';
+                                echo '<option value="authorsname">Authors Name</option>';
+                                echo '<option value="publisher">Publisher</option>';
+                            }
+                            ?>
+
                         </select>
                     </div>
                     <div class="col-6" style="padding: 0; width: 900px;">
@@ -59,30 +83,47 @@
                     </div>
                     <div class="col-2" style="width:200px;">
                         <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="category" value="Comic Book">
-                            <option <?php if ($_POST["category"] == "Select Category") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Select Category") {
+                                            echo "selected";
+                                        }
                                     } ?>>Select Category</option>
-                            <option <?php if ($_POST["category"] == "Child Book") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Child Book") {
+                                            echo "selected";
+                                        }
                                     } ?>>Child Book</option>
-                            <option <?php if ($_POST["category"] == "Encyclopedia") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Encyclopedia") {
+                                            echo "selected";
+                                        }
                                     } ?>>Encyclopedia</option>
-                            <option <?php if ($_POST["category"] == "Fantasy Fiction") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Fantasy Fiction") {
+                                            echo "selected";
+                                        }
                                     } ?>>Fantasy Fiction</option>
-                            <option <?php if ($_POST["category"] == "Magazine") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Magazine") {
+                                            echo "selected";
+                                        }
                                     } ?>>Magazine</option>
-                            <option <?php if ($_POST["category"] == "Philosophy") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Philosophy") {
+                                            echo "selected";
+                                        }
                                     } ?>>Philosophy</option>
-                            <option <?php if ($_POST["category"] == "Religion") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Religion") {
+                                            echo "selected";
+                                        }
                                     } ?>>Religion</option>
-                            <option <?php if ($_POST["category"] == "Travel") {
-                                        echo "selected";
+                            <option <?php if (isset($_POST['search'])) {
+                                        if ($_POST["category"] == "Travel") {
+                                            echo "selected";
+                                        }
                                     } ?>>Travel</option>
+
                         </select>
                     </div>
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
@@ -280,7 +321,7 @@
                 } else {
                     $user = $result->fetch_array();
                 }
-            
+
                 // $username = $user['username'];
                 // $password = $user['password'];
                 // $firstname = $user['firstname'];
