@@ -6,7 +6,7 @@
     <link href="login.css" rel="stylesheet" />
     <link href="./register.css" rel="stylesheet" />
     <link href="cssofboostrap.css" rel="stylesheet">
-    <title>Register</title>
+    <title>Barami Library</title>
 </head>
 
 <body style="background:rgba(254, 250, 220, 1); margin:0;">

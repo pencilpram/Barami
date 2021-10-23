@@ -69,12 +69,17 @@
             // หาจำนวนเรกคอร์ดข้อมูล
             if (mysqli_num_rows($result) > 0) {
                 session_start();
-                $uid_sql="SELECT userid FROM users WHERE username = '$username' AND password = '$password'";
+                $uid_sql="SELECT userid,admin FROM users WHERE username = '$username' AND password = '$password'";
                 $result2 = $mysqli->query($uid_sql);
                 $item = $result2->fetch_array();
                 $_SESSION['userid'] = $item['userid'];
-                echo $_SESSION['userid'];
-                header("location: home-Final.php"); //ไปไปตามหน้าที่คุณต้องการ
+                if($item['admin']==0){
+                    header("location: home-Final.php");
+                }
+                else{
+                    header("location: home-Final-Adminmode.php");
+                }
+                 //ไปไปตามหน้าที่คุณต้องการ
 
             } else {
                 $code_error = "<BR><FONT COLOR=\"red\">Incorrect Username or Password</FONT>";
@@ -91,6 +96,7 @@
                                                             font-weight: Light; font-size: 18px;background-color: rgba(38, 70, 83, 0.5); color: rgba(0, 0, 0, 1);" value="Register" name="register">
             </form>
         </div>
+        
 
 
 </body>
