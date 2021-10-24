@@ -331,17 +331,6 @@
                     $user = $result->fetch_array();
                 }
 
-                // $username = $user['username'];
-                // $password = $user['password'];
-                // $firstname = $user['firstname'];
-                // $lastname = $user['lastname'];
-                // $age = $user['age'];
-                // $email = $user['email'];
-                // $usergroup = $user['usergroup'];
-                // $title = $user['title'];
-                // $gender = $user['gender'];
-                // $birthdate = $user['birthdate'];
-
 
                 ?>
 
