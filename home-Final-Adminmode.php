@@ -30,7 +30,7 @@
                 <button class="nav-link active2" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style=" color:white; border-color: rgba(0, 0, 0, 0.5); border-top-left-radius: 0; border-top-right-radius: 0">
                     Library</button>
                 <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" style=" color:white; border-color: rgba(0, 0, 0, 0.5); border-top-left-radius: 0; border-top-right-radius: 0">
-                    Library Map</button>
+                    User</button>
                 <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" style=" color:white; border-color: rgba(0, 0, 0, 0.5); border-top-left-radius: 0; border-top-right-radius: 0">
                     Profile</button>
             </div>
@@ -326,7 +326,108 @@
 
         <!-- Library Map Tab -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            Library Map
+            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="home-Final.php" method="post">
+                <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
+                    <div class="col-2" style="width:200px;">
+                        <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
+                            <?php
+                            if (isset($_POST['search'])) {
+                                if ($_POST["querytype"] == "Select Type") {
+                                    echo '<option selected>Select Type</option>';
+                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="firstname">Firstname</option>';
+                                    echo '<option value="lastname">Lastname</option>';
+                                    echo '<option value="email">Email</option>';
+                                }
+                                if ($_POST["querytype"] == "booktitle") {
+                                    echo '<option selected>Select Type</option>';
+                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="firstname">Firstname</option>';
+                                    echo '<option value="lastname">Lastname</option>';
+                                    echo '<option value="email">Email</option>';
+                                }
+                                if ($_POST["querytype"] == "authorsname") {
+                                    echo '<option selected>Select Type</option>';
+                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="firstname">Firstname</option>';
+                                    echo '<option value="lastname">Lastname</option>';
+                                    echo '<option value="email">Email</option>';
+                                }
+                                if ($_POST["querytype"] == "publisher") {
+                                    echo '<option selected>Select Type</option>';
+                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="firstname">Firstname</option>';
+                                    echo '<option value="lastname">Lastname</option>';
+                                    echo '<option value="email">Email</option>';
+                                }
+                            } else {
+                                echo '<option selected>Select Type</option>';
+                                echo '<option value="bookinformationid">UID</option>';
+                                echo '<option value="firstname">Firstname</option>';
+                                echo '<option value="lastname">Lastname</option>';
+                                echo '<option value="email">Email</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-8" style="padding: 0; width: 1080px;">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query" <?php if (isset($_POST['query'])) {
+                                                                                                                                                                                                echo 'value=' . $_POST['query'];
+                                                                                                                                                                                            } ?>>
+                    </div>
+                    <input type="submit" class="col btn btn-primary" style="margin-right: 20px; margin-left:20px; border-top-left-radius: 35px; 
+                    border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
+                    font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
+                </div>
+
+
+                <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
+                    <div class="col-2" style="width:240px; text-align:center;">
+                        <span>UID</span>
+                    </div>
+                    <div class="col-4" style="width:400px; text-align:center">
+                        <span>Name</span>
+                    </div>
+                    <div class="col-2" style="width:240px; text-align:center">
+                        <span>Gender</span>
+                    </div>
+                    <div class="col-2" style="width: 240px; text-align:center">
+                        <span>Usergroup</span>
+                    </div>
+                    <div class="col-1" style="width: 120px;"></div>
+                    <div class="col-1" style="width: 120px;"></div>
+                </div>
+                <?php
+                $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+                if (isset($_POST['search'])) {
+                    $searchby = $_POST["querytype"];
+                    if (isset($_POST['query'])) {
+                        $search = $_POST['query'];
+                        if ($searchby == "Select Type"){
+                            $query = "SELECT * FROM users WHERE ";
+                            $result = $mysqli->query($query);
+                            echo "<table class='table'>";
+                            while ($row = $result->fetch_array()) {
+                                echo "<tr>";
+                                echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
+                                echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "No result";
+                        }
+                    }elseif ($searchby != "Select Type") {
+                        # code...
+                    }
+                }
+                ?>
+
+            </form>
         </div>
         <!-- Profile Tab -->
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
