@@ -339,21 +339,21 @@
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype1"] == "booktitle") {
+                                if ($_POST["querytype1"] == "UID") {
                                     echo '<option selected>Select Type</option>';
                                     echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype1"] == "authorsname") {
+                                if ($_POST["querytype1"] == "Firstname") {
                                     echo '<option selected>Select Type</option>';
                                     echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype1"] == "publisher") {
+                                if ($_POST["querytype1"] == "Lastname") {
                                     echo '<option selected>Select Type</option>';
                                     echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
@@ -382,16 +382,16 @@
 
 
                 <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
-                    <div class="col-2" style="width:240px; text-align:center;">
+                    <div class="col-3" style="width:240px; text-align:center; padding:8px;">
                         <span>UID</span>
                     </div>
-                    <div class="col-4" style="width:400px; text-align:center">
+                    <div class="col-4" style="width:480px; text-align:center; padding:8px;">
                         <span>Name</span>
                     </div>
-                    <div class="col-2" style="width:240px; text-align:center">
+                    <div class="col-2" style="width:240px; text-align:center; padding:8px;">
                         <span>Gender</span>
                     </div>
-                    <div class="col-2" style="width: 240px; text-align:center">
+                    <div class="col-2" style="width: 240px; text-align:center; padding:8px;">
                         <span>Usergroup</span>
                     </div>
                     <div class="col-1" style="width: 120px;"></div>
@@ -411,8 +411,8 @@
                                 echo "<table class='table'>";
                                 while ($row = $result1->fetch_array()) {
                                     echo "<tr>";
-                                    echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
-                                    echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                    echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                     echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
@@ -430,8 +430,8 @@
                                 echo "<table class='table'>";
                                 while ($row = $result1->fetch_array()) {
                                     echo "<tr>";
-                                    echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
-                                    echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                    echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                     echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
@@ -450,8 +450,8 @@
                             echo "<table class='table'>";
                             while ($row = $result1->fetch_array()) {
                                 echo "<tr>";
-                                echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
-                                echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                 echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
