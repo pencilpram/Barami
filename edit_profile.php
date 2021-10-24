@@ -1,8 +1,6 @@
 <?php
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 
-$username = $_POST['username'];
-$password = $_POST['password'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $age = $_POST['age'];

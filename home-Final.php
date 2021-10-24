@@ -344,6 +344,7 @@
 
 
                 ?>
+
                 <div class="row" style="height:100px; max-width: 100%;">
                     <span class="col-8" style="margin-left: 200px;top: 100px; text-align: left; font-family: Inter; 
                     font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; 
@@ -361,9 +362,9 @@
                     </div>
                 </div>
                 <!-- Green box -->
-                <div class="row" style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                    <div class="greenbox" style="width: 700px; height: 370px;">
-                        <form role="form" method="post" action="login.php">
+                <form method="post" action="edit_profile.php">
+                    <div class="row" style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                        <div class="greenbox" style="width: 700px; height: 370px;">
                             <div class="row">
                                 <!-- Title -->
                                 <div class="mt-3 mb-3 row" style="margin-left: 10px;">
@@ -470,32 +471,30 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row" style="max-width: 100%;">
-                    <div class="col-9" style="width: 70%;">
 
+                        </div>
                     </div>
-                    <div class="col-2" style="width: 15%; margin-top: 25px;">
-                        <form role="form" method="post" action="edit_profile.php" style="height: 50px; display: flex; 
-                                            justify-content: center; align-content: center; flex-direction: column;">
+                    <div class="row" style="max-width: 100%;">
+                        <div class="col-9" style="width: 70%;">
+
+                        </div>
+                        <div class="col-2" style="width: 15%; margin-top: 25px;">
                             <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                 border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                 border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                 background-color: #264653" value="Edit Profile" name="editprofile">
-                        </form>
-                    </div>
-                    <div class="col-2" style="width: 15%; margin-top: 25px;">
-                        <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
+                        </div>
+                        <div class="col-2" style="width: 15%; margin-top: 25px;">
+                            <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
                                                                 justify-content: center; align-content: center; flex-direction: column;">
-                            <input type="submit" class="col btn btn-primary" style="height: 50px; 
+                                <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                     border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                     border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                     background-color: #eb7179; " value="Log Out" name="logout">
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -136,7 +136,6 @@
                                                 echo "selected";
                                             }
                                         } ?>>Others</option>
-
                             </select>
                         </div>
                         <input type="submit" class="col btn btn-primary" style="margin-right: 20px; border-top-left-radius: 35px; 
