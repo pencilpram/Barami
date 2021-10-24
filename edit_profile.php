@@ -18,4 +18,5 @@ $update_sql = "UPDATE users SET title=$title, firstname=$firstname, lastname=$la
 age=$age, birthdate=$birthdate, gender=$gender, usergroup=$usergroup, 
 email=$email WHERE userid=$userid";
 $update_result = $mysqli->query($update_sql);
+header("location: home-Final.php");
 ?>

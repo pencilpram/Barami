@@ -470,24 +470,25 @@
 
                         </div>
                         <div class="col-2" style="width: 15%; margin-top: 25px;">
-                            <input type="submit" class="col btn btn-primary" style="height: 50px; 
+                            <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                 border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                 border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                 background-color: #264653" value="Edit Profile" name="editprofile">
                         </div>
-                        <div class="col-2" style="width: 15%; margin-top: 25px;">
-                            <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
+                </form>
+                <div class="col-2" style="width: 15%; margin-top: 25px;">
+                    <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
                                                                 justify-content: center; align-content: center; flex-direction: column;">
-                                <input type="submit" class="col btn btn-primary" style="height: 50px; 
+                        <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                     border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                     border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                     background-color: #eb7179; " value="Log Out" name="logout">
-                            </form>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
+
         </div>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
