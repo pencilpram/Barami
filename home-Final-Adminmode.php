@@ -92,40 +92,50 @@
                                             }
                                         } ?>>Select Category</option>
                                 <option <?php if (isset($_POST['search'])) {
-                                            if ($_POST["category"] == "Child Book") {
+                                            if ($_POST["category"] == "Art & Music") {
                                                 echo "selected";
                                             }
-                                        } ?>>Child Book</option>
+                                        } ?>>Art & Music</option>
+                                <option <?php if (isset($_POST['search'])) {
+                                            if ($_POST["category"] == "Computer & Tech") {
+                                                echo "selected";
+                                            }
+                                        } ?>>Computer & Tech</option>
+                                <option <?php if (isset($_POST['search'])) {
+                                            if ($_POST["category"] == "Education") {
+                                                echo "selected";
+                                            }
+                                        } ?>>Education</option>
                                 <option <?php if (isset($_POST['search'])) {
                                             if ($_POST["category"] == "Encyclopedia") {
                                                 echo "selected";
                                             }
                                         } ?>>Encyclopedia</option>
                                 <option <?php if (isset($_POST['search'])) {
-                                            if ($_POST["category"] == "Fantasy Fiction") {
+                                            if ($_POST["category"] == "History & Culture") {
                                                 echo "selected";
                                             }
-                                        } ?>>Fantasy Fiction</option>
+                                        } ?>>History & Culture</option>
                                 <option <?php if (isset($_POST['search'])) {
                                             if ($_POST["category"] == "Magazine") {
                                                 echo "selected";
                                             }
                                         } ?>>Magazine</option>
                                 <option <?php if (isset($_POST['search'])) {
+                                            if ($_POST["category"] == "Novel") {
+                                                echo "selected";
+                                            }
+                                        } ?>>Novel</option>
+                                <option <?php if (isset($_POST['search'])) {
                                             if ($_POST["category"] == "Philosophy") {
                                                 echo "selected";
                                             }
                                         } ?>>Philosophy</option>
                                 <option <?php if (isset($_POST['search'])) {
-                                            if ($_POST["category"] == "Religion") {
+                                            if ($_POST["category"] == "Others") {
                                                 echo "selected";
                                             }
-                                        } ?>>Religion</option>
-                                <option <?php if (isset($_POST['search'])) {
-                                            if ($_POST["category"] == "Travel") {
-                                                echo "selected";
-                                            }
-                                        } ?>>Travel</option>
+                                        } ?>>Others</option>
 
                             </select>
                         </div>
