@@ -326,43 +326,43 @@
 
         <!-- Library Map Tab -->
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="home-Final.php" method="post">
+            <form class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" action="home-Final-Adminmode.php" method="post">
                 <div class="row" style="margin-top: 10px; margin-left: 10px; margin-right:0;">
                     <div class="col-2" style="width:200px;">
-                        <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype">
+                        <select class="form-select" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="querytype1">
                             <?php
-                            if (isset($_POST['search'])) {
-                                if ($_POST["querytype"] == "Select Type") {
+                            if (isset($_POST['search1'])) {
+                                if ($_POST["querytype1"] == "Select Type") {
                                     echo '<option selected>Select Type</option>';
-                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype"] == "booktitle") {
+                                if ($_POST["querytype1"] == "booktitle") {
                                     echo '<option selected>Select Type</option>';
-                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype"] == "authorsname") {
+                                if ($_POST["querytype1"] == "authorsname") {
                                     echo '<option selected>Select Type</option>';
-                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
-                                if ($_POST["querytype"] == "publisher") {
+                                if ($_POST["querytype1"] == "publisher") {
                                     echo '<option selected>Select Type</option>';
-                                    echo '<option value="bookinformationid">UID</option>';
+                                    echo '<option value="userid">UID</option>';
                                     echo '<option value="firstname">Firstname</option>';
                                     echo '<option value="lastname">Lastname</option>';
                                     echo '<option value="email">Email</option>';
                                 }
                             } else {
                                 echo '<option selected>Select Type</option>';
-                                echo '<option value="bookinformationid">UID</option>';
+                                echo '<option value="userid">UID</option>';
                                 echo '<option value="firstname">Firstname</option>';
                                 echo '<option value="lastname">Lastname</option>';
                                 echo '<option value="email">Email</option>';
@@ -371,13 +371,13 @@
                         </select>
                     </div>
                     <div class="col-8" style="padding: 0; width: 1080px;">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query" <?php if (isset($_POST['query'])) {
-                                                                                                                                                                                                echo 'value=' . $_POST['query'];
+                        <input type="text" class="form-control" placeholder="Search" aria-label="First name" style="font-family: Inter; font-weight: Light; font-size: 16px;" name="query1" <?php if (isset($_POST['query1'])) {
+                                                                                                                                                                                                echo 'value=' . $_POST['query1'];
                                                                                                                                                                                             } ?>>
                     </div>
                     <input type="submit" class="col btn btn-primary" style="margin-right: 20px; margin-left:20px; border-top-left-radius: 35px; 
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
-                    font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
+                    font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search1">
                 </div>
 
 
@@ -399,21 +399,21 @@
                 </div>
                 <?php
                 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-                if (isset($_POST['search'])) {
-                    $searchby = $_POST["querytype"];
-                    if (isset($_POST['query'])) {
-                        $search = $_POST['query'];
-                        if ($searchby == "Select Type"){
-                            $query = "SELECT * FROM users WHERE (userid LIKE '%$search') OR (firstname LIKE '%$search') OR (lastname LIKE '%$search')
-                            OR (email LIKE '%$search')";
-                            $result = $mysqli->query($query);
-                            if($result){
+                if (isset($_POST['search1'])) {
+                    $searchby1 = $_POST["querytype1"];
+                    if (isset($_POST['query1'])) {
+                        $search1 = $_POST['query1'];
+                        if ($searchby1 == "Select Type"){
+                            $query1 = "SELECT * FROM users WHERE (userid LIKE '%$search1') OR (firstname LIKE '%$search1') OR (lastname LIKE '%$search1')
+                            OR (email LIKE '%$search1')";
+                            $result1 = $mysqli->query($query1);
+                            if($result1){
                                 echo "<table class='table'>";
-                                while ($row = $result->fetch_array()) {
+                                while ($row = $result1->fetch_array()) {
                                     echo "<tr>";
                                     echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
                                     echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
-                                    echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                     echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
                                     echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
@@ -423,16 +423,16 @@
                             } else {
                                 echo "No result";
                             }
-                        }elseif ($searchby != "Select Type") {
-                            $query = "SELECT * FROM users WHERE ($searchby LIKE '%$search%')";
-                            $result = $mysqli->query($query);
-                            if ($result) {
+                        }elseif ($searchby1 != "Select Type") {
+                            $query1 = "SELECT * FROM users WHERE ($searchby1 LIKE '%$search1%')";
+                            $result1 = $mysqli->query($query1);
+                            if ($result1) {
                                 echo "<table class='table'>";
-                                while ($row = $result->fetch_array()) {
+                                while ($row = $result1->fetch_array()) {
                                     echo "<tr>";
                                     echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
                                     echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
-                                    echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                     echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                     echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
                                     echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
@@ -444,15 +444,15 @@
                             }
                         }
                     }else{
-                        $query = "SELECT * FROM users WHERE ($searchby LIKE '%$search%')";
-                        $result = $mysqli->query($query);
-                        if ($result) {
+                        $query1 = "SELECT * FROM users WHERE ($searchby1 LIKE '%$search1%')";
+                        $result1 = $mysqli->query($query1);
+                        if ($result1) {
                             echo "<table class='table'>";
-                            while ($row = $result->fetch_array()) {
+                            while ($row = $result1->fetch_array()) {
                                 echo "<tr>";
                                 echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
                                 echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
-                                echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                 echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
                                 echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
