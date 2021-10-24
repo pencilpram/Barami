@@ -313,7 +313,9 @@
 
             <!-- Library Map Tab -->
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                Library Map
+                <div class="text-center">
+                    <img src="Library_Map/FirstFloor.png" class="img-fluid" alt="firstfloor">
+                </div>
             </div>
             <!-- Profile Tab -->
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -330,17 +332,6 @@
                 } else {
                     $user = $result->fetch_array();
                 }
-
-                // $username = $user['username'];
-                // $password = $user['password'];
-                // $firstname = $user['firstname'];
-                // $lastname = $user['lastname'];
-                // $age = $user['age'];
-                // $email = $user['email'];
-                // $usergroup = $user['usergroup'];
-                // $title = $user['title'];
-                // $gender = $user['gender'];
-                // $birthdate = $user['birthdate'];
 
 
                 ?>
