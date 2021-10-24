@@ -113,17 +113,30 @@
         $synopsis = $_POST['synopsis'];
         $category = $_POST['category'];
 
-        $query = "SELECT MAX(TRIM(LEADING 'B' FROM booksinformationid)) as book_id FROM booksinformation;";
-        $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
-        $row = $result->fetch_assoc();
-        $last_book_id = empty($row['book_id']) ? 0 : $row['book_id'];
-        $lastnumid = ltrim($last_book_id, "0");
-        $next_book_id = 'B' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
+        $query_am="SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
+        $result_am = mysqli_query($mysqli,$query_am);
+        if (mysqli_num_rows($result_am) > 0) {
+            $total_am= mysqli_num_rows($result_am)+$amount;
+        }
+        else{
+            $total_am=$amount;
+        }
+        
+        for($i=0;$i<$amount;$i++){
+            $query = "SELECT MAX(TRIM(LEADING 'B' FROM booksinformationid)) as book_id FROM booksinformation;";
+            $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
+            $row = $result->fetch_assoc();
+            $last_book_id = empty($row['book_id']) ? 0 : $row['book_id'];
+            $lastnumid = ltrim($last_book_id, "0");
+            $next_book_id = 'B' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-        $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount) 
-    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$amount','$amount')";
+            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount) 
+    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am')";
 
-        $result2 = $mysqli->query($query1);
+            $result2 = $mysqli->query($query1);
+        }
+        $up_am= "UPDATE booksinformation SET amount=$total_am WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
+        $query_up = $mysqli->query($up_am);
     }
     ?>
 </body>
