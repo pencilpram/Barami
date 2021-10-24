@@ -404,13 +404,54 @@
                     if (isset($_POST['query'])) {
                         $search = $_POST['query'];
                         if ($searchby == "Select Type"){
-                            $query = "SELECT * FROM users WHERE ";
+                            $query = "SELECT * FROM users WHERE (userid LIKE '%$search') OR (firstname LIKE '%$search') OR (lastname LIKE '%$search')
+                            OR (email LIKE '%$search')";
                             $result = $mysqli->query($query);
+                            if($result){
+                                echo "<table class='table'>";
+                                while ($row = $result->fetch_array()) {
+                                    echo "<tr>";
+                                    echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                    echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
+                                    echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "No result";
+                            }
+                        }elseif ($searchby != "Select Type") {
+                            $query = "SELECT * FROM users WHERE ($searchby LIKE '%$search%')";
+                            $result = $mysqli->query($query);
+                            if ($result) {
+                                echo "<table class='table'>";
+                                while ($row = $result->fetch_array()) {
+                                    echo "<tr>";
+                                    echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
+                                    echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
+                                    echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
+                                    echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                            } else {
+                                echo "No result";
+                            }
+                        }
+                    }else{
+                        $query = "SELECT * FROM users WHERE ($searchby LIKE '%$search%')";
+                        $result = $mysqli->query($query);
+                        if ($result) {
                             echo "<table class='table'>";
                             while ($row = $result->fetch_array()) {
                                 echo "<tr>";
                                 echo "<td class='col-3' style='text-align:center;'>" . $row["userid"] . "</td>";
-                                echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] ."</td>";
+                                echo "<td class='col-3' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["Gender"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
                                 echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
@@ -421,8 +462,6 @@
                         } else {
                             echo "No result";
                         }
-                    }elseif ($searchby != "Select Type") {
-                        # code...
                     }
                 }
                 ?>
