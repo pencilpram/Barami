@@ -2,15 +2,10 @@
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
 if (isset($_GET["booktitle"])) {
     $booktitle = $_GET["booktitle"];
-    $query = "SELECT * FROM booksinfomation WHERE booktitle LIKE %$booktitle%";
+    $query = "SELECT * FROM booksinfomation WHERE booktitle = %$booktitle%";
     $result = $mysqli->query($query);
     if ($result){
-        $authorsname = $_POST["authorsname"];
-        $publisher = $_POST["publisher"];
-        $page = $_POST["numberofpage"];
-        $category = $_POST["genre"];
-        $amount = $_POST["amount"];
-        $availableamount = $_POST["available_amount"];
+        $row = $result->fetch_array();
     }
 
 }
@@ -68,7 +63,7 @@ if (isset($_GET["booktitle"])) {
                                 Authors Name</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    Authors Name <?php echo $_POST["authorsname"]?>
+                                    Authors Name <?php echo "<td>". $row['authorsname'] ."</td>"?>
                                 </div>
                             </div>
                         </div>
