@@ -1,15 +1,3 @@
-<?php
-$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-if (isset($_GET["booktitle"])) {
-    $booktitle = $_GET["booktitle"];
-    $query = "SELECT * FROM booksinfomation WHERE booktitle = %$booktitle%";
-    $result = $mysqli->query($query);
-    if ($result){
-        $row = $result->fetch_array();
-    }
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +20,7 @@ if (isset($_GET["booktitle"])) {
             </span>
         </div>
         <div class="row" style="height:80px; max-width: 100%;">
-            <span class="col"
-                style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 30px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
+            <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 30px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
                 Book Title
             </span>
         </div>
@@ -46,30 +33,38 @@ if (isset($_GET["booktitle"])) {
                     <div class="row">
                         <!-- Title -->
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <label class="col-3 col-form-label"
-                                style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <?php
+                            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+                            if (isset($_GET["booktitle"])) {
+                                $booktitle = $_GET["booktitle"];
+                                $query = "SELECT * FROM booksinformation WHERE booktitle = %$booktitle%";
+                                $result = $mysqli->query($query);
+                                if ($result) {
+                                    $book = $result->fetch_array();
+                                }
+                            }
+                            ?>
+                            <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                 display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Book Title</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    <?php echo $booktitle?>
+                                    <?php echo $booktitle ?>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <label class="col-3 col-form-label"
-                                style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Authors Name</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    Authors Name <?php echo "<td>". $row['authorsname'] ."</td>"?>
+                                    Authors Name <?php echo $book['authorsname'] ?>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <label class="col-3 col-form-label"
-                                style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Publisher</label>
                             <div class="col-8">
@@ -79,8 +74,7 @@ if (isset($_GET["booktitle"])) {
                             </div>
                         </div>
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <label class="col-2 col-form-label"
-                                style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                                                 display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Page</label>
                             <div class="col-2">
@@ -88,8 +82,7 @@ if (isset($_GET["booktitle"])) {
                                     Page
                                 </div>
                             </div>
-                            <label class="col-3 col-form-label"
-                                style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-3 col-form-label" style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                                                                             display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Category</label>
                             <div class="col-3">
@@ -99,8 +92,7 @@ if (isset($_GET["booktitle"])) {
                             </div>
                         </div>
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <label class="col-2 col-form-label"
-                                style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                                                                         display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Amount</label>
                             <div class="col-2">
@@ -108,8 +100,7 @@ if (isset($_GET["booktitle"])) {
                                     Amount
                                 </div>
                             </div>
-                            <label class="col-3 col-form-label"
-                                style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
+                            <label class="col-3 col-form-label" style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                                                                                                                     display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Available</label>
                             <div class="col-2">
@@ -117,8 +108,7 @@ if (isset($_GET["booktitle"])) {
                                     Available
                                 </div>
                             </div>
-                            <a class="col-2" href="Screen Shot 2564-09-21 at 22.49.40.png"
-                                style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                            <a class="col-2" href="Screen Shot 2564-09-21 at 22.49.40.png" style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Mapping
                             </a>
 
@@ -136,24 +126,19 @@ if (isset($_GET["booktitle"])) {
                     <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                        background-color: #61F189" value="Borrow This Book"
-                        name="editprofile">
+                                                        background-color: #61F189" value="Borrow This Book" name="editprofile">
                 </div>
         </form>
         <div class="col-2" style="width: 15%; margin-top: 60px;">
-            <form role="form" method="post" action="Back.php"
-                style="height: 50px; display: flex; 
+            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
                 <input type="button" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                            background-color: #264653; " value="Back"
-                    name="back" onclick="history.back()">
+                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
             </form>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
