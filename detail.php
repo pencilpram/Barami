@@ -37,10 +37,10 @@
                             $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
                             if (isset($_GET["booktitle"])) {
                                 $booktitle = $_GET["booktitle"];
-                                $query = "SELECT * FROM booksinformation WHERE booktitle = %$booktitle%";
-                                $result = $mysqli->query($query);
-                                if ($result) {
-                                    $book = $result->fetch_array();
+                                $query_detail = "SELECT * FROM booksinformation WHERE booktitle = '$booktitle'";
+                                $result_detail = $mysqli->query($query_detail);
+                                if ($result_detail) {
+                                    $book = $result_detail->fetch_array();
                                 }
                             }
                             ?>
