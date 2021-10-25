@@ -158,6 +158,7 @@
     VALUES ('$next_user_id','$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$age','$birthdate')";
 
         $result2 = $mysqli->query($query1);
+        header("location: Final-Loing.php");
     }
     ?>
 </body>
