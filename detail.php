@@ -1,3 +1,6 @@
+<?php
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +43,7 @@
                                 Book Title</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    Title
+                                    <?php echo $row['booktitle']?>
                                 </div>
                             </div>
                         </div>

@@ -182,7 +182,8 @@
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                     }
-                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                    echo "<img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
@@ -206,7 +207,8 @@
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                     }
-                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                    echo "<img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
@@ -229,7 +231,8 @@
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                     }
-                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                    echo "<img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
@@ -252,7 +255,8 @@
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                     }
-                                    echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                    echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                    echo "<img src='loupe.png' width='24' height='24'></td>";
                                     echo "</tr>";
                                 }
                                 echo "</table>";
@@ -275,7 +279,8 @@
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                 }
-                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
@@ -298,7 +303,8 @@
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen; text-align:center;'>B</td>";
                                 }
-                                echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
                                 echo "</tr>";
                             }
                             echo "</table>";
