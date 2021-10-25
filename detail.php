@@ -59,7 +59,7 @@
                                 Authors Name</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    Authors Name <?php echo $book['authorsname'] ?>
+                                    <?php echo $book['authorsname'] ?>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 Publisher</label>
                             <div class="col-8">
                                 <div class="form-control">
-                                    Publisher
+                                    <?php echo $book['publisher'] ?>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 Page</label>
                             <div class="col-2">
                                 <div class="form-control">
-                                    Page
+                                    <?php echo $book['numberofpage'] ?>
                                 </div>
                             </div>
                             <label class="col-3 col-form-label" style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
@@ -87,7 +87,7 @@
                                 Category</label>
                             <div class="col-3">
                                 <div class="form-control">
-                                    Category
+                                    <?php echo $book['genre'] ?>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 Amount</label>
                             <div class="col-2">
                                 <div class="form-control">
-                                    Amount
+                                    <?php echo $book['amount'] ?>
                                 </div>
                             </div>
                             <label class="col-3 col-form-label" style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
@@ -105,13 +105,15 @@
                                 Available</label>
                             <div class="col-2">
                                 <div class="form-control">
-                                    Available
+                                    <?php echo $book['available_amount'] ?>
                                 </div>
                             </div>
-                            <a class="col-2" href="Screen Shot 2564-09-21 at 22.49.40.png" style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                Mapping
-                            </a>
-
+                        
+                            <?php
+                            if ($book['genre'] == "Encyclopedia"){
+                                echo "<a class='col-2' href='Library_Map/1A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'></a>";
+                            }
+                            ?>
                         </div>
 
                     </div>
