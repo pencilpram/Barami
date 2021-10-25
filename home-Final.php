@@ -314,7 +314,7 @@
             <!-- Library Map Tab -->
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="text-center">
-                    <img src="Library_Map/FirstFloor.png" class="img-fluid" alt="firstfloor" style="max-width: 75%;">
+                    <img src="Library_Map/FirstFloor.png" class="img-fluid" alt="firstfloor" style="height: 550px;max-width: 75%;">
                 </div>
             </div>
             <!-- Profile Tab -->

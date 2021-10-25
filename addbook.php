@@ -84,27 +84,47 @@
                         <div class="mb-3 row" style="margin-left: 10px;">
                             <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Synopsis</label>
                             <div class="col-9" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                <textarea form="addnewbook" rows="5" class="form-control" name="synopsis">
+                                <textarea form="addnewbook" rows="3" class="form-control" name="synopsis">
 
                                 </textarea>
+                            </div>
+                        </div>
+                        <!-- Link -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Link</label>
+                            <div class="col-9" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input type="text" class="form-control" name="link">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Add button -->
-            <div class="row" style=" max-width: 100%; height:50px; margin-top:20px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
-                                                                        border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
-                                                                        font-weight: Light; font-size: 18px; background-color: #264653" value="Add" name="addbook">
+            <div class="row" style="max-width: 100%;">
+                <div class="col-9" style="width: 70%;">
 
-            </div>
+                </div>
+                <div class="col-2" style="width: 15%; margin-top: 20px;">
+                    <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
+                                                        border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                        border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                        background-color: #61F189" value="Add" name="add">
+                </div>
         </form>
+        <div class="col-2" style="width: 15%; margin-top: 20px;">
+            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
+                                                                        justify-content: center; align-content: center; flex-direction: column;">
+                <input type="button" class="col btn btn-primary" style="height: 50px; 
+                                                                            border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                                            border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
+            </form>
+        </div>
 
     </div>
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-    if (isset($_POST['addbook'])) {
+    if (isset($_POST['add'])) {
         $booktitle = $_POST['booktitle'];
         $authorsname = $_POST['authorsname'];
         $publisher = $_POST['publisher'];
@@ -112,17 +132,17 @@
         $amount = $_POST['amount'];
         $synopsis = $_POST['synopsis'];
         $category = $_POST['category'];
-
-        $query_am="SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
-        $result_am = mysqli_query($mysqli,$query_am);
-        if (mysqli_num_rows($result_am) > 0) {
-            $total_am= mysqli_num_rows($result_am)+$amount;
-        }
-        else{
-            $total_am=$amount;
-        }
+        $link = $_POST['link'];
         
-        for($i=0;$i<$amount;$i++){
+        $query_am = "SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
+        $result_am = mysqli_query($mysqli, $query_am);
+        if (mysqli_num_rows($result_am) > 0) {
+            $total_am = mysqli_num_rows($result_am) + $amount;
+        } else {
+            $total_am = $amount;
+        }
+
+        for ($i = 0; $i < $amount; $i++) {
             $query = "SELECT MAX(TRIM(LEADING 'B' FROM booksinformationid)) as book_id FROM booksinformation;";
             $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
             $row = $result->fetch_assoc();
@@ -130,12 +150,12 @@
             $lastnumid = ltrim($last_book_id, "0");
             $next_book_id = 'B' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount) 
-    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am')";
+            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link) 
+    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link')";
 
             $result2 = $mysqli->query($query1);
         }
-        $up_am= "UPDATE booksinformation SET amount=$total_am WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
+        $up_am = "UPDATE booksinformation SET amount=$total_am WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
         $query_up = $mysqli->query($up_am);
     }
     ?>
