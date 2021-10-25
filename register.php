@@ -111,13 +111,26 @@
                 </div>
             </div>
             <!-- Register button -->
-            <div class="row" style=" max-width: 100%; height:50px; margin-top:20px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
-                                                                        border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
-                                                                        font-weight: Light; font-size: 18px; background-color: #264653" value="Register" name="register2">
+            <div class="row" style="max-width: 100%;">
+                <div class="col-9" style="width: 70%;">
 
-            </div>
+                </div>
+                <div class="col-2" style="width: 15%; margin-top: 20px;">
+                    <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
+                                                        border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                        border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                        background-color: #61F189" value="Register" name="register2">
+                </div>
         </form>
+        <div class="col-2" style="width: 15%; margin-top: 20px;">
+            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
+                                                                        justify-content: center; align-content: center; flex-direction: column;">
+                <input type="button" class="col btn btn-primary" style="height: 50px; 
+                                                                            border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                                            border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
+            </form>
+        </div>
 
     </div>
     <?php
@@ -138,14 +151,13 @@
         $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
         $row = $result->fetch_assoc();
         $last_user_id = empty($row['user_id']) ? 0 : $row['user_id'];
-        $lastnumid = ltrim($last_user_id,"0");
-        $next_user_id = 'U' .str_pad($lastnumid+1,4,"0",STR_PAD_LEFT);
+        $lastnumid = ltrim($last_user_id, "0");
+        $next_user_id = 'U' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
         $query1 = "INSERT INTO users (userid,username,password,firstname,lastname,usergroup,title,gender,email,age,birthdate) 
     VALUES ('$next_user_id','$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$age','$birthdate')";
 
         $result2 = $mysqli->query($query1);
-
     }
     ?>
 </body>

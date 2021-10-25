@@ -171,7 +171,7 @@
                     //echo $category;
                     if ($searchby == "Select Search" && $category == "Select Category") {
                         //echo "1";
-                        $query = "SELECT * FROM booksinfomation WHERE (booktitle LIKE '%$search%')
+                        $query = "SELECT * FROM booksinformation WHERE (booktitle LIKE '%$search%')
                         OR (authorsname LIKE '%$search%') OR (publisher LIKE '%$search%')";
                         $result = $mysqli->query($query);
                         if ($result) {
@@ -195,7 +195,7 @@
                         }
                     } elseif ($searchby == "Select Search" && $category != "Select Category") {
                         //echo "2";
-                        $query = "SELECT * FROM booksinfomation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
+                        $query = "SELECT * FROM booksinformation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
                         OR ((genre LIKE '%$category%') AND (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') AND (publisher LIKE '%$search%'))";
                         $result = $mysqli->query($query);
                         if ($result) {
@@ -219,7 +219,7 @@
                         }
                     } elseif ($searchby != "Select Search" && $category == "Select Category") {
                         //echo "3";
-                        $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%')";
+                        $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%')";
                         $result = $mysqli->query($query);
                         if ($result) {
                             echo "<table class='table'>";
@@ -242,7 +242,7 @@
                         }
                     } else {
                         //echo "4";
-                        $query = "SELECT * FROM booksinfomation WHERE ($searchby LIKE '%$search%' AND genre LIKE '%$category%')";
+                        $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%' AND genre LIKE '%$category%')";
                         $result = $mysqli->query($query);
                         if ($result) {
                             echo "<table class='table'>";
@@ -265,7 +265,7 @@
                         }
                     }
                 } elseif ($category != "Select Category") {
-                    $query = "SELECT * FROM booksinfomation WHERE genre LIKE '%$category%'";
+                    $query = "SELECT * FROM booksinformation WHERE genre LIKE '%$category%'";
                     $result = $mysqli->query($query);
                     if ($result) {
                         echo "<table class='table'>";
@@ -288,7 +288,7 @@
                     }
                 } else {
                     //echo "5";
-                    $query = "SELECT * FROM booksinfomation";
+                    $query = "SELECT * FROM booksinformation";
                     $result = $mysqli->query($query);
                     if ($result) {
                         echo "<table class='table'>";
