@@ -347,38 +347,38 @@
                         if (isset($_POST['search1'])) {
                             if ($_POST["querytype1"] == "Select Type") {
                                 echo '<option selected>Select Type</option>';
-                                echo '<option value="userid">UID</option>';
-                                echo '<option value="firstname">Firstname</option>';
-                                echo '<option value="lastname">Lastname</option>';
-                                echo '<option value="email">Email</option>';
+                                echo '<option value=userid>UID</option>';
+                                echo '<option>Firstname</option>';
+                                echo '<option>Lastname</option>';
+                                echo '<option>Email</option>';
                             }
-                            if ($_POST["querytype1"] == "UID") {
-                                echo '<option selected>Select Type</option>';
-                                echo '<option value="userid">UID</option>';
-                                echo '<option value="firstname">Firstname</option>';
-                                echo '<option value="lastname">Lastname</option>';
-                                echo '<option value="email">Email</option>';
+                            if ($_POST["querytype1"] == "userid") {
+                                echo '<option>Select Type</option>';
+                                echo '<option value=userid selected>UID</option>';
+                                echo '<option>Firstname</option>';
+                                echo '<option>Lastname</option>';
+                                echo '<option>Email</option>';
                             }
                             if ($_POST["querytype1"] == "Firstname") {
-                                echo '<option selected>Select Type</option>';
-                                echo '<option value="userid">UID</option>';
-                                echo '<option value="firstname">Firstname</option>';
-                                echo '<option value="lastname">Lastname</option>';
-                                echo '<option value="email">Email</option>';
+                                echo '<option>Select Type</option>';
+                                echo '<option value=userid>UID</option>';
+                                echo '<option selected>Firstname</option>';
+                                echo '<option>Lastname</option>';
+                                echo '<option>Email</option>';
                             }
                             if ($_POST["querytype1"] == "Lastname") {
-                                echo '<option selected>Select Type</option>';
-                                echo '<option value="userid">UID</option>';
-                                echo '<option value="firstname">Firstname</option>';
-                                echo '<option value="lastname">Lastname</option>';
-                                echo '<option value="email">Email</option>';
+                                echo '<option>Select Type</option>';
+                                echo '<option value=userid>UID</option>';
+                                echo '<option>Firstname</option>';
+                                echo '<option selected>Lastname</option>';
+                                echo '<option>Email</option>';
                             }
                         } else {
                             echo '<option selected>Select Type</option>';
-                            echo '<option value="userid">UID</option>';
-                            echo '<option value="firstname">Firstname</option>';
-                            echo '<option value="lastname">Lastname</option>';
-                            echo '<option value="email">Email</option>';
+                            echo '<option value=userid>UID</option>';
+                            echo '<option>Firstname</option>';
+                            echo '<option>Lastname</option>';
+                            echo '<option>Email</option>';
                         }
                         ?>
                     </select>
