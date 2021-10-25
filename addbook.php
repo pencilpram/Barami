@@ -25,7 +25,7 @@
         </div>
         <!-- Green box -->
         <form role="form" id="addnewbook" method="post" action="addbook.php">
-            <div class="row" style="margin-top: 20px; max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <div class=" row" style="margin-top: 20px; max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
                 <div class="greenbox" style="width: 700px; height: 410px;">
 
                     <div class="row">
@@ -105,7 +105,7 @@
 
                 </div>
                 <div class="col-2" style="width: 15%; margin-top: 20px;">
-                    <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
+                    <input type="submit" id="addbttn" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                         background-color: #61F189" value="Add" name="add">
@@ -122,6 +122,7 @@
         </div>
 
     </div>
+
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
     if (isset($_POST['add'])) {
@@ -133,7 +134,7 @@
         $synopsis = $_POST['synopsis'];
         $category = $_POST['category'];
         $link = $_POST['link'];
-        
+
         $query_am = "SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
         $result_am = mysqli_query($mysqli, $query_am);
         if (mysqli_num_rows($result_am) > 0) {
@@ -159,6 +160,9 @@
         $query_up = $mysqli->query($up_am);
     }
     ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
