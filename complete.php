@@ -31,12 +31,7 @@ session_start();
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
     $bookid = $_GET['booksinformationid'];
-
-
-
     $userid = $_SESSION['userid'];
-
-
     date_default_timezone_set('Asia/Bangkok');
     $date = date("Y-m-d");
     $returndate = date("Y-m-d", strtotime("$date +7 day"));
