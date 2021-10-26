@@ -49,8 +49,7 @@ session_start();
     $result1 = $mysqli->query($query1);
 
 
-    echo '<span>Complete</span>';
-    echo '<span>Book borrowing on date ' . $date . '</span>';
-    echo '<span>Please Return the book on date ' . $returndate . '</span>';
-    echo 'Complete';
+    echo '<div style="font-size:50px; text-align:center; margin-top:170px;"><span>Borrow Complete</span></div>';
+    echo '<div style="text-align:center; padding-top:20px"><span>Book borrowing on date ' . $date . '</span></div>';
+    echo '<div style="text-align:center;"><span>Please return the book on date ' . $returndate . '</span></div>';
     ?>
