@@ -45,8 +45,8 @@ session_start();
 
     $query = "SELECT MAX(TRIM(LEADING 'S' FROM borrowid)) as borrow_id FROM borrowid;";
     $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
-    $row = $result->fetch_assoc();
-    $last_borrow_id = empty($row['borrow_id']) ? 0 : $row['borrow_id'];
+    $row1 = $result->fetch_assoc();
+    $last_borrow_id = empty($row1['borrow_id']) ? 0 : $row1['borrow_id'];
     $lastnumid = ltrim($last_borrow_id, "0");
     $next_borrow_id = 'S' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
