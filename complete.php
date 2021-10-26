@@ -48,5 +48,9 @@ session_start();
     $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$bookid','$date','$returndate','$borrow')";
     $result1 = $mysqli->query($query1);
 
+
+    echo '<span>Complete</span>';
+    echo '<span>Book borrowing on date ' . $date . '</span>';
+    echo '<span>Please Return the book on date ' . $returndate . '</span>';
     echo 'Complete';
     ?>
