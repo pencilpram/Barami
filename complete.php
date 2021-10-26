@@ -50,8 +50,7 @@ session_start();
     $lastnumid = ltrim($last_borrow_id, "0");
     $next_borrow_id = 'S' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-    $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$booksid'
-    '$date','$returndate','$borrow')";
+    $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$bookid','$date','$returndate','$borrow')";
     $result1 = $mysqli->query($query1);
 
     echo 'Complete';
