@@ -30,15 +30,11 @@ session_start();
 
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-    $booktitle = $_GET['booktitle'];
+    $bookid = $_GET['booksinformationid'];
 
-    $selectbook = "SELECT booksinformationid FROM booksinformation WHERE booktitle LIKE '$booktitle'";
-    $bookresult = $mysqli->query($selectbook);
-    $row = $bookresult->fetch_array();
 
 
     $userid = $_SESSION['userid'];
-    $booksid = $row['booksinformationid'];
 
 
     date_default_timezone_set('Asia/Bangkok');
