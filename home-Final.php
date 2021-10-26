@@ -175,9 +175,9 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] == 0) {
-                                        echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                        echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                                     } else {
-                                        echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
                                     echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                     echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -200,9 +200,9 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] == 0) {
-                                        echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
-                                        echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
                                     echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                     echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -224,9 +224,9 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] == 0) {
-                                        echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
-                                        echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
                                     echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                     echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -248,9 +248,9 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] == 0) {
-                                        echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
-                                        echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                        echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
                                     echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                     echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -272,9 +272,9 @@
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                 if ($row["available_amount"] == 0) {
-                                    echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                    echo "<td class='col-1' style='background-color:red;'></td>";
                                 } else {
-                                    echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                 }
                                 echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                 echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -296,9 +296,9 @@
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                 if ($row["available_amount"] == 0) {
-                                    echo "<td class='col-1' style='background-color:red;'>B</td>";
+                                    echo "<td class='col-1' style='background-color:red;'></td>";
                                 } else {
-                                    echo "<td class='col-1' style='background-color:lightgreen;'>B</td>";
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                 }
                                 echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                                 echo "<img src='loupe.png' width='24' height='24'></td>";
@@ -313,8 +313,9 @@
                             </table>
                         </div>';
                 }
-
+                
                 ?>
+                </div>
             </form>
 
             <!-- Library Map Tab -->
