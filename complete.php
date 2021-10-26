@@ -31,12 +31,7 @@ session_start();
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
     $bookid = $_GET['booksinformationid'];
-
-
-
     $userid = $_SESSION['userid'];
-
-
     date_default_timezone_set('Asia/Bangkok');
     $date = date("Y-m-d");
     $returndate = date("Y-m-d", strtotime("$date +7 day"));
@@ -50,8 +45,7 @@ session_start();
     $lastnumid = ltrim($last_borrow_id, "0");
     $next_borrow_id = 'S' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-    $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$booksid'
-    '$date','$returndate','$borrow')";
+    $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$bookid','$date','$returndate','$borrow')";
     $result1 = $mysqli->query($query1);
 
     echo 'Complete';
