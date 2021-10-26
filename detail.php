@@ -24,7 +24,7 @@
                 Book Title
             </span>
         </div>
-        <form method="post" action="detail.php">
+        <form method="post" action="complete.php">
             <div class="row" style=" max-width: 100%;">
                 <div class="col-3" style="margin-left: 150px; margin-top:30px;">
                     <img src="loupe.png" class="img-thumbnail" style="width:200px; height:200px;">

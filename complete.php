@@ -50,7 +50,9 @@ session_start();
     $query = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$booksid'
     '$date','$returndate','$borrow')";
     $result = $mysqli->query($query);
-    
+
+    echo 'Complete';
+
     header("location: Final-Login.php");
 
 
