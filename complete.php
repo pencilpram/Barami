@@ -30,30 +30,31 @@ session_start();
 
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+    $booktitle = $_POST['booktitle'];
+
+    $selectbook = "SELECT booksinformationid FROM booksinformation WHERE booktitle = $booktitle";
+    $bookresult = $mysqli->query($selectbook);
+
     $userid = $_SESSION['userid'];
-    $booksid = $_SESSION['booksinformationid'];
-    date_default_timezone_set('Aisa/Bangkok');
+    $booksid = $_POST['booksinformationid'];
+
+
+    date_default_timezone_set('Asia/Bangkok');
     $date = date("d-m-Y");
     $returndate = date("d-m-Y", strtotime("$date +7 day"));
     $borrow = 'Borrowing';
 
 
-    for ($i = 0; $i < $amount; $i++) {
-        $query = "SELECT MAX(TRIM(LEADING 'S' FROM borrowid)) as borrow_id FROM borrowid;";
-        $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
-        $row = $result->fetch_assoc();
-        $last_borrow_id = empty($row['borrow_id']) ? 0 : $row['borrow_id'];
-        $lastnumid = ltrim($last_borrow_id, "0");
-        $next_borrow_id = 'S' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
-    }
+    $query = "SELECT MAX(TRIM(LEADING 'S' FROM borrowid)) as borrow_id FROM borrowid;";
+    $result = $mysqli->query($query) or die('There was an error running the query [' . $mysqli->error . ']');
+    $row = $result->fetch_assoc();
+    $last_borrow_id = empty($row['borrow_id']) ? 0 : $row['borrow_id'];
+    $lastnumid = ltrim($last_borrow_id, "0");
+    $next_borrow_id = 'S' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-    $query = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$booksid'
+    $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$booksid'
     '$date','$returndate','$borrow')";
-    $result = $mysqli->query($query);
+    $result1 = $mysqli->query($query1);
 
     echo 'Complete';
-
-    header("location: Final-Login.php");
-
-
     ?>

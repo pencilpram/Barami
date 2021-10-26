@@ -152,7 +152,7 @@
                     <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                        background-color: #61F189" value="Borrow This Book" name="editprofile">
+                                                        background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php">
                 </div>
         </form>
         <div class="col-2" style="width: 15%; margin-top: 60px;">
