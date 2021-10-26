@@ -145,10 +145,12 @@
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                         background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php"> -->
-                    <a href="complete.php?booktitle='. '$booktitle' . '" class="col btn btn-primary" style="width:200px; height: 50px; 
+                    <?php                                    
+                    echo "<a href='complete.php?booktitle='. '$booktitle' . ' class='col btn btn-primary' style='width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                        background-color: #61F189" value="Borrow This Book" name="editprofile">Borrow This Book</a>
+                                                        background-color: #61F189' value='Borrow This Book' name='editprofile'>Borrow This Book</a>"
+                                                        ?>
                 </div>
         </form>
         <div class=" col-2" style="width: 15%; margin-top: 60px;">
