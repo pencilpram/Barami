@@ -30,18 +30,19 @@ session_start();
 
     <?php
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-    $booktitle = $_POST['booktitle'];
+    $booktitle = $_GET['booktitle'];
 
-    $selectbook = "SELECT booksinformationid FROM booksinformation WHERE booktitle = $booktitle";
+    $selectbook = "SELECT booksinformationid FROM booksinformation WHERE booktitle LIKE '$booktitle'";
     $bookresult = $mysqli->query($selectbook);
 
+
     $userid = $_SESSION['userid'];
-    $booksid = $_POST['booksinformationid'];
+    $booksid = $_GET['booksinformationid'];
 
 
     date_default_timezone_set('Asia/Bangkok');
-    $date = date("d-m-Y");
-    $returndate = date("d-m-Y", strtotime("$date +7 day"));
+    $date = date("Y-m-d");
+    $returndate = date("Y-m-d", strtotime("$date +7 day"));
     $borrow = 'Borrowing';
 
 

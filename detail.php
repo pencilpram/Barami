@@ -108,33 +108,25 @@
                                     <?php echo $book['available_amount'] ?>
                                 </div>
                             </div>
-                        
+
                             <?php
-                            if ($book['genre'] == "Encyclopedia"){
+                            if ($book['genre'] == "Encyclopedia") {
                                 echo "<a class='col-2' href='Library_Map/1A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            }
-                            elseif ($book['genre'] == "Philosophy") {
+                            } elseif ($book['genre'] == "Philosophy") {
                                 echo "<a class='col-2' href='Library_Map/2A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "Computer & Tech") {
+                            } elseif ($book['genre'] == "Computer & Tech") {
                                 echo "<a class='col-2' href='Library_Map/3A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "Magazine") {
+                            } elseif ($book['genre'] == "Magazine") {
                                 echo "<a class='col-2' href='Library_Map/4A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "History & Culture") {
+                            } elseif ($book['genre'] == "History & Culture") {
                                 echo "<a class='col-2' href='Library_Map/5A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            }
-                            elseif ($book['genre'] == "Art & Music") {
+                            } elseif ($book['genre'] == "Art & Music") {
                                 echo "<a class='col-2' href='Library_Map/6A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "Education") {
+                            } elseif ($book['genre'] == "Education") {
                                 echo "<a class='col-2' href='Library_Map/7A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "Novel") {
+                            } elseif ($book['genre'] == "Novel") {
                                 echo "<a class='col-2' href='Library_Map/9A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                            } 
-                            elseif ($book['genre'] == "Others") {
+                            } elseif ($book['genre'] == "Others") {
                                 echo "<a class='col-2' href='Library_Map/10A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
                             }
                             ?>
@@ -149,13 +141,17 @@
 
                 </div>
                 <div class="col-2" style="width: 15%; margin-top: 60px;">
-                    <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
+                    <!-- <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                        background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php">
+                                                        background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php"> -->
+                    <a href="complete.php?booktitle='. '$booktitle' . '" class="col btn btn-primary" style="width:200px; height: 50px; 
+                                                        border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                        border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                        background-color: #61F189" value="Borrow This Book" name="editprofile">Borrow This Book</a>
                 </div>
         </form>
-        <div class="col-2" style="width: 15%; margin-top: 60px;">
+        <div class=" col-2" style="width: 15%; margin-top: 60px;">
             <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
                 <input type="button" class="col btn btn-primary" style="height: 50px; 
