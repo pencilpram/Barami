@@ -76,7 +76,7 @@
             echo $mysqli->error;
             echo "<h1 style='text-alignment:center;' >No Borrowing Book</h1>";
         }
-        $query3 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = 'book.booksinformationid'";
+        $query3 = 'UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = ' . $booklist['booksinformationid'] .'';
         $result3 = $mysqli->query($query3);
         ?>
 
