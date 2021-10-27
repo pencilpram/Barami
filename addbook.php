@@ -139,6 +139,7 @@
         $numpage = $_POST['numpage'];
         $amount = $_POST['amount'];
         $synopsis = $_POST['synopsis'];
+        $synopsis_escape = mysqli_real_escape_string($mysqli,$synopsis);
         $category = $_POST['category'];
         $link = $_POST['link'];
         $target_dir = "uploads/";
@@ -148,7 +149,6 @@
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["bookimage"]["tmp_name"]);
         if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
             echo "File is not an image.";
@@ -157,6 +157,11 @@
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
             // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["bookimage"]["tmp_name"], $target_file)) {
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         }
 
         $query_am = "SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
@@ -175,11 +180,17 @@
             $lastnumid = ltrim($last_book_id, "0");
             $next_book_id = 'B' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link,linkimage) 
-    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link','$target_file')";
-
-            $result2 = $mysqli->query($query1);
+            
         }
+        $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link,linkimage) 
+    VALUES ('$next_book_id','$booktitle','$synopsis_escape','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link','$target_file')";
+        $result2 = $mysqli->query($query1); 
+        if($result2){
+        }
+        else{
+            echo $mysqli->error;
+        }
+            
         $up_am = "UPDATE booksinformation SET amount=$total_am WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
         $query_up = $mysqli->query($up_am);
     }
