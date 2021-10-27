@@ -433,7 +433,8 @@
                                 echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                                echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
                                 echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                                 echo "</tr>";
                             }
@@ -452,7 +453,8 @@
                                 echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                                 echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                                echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
                                 echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                                 echo "</tr>";
                             }
@@ -472,7 +474,8 @@
                             echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
                             echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
                             echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                            echo "<td class='col-1' style='text-align:center; background-color: red; margin-right:10px;'><img src='bin.png' width='24' height='24'></td>";
+                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
                             echo "<td class='col-1' style='text-align:center; margin-right:10px;'><img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
                         }
