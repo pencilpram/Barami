@@ -39,7 +39,7 @@ if (isset($_GET["booktitle"])) {
             <div class="row" style=" max-width: 100%;">
                 <div class="col-3" style="margin-left: 150px; margin-top:30px;">
                 <?php
-                echo '<img src="'.$book['linkimage'].'" class="img-thumbnail" style="width:200px; height:200px;">';
+                echo '<img src="'.$book['linkimage'].'" class="img-thumbnail">';
                 ?>
                     
                 </div>
@@ -153,17 +153,17 @@ if (isset($_GET["booktitle"])) {
                     echo "<a href='complete.php?booksinformationid=" . $book['booksinformationid'] . " ' class='col btn btn-primary' style='width:200px; height: 50px;";
                     echo                                    "border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; ";
                     echo                                    "border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px;";
-                    echo                                    "background-color: #61F189' value='Borrow This Book' name='editprofile'>Borrow This Book</a>";
+                    echo                                    "background-color: #61F189 ;display: flex; justify-content: center; align-content: center; flex-direction: column;' value='Borrow This Book' name='editprofile'>Borrow This Book</a>";
                     ?>
                 </div>
         </form>
         <div class=" col-2" style="width: 15%; margin-top: 60px;">
-            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
+            <form role="form" method="post" action="home-Final.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
-                <input type="button" class="col btn btn-primary" style="height: 50px; 
+                <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
+                                                                            background-color: #264653; " value="Back" name="back">
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
