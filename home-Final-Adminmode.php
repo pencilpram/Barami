@@ -159,10 +159,12 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">Number</th>
+                                        <th scope="col">BID</th>
                                         <th scope="col">Book Title</th>
                                         <th scope="col">Authors Name</th>
                                         <th scope="col">Publisher</th>
                                         <th scope="col">Available</th>
+                                        <th scope="col">Delete</th>
                                         <th scope="col">Detail</th>
                                     </tr>
                                 </thead>
@@ -181,6 +183,7 @@
                         $num = 0;
                         while ($row = $result->fetch_array()) {
                             echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                            echo "<td class='col-1'>" . $row["booksinformationid"] ."</td>";
                             echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                             echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                             echo "<td class='col-3'>" . $row["publisher"] . "</td>";
@@ -189,6 +192,8 @@
                             } else {
                                 echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                             }
+                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
@@ -206,14 +211,17 @@
                         $num = 0;
                         while ($row = $result->fetch_array()) {
                             echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
                             echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                             echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                             echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                             if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='background-color:red;'></td>";
+                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                             } else {
                                 echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                             }
+                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
@@ -230,14 +238,17 @@
                         $num = 0;
                         while ($row = $result->fetch_array()) {
                             echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
                             echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                             echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                             echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                             if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='background-color:red;'></td>";
+                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                             } else {
                                 echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                             }
+                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
@@ -254,14 +265,17 @@
                         $num = 0;
                         while ($row = $result->fetch_array()) {
                             echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
                             echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                             echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                             echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                             if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='background-color:red;'></td>";
+                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                             } else {
                                 echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                             }
+                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
@@ -278,14 +292,17 @@
                     $num = 0;
                     while ($row = $result->fetch_array()) {
                         echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                        echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
                         echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                         echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                         echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                         if ($row["available_amount"] <= 0) {
-                            echo "<td class='col-1' style='background-color:red;'></td>";
+                            echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                         } else {
                             echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                         }
+                        echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                        echo "<img src='bin.png' width='24' height='24'></td>";
                         echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                         echo "<img src='loupe.png' width='24' height='24'></td>";
                         echo "</tr>";
@@ -302,14 +319,17 @@
                     $num = 0;
                     while ($row = $result->fetch_array()) {
                         echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                        echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
                         echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                         echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                         echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                         if ($row["available_amount"] <= 0) {
-                            echo "<td class='col-1' style='background-color:red;'></td>";
+                            echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                         } else {
                             echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                         }
+                        echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                        echo "<img src='bin.png' width='24' height='24'></td>";
                         echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booktitle=' . $row['booktitle'] . '">';
                         echo "<img src='loupe.png' width='24' height='24'></td>";
                         echo "</tr>";
