@@ -27,8 +27,6 @@
             $date = date("Y-m-d");
             $query2 = "UPDATE borrowid SET actualreturndate ='$date',status='Returned' WHERE borrowid='$borrowid'";
             $result2 = $mysqli->query($query2);
-            $query3 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = '$bookid'";
-            $result3 = $mysqli->query($query3);
             if (!$result2) {
                 echo "Update failed!<br/>";
                 echo $mysqli->error;
@@ -78,7 +76,8 @@
             echo $mysqli->error;
             echo "<h1 style='text-alignment:center;' >No Borrowing Book</h1>";
         }
-
+        $query3 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = 'book.booksinformationid'";
+        $result3 = $mysqli->query($query3);
         ?>
 
 
