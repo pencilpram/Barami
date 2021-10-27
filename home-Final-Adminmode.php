@@ -325,7 +325,7 @@
                 }
             ?>
             <div class="position-absolute bottom-0 end-0" style="width:15%; margin-bottom: 20px; margin-right:20px;">
-                <form role="form" method="post" action="addbook.php" style="height: 30px; display: flex; 
+                <form role="form" method="post" action="addbook.php" style="display: flex; 
                                             justify-content: center; align-content: center; flex-direction: column;">
                     <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                 border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 

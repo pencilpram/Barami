@@ -123,12 +123,12 @@
                 </div>
         </form>
         <div class="col-2" style="width: 15%; margin-top: 20px;">
-            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
+            <form role="form" method="post" action="Final-Login.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
-                <input type="button" class="col btn btn-primary" style="height: 50px; 
+                <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
+                                                                            background-color: #264653; " value="Back" name="back">
             </form>
         </div>
 
@@ -158,7 +158,6 @@
     VALUES ('$next_user_id','$username','$password','$firstname','$lastname','$usergroup','$title','$gender','$email','$age','$birthdate')";
 
         $result2 = $mysqli->query($query1);
-        header("location: Final-Login.php");
     }
     ?>
 </body>
