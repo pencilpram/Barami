@@ -28,7 +28,7 @@
             $query2 = "UPDATE borrowid SET actualreturndate ='$date',status='Returned' WHERE borrowid='$borrowid'";
             $result2 = $mysqli->query($query2);
             $query3 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = '$bookid'";
-            $result3 = $mysqli->query($query2);
+            $result3 = $mysqli->query($query3);
             if (!$result2) {
                 echo "Update failed!<br/>";
                 echo $mysqli->error;
