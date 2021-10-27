@@ -1,3 +1,14 @@
+<?php
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+if (isset($_GET["booktitle"])) {
+    $booktitle = $_GET["booktitle"];
+    $query_detail = "SELECT * FROM booksinformation WHERE booktitle = '$booktitle'";
+    $result_detail = $mysqli->query($query_detail);
+    if ($result_detail) {
+        $book = $result_detail->fetch_array();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,23 +38,16 @@
         <form method="post" action="complete.php">
             <div class="row" style=" max-width: 100%;">
                 <div class="col-3" style="margin-left: 150px; margin-top:30px;">
-                    <img src="loupe.png" class="img-thumbnail" style="width:200px; height:200px;">
+                <?php
+                echo '<img src="'.$book['linkimage'].'" class="img-thumbnail" style="width:200px; height:200px;">';
+                ?>
+                    
                 </div>
                 <div class="col-5" style=" width:700px; height: 370px; margin-top:30px;">
                     <div class="row">
                         <!-- Title -->
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                            <?php
-                            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-                            if (isset($_GET["booktitle"])) {
-                                $booktitle = $_GET["booktitle"];
-                                $query_detail = "SELECT * FROM booksinformation WHERE booktitle = '$booktitle'";
-                                $result_detail = $mysqli->query($query_detail);
-                                if ($result_detail) {
-                                    $book = $result_detail->fetch_array();
-                                }
-                            }
-                            ?>
+
                             <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                 display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 Book Title</label>
@@ -145,12 +149,12 @@
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                         background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php"> -->
-                    <?php                     
-                    echo "<a href='complete.php?booksinformationid=". $book['booksinformationid'] ." ' class='col btn btn-primary' style='width:200px; height: 50px;";
+                    <?php
+                    echo "<a href='complete.php?booksinformationid=" . $book['booksinformationid'] . " ' class='col btn btn-primary' style='width:200px; height: 50px;";
                     echo                                    "border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; ";
                     echo                                    "border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px;";
                     echo                                    "background-color: #61F189' value='Borrow This Book' name='editprofile'>Borrow This Book</a>";
-                                                        ?>
+                    ?>
                 </div>
         </form>
         <div class=" col-2" style="width: 15%; margin-top: 60px;">
