@@ -47,9 +47,12 @@ session_start();
 
     $query1 = "INSERT INTO borrowid (borrowid,userid,booksinformationid,borrowfromdate,borrowtodate,status) VALUES ('$next_borrow_id','$userid','$bookid','$date','$returndate','$borrow')";
     $result1 = $mysqli->query($query1);
-
+    $query2 = "UPDATE booksinformation SET available_amount = available_amount -1 WHERE booksinformationid = '$bookid'";
+    $result2 = $mysqli->query($query2);
 
     echo '<div style="font-size:50px; text-align:center; margin-top:170px;"><span>Borrow Complete</span></div>';
     echo '<div style="text-align:center; padding-top:20px"><span>Book borrowing on date ' . $date . '</span></div>';
     echo '<div style="text-align:center;"><span>Please return the book on date ' . $returndate . '</span></div>';
+
+    header('home-Final.php');
     ?>

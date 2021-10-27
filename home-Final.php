@@ -174,7 +174,7 @@
                                     echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                    if ($row["available_amount"] == 0) {
+                                    if ($row["available_amount"] <= 0) {
                                         echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
@@ -199,7 +199,7 @@
                                     echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                    if ($row["available_amount"] == 0) {
+                                    if ($row["available_amount"] <= 0) {
                                         echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
@@ -223,7 +223,7 @@
                                     echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                    if ($row["available_amount"] == 0) {
+                                    if ($row["available_amount"] <= 0) {
                                         echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
@@ -247,7 +247,7 @@
                                     echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                    if ($row["available_amount"] == 0) {
+                                    if ($row["available_amount"] <= 0) {
                                         echo "<td class='col-1' style='background-color:red;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
@@ -271,7 +271,7 @@
                                 echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                if ($row["available_amount"] == 0) {
+                                if ($row["available_amount"] <= 0) {
                                     echo "<td class='col-1' style='background-color:red;'></td>";
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen;'></td>";
@@ -295,7 +295,7 @@
                                 echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                                if ($row["available_amount"] == 0) {
+                                if ($row["available_amount"] <= 0) {
                                     echo "<td class='col-1' style='background-color:red;'></td>";
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen;'></td>";
