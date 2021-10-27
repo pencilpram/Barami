@@ -86,7 +86,7 @@
 
         ?>
         <div class="col-2" style="width: 15%; margin-top: 60px;">
-            <form role="form" method="post" action="home-Final.php" style="height: 50px; display: flex; 
+            <form role="form" method="post" action="home-Final.php" style="display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
                 <input type="submit" class="col btn btn-primary mb-4 position-absolute bottom-0 end-0" style="margin-right:30px; height: 50px; width:15%; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
