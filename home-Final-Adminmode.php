@@ -521,15 +521,6 @@
                     flex-direction: column;">
                 Profile
             </span>
-            <div class="col-2" style="width: 15%; margin-top: 25px;">
-                <form role="form" method="post" action="logout.php" style="height: 50px; display: flex; 
-                                                                justify-content: center; align-content: center; flex-direction: column;">
-                    <input type="submit" class="col btn btn-primary" style="height: 50px; 
-                                                                    border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
-                                                                    border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                    background-color: #264653" value="Return Book" name="returnbook">
-                </form>
-            </div>
         </div>
         <!-- Green box -->
         <div class="row" style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">

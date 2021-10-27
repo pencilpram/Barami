@@ -27,6 +27,13 @@
             $date = date("Y-m-d");
             $query2 = "UPDATE borrowid SET actualreturndate ='$date',status='Returned' WHERE borrowid='$borrowid'";
             $result2 = $mysqli->query($query2);
+            $query3 = "SELECT * FROM borrowid WHERE borrowid='$borrowid'";
+            $result3 = $mysqli->query($query3);
+            $bookupdate = $result3->fetch_array();
+            $booksid = $bookupdate['booksinformationid'];
+            $query4 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = '$booksid'";
+            $result4 = $mysqli->query($query4);
+
             if (!$result2) {
                 echo "Update failed!<br/>";
                 echo $mysqli->error;
@@ -76,12 +83,17 @@
             echo $mysqli->error;
             echo "<h1 style='text-alignment:center;' >No Borrowing Book</h1>";
         }
-        $booksid = $booklist['booksinformationid'];
-        echo $booksid;
-        $query3 = "UPDATE booksinformation SET available_amount = available_amount +1 WHERE booksinformationid = '$booksid'";
-        $result3 = $mysqli->query($query3);
-        ?>
 
+        ?>
+        <div class="col-2" style="width: 15%; margin-top: 60px;">
+            <form role="form" method="post" action="home-Final.php" style="height: 50px; display: flex; 
+                                                                        justify-content: center; align-content: center; flex-direction: column;">
+                <input type="submit" class="col btn btn-primary mb-4 position-absolute bottom-0 end-0" style="margin-right:30px; height: 50px; width:15%; 
+                                                                            border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
+                                                                            border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                                                            background-color: #264653; " value="Back" name="back">
+            </form>
+        </div>
 
     </div>
 </body>
