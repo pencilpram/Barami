@@ -18,15 +18,15 @@
             </span>
         </div>
         <!-- Register title -->
-        <div class="row" style="height:100px; max-width: 100%;">
-            <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
+        <div class="row" style="height:70px; max-width: 100%;">
+            <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 35px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
                 Add New Book
             </span>
         </div>
         <!-- Green box -->
-        <form role="form" id="addnewbook" method="post" action="addbook.php">
+        <form role="form" id="addnewbook" method="post" action="addbook.php" enctype="multipart/form-data">
             <div class=" row" style="margin-top: 20px; max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                <div class="greenbox" style="width: 700px; height: 410px;">
+                <div class="greenbox" style="width: 700px; height: 435px;">
 
                     <div class="row">
                         <!-- Book Title -->
@@ -84,7 +84,7 @@
                         <div class="mb-3 row" style="margin-left: 10px;">
                             <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Synopsis</label>
                             <div class="col-9" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                                <textarea form="addnewbook" rows="3" class="form-control" name="synopsis">
+                                <textarea form="addnewbook" rows="2" class="form-control" name="synopsis">
 
                                 </textarea>
                             </div>
@@ -94,6 +94,13 @@
                             <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Link</label>
                             <div class="col-9" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
                                 <input type="text" class="form-control" name="link">
+                            </div>
+                        </div>
+                        <!-- Image -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;">Image</label>
+                            <div class="col-9" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <input class="form-control" type="file" name="bookimage">
                             </div>
                         </div>
                     </div>
@@ -112,12 +119,12 @@
                 </div>
         </form>
         <div class="col-2" style="width: 15%; margin-top: 20px;">
-            <form role="form" method="post" action="Back.php" style="height: 50px; display: flex; 
+            <form role="form" method="post" action="home-Final-Adminmode.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
-                <input type="button" class="col btn btn-primary" style="height: 50px; 
+                <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                            background-color: #264653; " value="Back" name="back" onclick="history.back()">
+                                                                            background-color: #264653; " value="Back" name="back">
             </form>
         </div>
 
@@ -134,6 +141,23 @@
         $synopsis = $_POST['synopsis'];
         $category = $_POST['category'];
         $link = $_POST['link'];
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["bookimage"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($_FILES["bookimage"]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+        }
 
         $query_am = "SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
         $result_am = mysqli_query($mysqli, $query_am);
@@ -151,8 +175,8 @@
             $lastnumid = ltrim($last_book_id, "0");
             $next_book_id = 'B' . str_pad($lastnumid + 1, 4, "0", STR_PAD_LEFT);
 
-            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link) 
-    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link')";
+            $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link,linkimage) 
+    VALUES ('$next_book_id','$booktitle','$synopsis','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link','$target_file')";
 
             $result2 = $mysqli->query($query1);
         }
