@@ -1,8 +1,8 @@
 <?php
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-if (isset($_GET["booktitle"])) {
-    $booktitle = $_GET["booktitle"];
-    $query_detail = "SELECT * FROM booksinformation WHERE booktitle = '$booktitle'";
+if (isset($_GET["booksinformationid"])) {
+    $booksid = $_GET["booksinformationid"];
+    $query_detail = "SELECT * FROM booksinformation WHERE booksinformationid = '$booksid'";
     $result_detail = $mysqli->query($query_detail);
     if ($result_detail) {
         $book = $result_detail->fetch_array();
@@ -56,7 +56,7 @@ if (isset($_GET["booktitle"])) {
                                 Book Title</label>
                             <div class="col-8">
                                 <div>
-                                    <input type="text" class="form-control" name="booktitle" value="<?php echo $booktitle ?>">
+                                    <input type="text" class="form-control" name="booktitle" value="<?php echo $book['booktitle'] ?>">
                                 </div>
                             </div>
                         </div>

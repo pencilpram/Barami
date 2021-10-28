@@ -1,7 +1,7 @@
 <?php
 session_start();
 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-
+$booksid = $_GET['booksinformationid'];
 $booktitle = $_POST['booktitle'];
 $authorsname = $_POST['authorsname'];
 $publisher = $_POST['publisher'];
@@ -9,7 +9,6 @@ $numberofpage = $_POST['numberofpage'];
 $genre = $_POST['genre'];
 $amount = $_POST['amount'];
 $available_amount = $_POST['available_amount'];
-$booksid=$_POST['booksinformationid'];
 
 //Update Database
 $update_sql = "UPDATE booksinformation SET booktitle='$booktitle', authorsname='$authorsname', publisher='$publisher', 
