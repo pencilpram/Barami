@@ -143,7 +143,7 @@ if (isset($_GET["booktitle"])) {
             <div class="row" style="max-width: 100%;">
                 <div class="col-9" style="width: 70%;">
                     <?php
-                    echo '<a href="' . $book['link'] . '" style="position:relative; left:23.3%; top:10%;">Buy this book</a>';
+                    echo '<a href="' . $book['link'] . '" target="_blank"  style="position:relative; left:23.3%; top:10%;">Buy this book</a>';
                     ?>
                 </div>
                 <div class="col-2" style="width: 15%; margin-top: 60px;">
