@@ -599,7 +599,7 @@
                     <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                     border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                     border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                    background-color: #264653" value="Return Book" name="returnbook">
+                                                                    background-color: #264653" value="Return List" name="returnlist">
                 </form>
             </div>
         </div>
