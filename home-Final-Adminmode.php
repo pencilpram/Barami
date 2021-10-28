@@ -148,17 +148,15 @@
                     border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; 
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search">
             </form>
-        </div>
-        <?php
-        $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-        if (isset($_POST['search'])) {
-            $searchby = $_POST["querytype"];
-            $category = $_POST["category"];
-            echo '<div class="row justify-content-center mt-3" style="max-width:100%">
+            <?php
+            $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+            if (isset($_POST['search'])) {
+                $searchby = $_POST["querytype"];
+                $category = $_POST["category"];
+                echo '<div class="row justify-content-center mt-3" style="max-width:100%">
                             <table class="col-10 table table-striped table-hover" style="width:90%">
                                 <thead class="table-dark">
                                     <tr>
-                                        <th scope="col">Number</th>
                                         <th scope="col">BID</th>
                                         <th scope="col">Book Title</th>
                                         <th scope="col">Authors Name</th>
@@ -169,196 +167,222 @@
                                     </tr>
                                 </thead>
                                 <tbody>';
-            if (isset($_POST['query'])) {
-                $search = $_POST['query'];
-                //echo $search;
-                //echo $searchby;
-                //echo $category;
-                if ($searchby == "Select Search" && $category == "Select Category") {
-                    //echo "1";
-                    $query = "SELECT * FROM booksinformation WHERE (booktitle LIKE '%$search%')
+                if (isset($_POST['query'])) {
+                    $search = $_POST['query'];
+                    //echo $search;
+                    //echo $searchby;
+                    //echo $category;
+                    if ($searchby == "Select Search" && $category == "Select Category") {
+                        //echo "1";
+                        $query = "SELECT * FROM booksinformation WHERE (booktitle LIKE '%$search%')
                         OR (authorsname LIKE '%$search%') OR (publisher LIKE '%$search%')";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        $num = 0;
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                            echo "<td class='col-1'>" . $row["booksinformationid"] ."</td>";
-                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            while ($row = $result->fetch_array()) {
+                                echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                                echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] <= 0) {
+                                    echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                                }
+                                echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
                             }
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='bin.png' width='24' height='24'></td>";
-                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
-                            $num++;
+                        } else {
+                            echo "No result";
                         }
-                        
-                    } else {
-                        echo "No result";
-                    }
-                } elseif ($searchby == "Select Search" && $category != "Select Category") {
-                    //echo "2";
-                    $query = "SELECT * FROM booksinformation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
+                    } elseif ($searchby == "Select Search" && $category != "Select Category") {
+                        //echo "2";
+                        $query = "SELECT * FROM booksinformation WHERE ((genre LIKE '%$category%') AND (booktitle LIKE '%$search%'))
                         OR ((genre LIKE '%$category%') AND (authorsname LIKE '%$search%')) OR ((genre LIKE '%$category%') AND (publisher LIKE '%$search%'))";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        $num = 0;
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
-                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            while ($row = $result->fetch_array()) {
+                                echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                                echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] <= 0) {
+                                    echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                                }
+                                echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
                             }
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='bin.png' width='24' height='24'></td>";
-                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
-                            $num++;
-                        }
-                        
-                    } else {
-                        echo "No result";
-                    }
-                } elseif ($searchby != "Select Search" && $category == "Select Category") {
-                    //echo "3";
-                    $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%')";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        $num = 0;
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
-                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
-                            }
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='bin.png' width='24' height='24'></td>";
-                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
-                            $num++;
-                        }
-                        
-                    } else {
-                        echo "No result";
-                    }
-                } else {
-                    //echo "4";
-                    $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%' AND genre LIKE '%$category%')";
-                    $result = $mysqli->query($query);
-                    if ($result) {
-                        $num = 0;
-                        while ($row = $result->fetch_array()) {
-                            echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
-                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                            if ($row["available_amount"] <= 0) {
-                                echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
-                            } else {
-                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
-                            }
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='bin.png' width='24' height='24'></td>";
-                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='loupe.png' width='24' height='24'></td>";
-                            echo "</tr>";
-                            $num++;
-                        }
-                        
-                    } else {
-                        echo "No result";
-                    }
-                }
-            } elseif ($category != "Select Category") {
-                $query = "SELECT * FROM booksinformation WHERE genre LIKE '%$category%'";
-                $result = $mysqli->query($query);
-                if ($result) {
-                    $num = 0;
-                    while ($row = $result->fetch_array()) {
-                        echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                        echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
-                        echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                        echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                        echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                        if ($row["available_amount"] <= 0) {
-                            echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
                         } else {
-                            echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                            echo "No result";
                         }
-                        echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                        echo "<img src='bin.png' width='24' height='24'></td>";
-                        echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                        echo "<img src='loupe.png' width='24' height='24'></td>";
-                        echo "</tr>";
-                        $num++;
-                    }
-                    
-                } else {
-                    echo "No result";
-                }
-            } else {
-                //echo "5";
-                $query = "SELECT * FROM booksinformation";
-                $result = $mysqli->query($query);
-                if ($result) {
-                    $num = 0;
-                    while ($row = $result->fetch_array()) {
-                        echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
-                        echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
-                        echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
-                        echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
-                        echo "<td class='col-3'>" . $row["publisher"] . "</td>";
-                        if ($row["available_amount"] <= 0) {
-                            echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
+                    } elseif ($searchby != "Select Search" && $category == "Select Category") {
+                        //echo "3";
+                        $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%')";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            while ($row = $result->fetch_array()) {
+                                echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                                echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] <= 0) {
+                                    echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                                }
+                                echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
+                            }
                         } else {
-                            echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                            echo "No result";
                         }
-                        echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                        echo "<img src='bin.png' width='24' height='24'></td>";
-                        echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                        echo "<img src='loupe.png' width='24' height='24'></td>";
-                        echo "</tr>";
-                        $num++;
+                    } else {
+                        //echo "4";
+                        $query = "SELECT * FROM booksinformation WHERE ($searchby LIKE '%$search%' AND genre LIKE '%$category%')";
+                        $result = $mysqli->query($query);
+                        if ($result) {
+                            while ($row = $result->fetch_array()) {
+                                echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                                echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                                echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                                echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                                if ($row["available_amount"] <= 0) {
+                                    echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                                } else {
+                                    echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                                }
+                                echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='bin.png' width='24' height='24'></td>";
+                                echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                                echo "<img src='loupe.png' width='24' height='24'></td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "No result";
+                        }
                     }
-                    
+                } elseif ($category != "Select Category") {
+                    $query = "SELECT * FROM booksinformation WHERE genre LIKE '%$category%'";
+                    $result = $mysqli->query($query);
+                    if ($result) {
+                        while ($row = $result->fetch_array()) {
+                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                            if ($row["available_amount"] <= 0) {
+                                echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                            } else {
+                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                            }
+                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
+                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='loupe.png' width='24' height='24'></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "No result";
+                    }
                 } else {
-                    echo "No result";
+                    //echo "5";
+                    $query = "SELECT * FROM booksinformation";
+                    $result = $mysqli->query($query);
+                    if ($result) {
+                        while ($row = $result->fetch_array()) {
+                            echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                            if ($row["available_amount"] <= 0) {
+                                echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                            } else {
+                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                            }
+                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
+                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='loupe.png' width='24' height='24'></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "No result";
+                    }
                 }
-            }
-            echo '</tbody>
+                echo '</tbody>
                             </table>
                         </div>';
-        }
-        ?>
-        <div class="col-2" style="width:15%;  margin-top: 60px;">
-            <form role="form" method="post" action="addbook.php" style="display: flex; 
+            } else{
+                $query = "SELECT * FROM booksinformation";
+                $result = $mysqli->query($query);
+                echo '<div class="row justify-content-center mt-3" style="max-width:100%">
+                            <table class="col-10 table table-striped table-hover" style="width:90%">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">BID</th>
+                                        <th scope="col">Book Title</th>
+                                        <th scope="col">Authors Name</th>
+                                        <th scope="col">Publisher</th>
+                                        <th scope="col">Available</th>
+                                        <th scope="col">Delete</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                if ($result) {
+                    while ($row = $result->fetch_array()) {
+                        echo "<td class='col-1'>" . $row["booksinformationid"] . "</td>";
+                        echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                        echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                        echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                        if ($row["available_amount"] <= 0) {
+                            echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                        } else {
+                            echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                        }
+                        echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                        echo "<img src='bin.png' width='24' height='24'></td>";
+                        echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                        echo "<img src='loupe.png' width='24' height='24'></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "No result";
+                }
+                echo '</tbody>
+                            </table>
+                        </div>';
+                
+            }
+            ?>
+            <div class="row" style="width:100%;">
+                <div class="col-10">
+
+                </div>
+                <div class="col-2 mb-3">
+                    <form role="form" method="post" action="addbook.php" style="display: flex; 
                                             justify-content: center; align-content: center; flex-direction: column;">
-                <input type="submit" class="col btn btn-primary mb-4 position-absolute bottom-0 end-0" style="margin-right:30px; height: 50px; width:15%; 
+                        <input type="submit" class="btn btn-primary" style="width:100%; margin-right:30px; height: 50px;
                                                 border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                 border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
                                                 background-color: #61F189" value="Add Book" name="addbook">
-            </form>
+                    </form>
+                </div>
+
+            </div>
         </div>
+
+
     </div>
 
     <!-- User Tab -->
