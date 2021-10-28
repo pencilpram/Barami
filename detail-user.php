@@ -155,8 +155,8 @@ if (isset($_GET["userid"])) {
             </div>
             </form>
             <div class=" col-3" style="width: 15%;">
-                <form role="form" method="post" action="home-Final-Adminmode.php" style="height: 50px; display: flex; 
-                                                                        justify-content: center; align-content: center; flex-direction: column; position:relative; top:100%; right:40%;">
+                <form role="form" method="post" action="home-Final-Adminmode.php" style=" margin-top: 20px;height: 50px; display: flex; 
+                                                                        justify-content: center; align-content: center; flex-direction: column;">
                     <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 

@@ -333,9 +333,7 @@
                             } else {
                                 echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                             }
-                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
-                            echo "<img src='bin.png' width='24' height='24'></td>";
-                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail.php?booktitle=' . $row['booktitle'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
                             $num++;
