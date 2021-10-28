@@ -38,10 +38,10 @@ if (isset($_GET["booktitle"])) {
         <form method="post" action="complete.php">
             <div class="row" style=" max-width: 100%;">
                 <div class="col-3" style="margin-left: 150px; margin-top:30px;">
-                <?php
-                echo '<img src="'.$book['linkimage'].'" class="img-thumbnail">';
-                ?>
-                    
+                    <?php
+                    echo '<img src="' . $book['linkimage'] . '" class="img-thumbnail" style="width:250px; height:350px;">';
+                    ?>
+
                 </div>
                 <div class="col-5" style=" width:700px; height: 370px; margin-top:30px;">
                     <div class="row">
@@ -142,7 +142,9 @@ if (isset($_GET["booktitle"])) {
             </div>
             <div class="row" style="max-width: 100%;">
                 <div class="col-9" style="width: 70%;">
-
+                    <?php
+                    echo '<a href="' . $book['link'] . '" style="position:relative; left:23.3%; top:10%;">Buy this book</a>';
+                    ?>
                 </div>
                 <div class="col-2" style="width: 15%; margin-top: 60px;">
                     <!-- <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
