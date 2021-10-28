@@ -14,4 +14,4 @@ $available_amount = $_POST['available_amount'];
 $update_sql = "UPDATE booksinformation SET booktitle='$booktitle', authorsname='$authorsname', publisher='$publisher', 
 numberofpage='$numberofpage', genre='$genre', amount='$amount', available_amount='$available_amount' WHERE booksinformationid='$booksinformationid'";
 $update_result = $mysqli->query($update_sql);
-header("location: home-Final-Adminmode.php");
+?>
