@@ -134,8 +134,11 @@
     $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
     if (isset($_POST['add'])) {
         $booktitle = $_POST['booktitle'];
+        $booktitle_escape = mysqli_real_escape_string($mysqli, $booktitle);
         $authorsname = $_POST['authorsname'];
+        $authorsname_escape = mysqli_real_escape_string($mysqli, $authorsname);
         $publisher = $_POST['publisher'];
+        $publisher_escape = mysqli_real_escape_string($mysqli, $publisher);
         $numpage = $_POST['numpage'];
         $amount = $_POST['amount'];
         $synopsis = $_POST['synopsis'];
@@ -166,7 +169,7 @@
 
         $query_am = "SELECT * FROM booksinformation WHERE booktitle='$booktitle' and authorsname='$authorsname' and publisher='$publisher' and numberofpage='$numpage'";
         $result_am = mysqli_query($mysqli, $query_am);
-        if (mysqli_num_rows($result_am) > 0) {
+        if (!$result_am || mysqli_num_rows($result_am) == 0) {
             $total_am = mysqli_num_rows($result_am) + $amount;
         } else {
             $total_am = $amount;
@@ -183,7 +186,7 @@
             
         }
         $query1 = "INSERT INTO booksinformation (booksinformationid,booktitle,synopsis,authorsname,publisher,numberofpage,genre,amount,available_amount,link,linkimage) 
-    VALUES ('$next_book_id','$booktitle','$synopsis_escape','$authorsname','$publisher','$numpage','$category','$total_am','$total_am','$link','$target_file')";
+    VALUES ('$next_book_id','$booktitle_escape','$synopsis_escape','$authorsname_escape','$publisher_escape','$numpage','$category','$total_am','$total_am','$link','$target_file')";
         $result2 = $mysqli->query($query1); 
         if($result2){
         }
