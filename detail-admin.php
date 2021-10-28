@@ -161,7 +161,7 @@ if (isset($_GET["booktitle"])) {
                 </div>
         </form>
         <div class=" col-2" style="width: 15%; margin-top: 60px;">
-            <form role="form" method="post" action="home-Final.php" style="height: 50px; display: flex; 
+            <form role="form" method="post" action="home-Final-Adminmode.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
                 <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
