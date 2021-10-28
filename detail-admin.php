@@ -21,7 +21,7 @@ if (isset($_POST['editbook'])) {
     $amount = $_POST['amount'];
     $available_amount = $_POST['available_amount'];
 
-    
+
 
     //Update Database
     $update_sql = "UPDATE booksinformation SET booktitle='$booktitle', authorsname='$authorsname', publisher='$publisher', 
@@ -65,18 +65,24 @@ numberofpage='$numberofpage', genre='$genre', amount='$amount', available_amount
         </div>
         <div class="row" style="height:80px; max-width: 100%;">
             <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 30px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
-                Book Title
+                <?php echo $book['booktitle'];?>
             </span>
         </div>
         <form method="post" <?php echo "action='detail-admin.php?booksinformationid2=" . $book['booksinformationid'] . "'"; ?>>
             <div class="row" style=" max-width: 100%;">
-                <div class="col-3" style="margin-left: 150px; margin-top:30px; height:450px;">
+                <div class="col-3" style="margin-left: 150px; margin-top:30px; height:430px;">
                     <?php
                     echo '<img src="' . $book['linkimage'] . '" class="img-thumbnail" style="width:250px; height:350px;">';
                     ?>
 
+                    <div style="width: 100%;">
+                        <?php
+                        echo '<a href="' . $book['link'] . '"target="_blank">Buy this book</a>';
+                        ?>
+                    </div>
+
                 </div>
-                <div class="col-5" style=" width:700px; height: 370px; margin-top:30px;">
+                <div class="col-5" style=" width:700px; height: 350px; margin-top:30px;">
                     <div class="row">
                         <!-- Title -->
                         <div class="mt-3 mb-3 row" style="margin-left: 10px;">
@@ -174,12 +180,10 @@ numberofpage='$numberofpage', genre='$genre', amount='$amount', available_amount
                 </div>
             </div>
             <div class="row" style="max-width: 100%;">
-                <div class="col-7" style="width: 70%;">
-                    <?php
-                    echo '<a href="' . $book['link'] . '" style="position:relative; left:23.3%;">Buy this book</a>';
-                    ?>
+                <div class="col-9" style="width:70%;">
+
                 </div>
-                <div class="col-2" style="width: 15%;">
+                <div class="col-2" style="width: 15%; margin-bottom:20px;">
                     <!-- <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
                                                         border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                         border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
@@ -192,7 +196,7 @@ numberofpage='$numberofpage', genre='$genre', amount='$amount', available_amount
 
                 </div>
         </form>
-        <div class=" col-2" style="width: 15%;">
+        <div class=" col-2" style="width: 15%; margin-bottom:20px;">
             <form role="form" method="post" action="home-Final-Adminmode.php" style="height: 50px; display: flex; 
                                                                         justify-content: center; align-content: center; flex-direction: column;">
                 <input type="submit" class="col btn btn-primary" style="height: 50px; 

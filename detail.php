@@ -32,7 +32,7 @@ if (isset($_GET["booktitle"])) {
         </div>
         <div class="row" style="height:80px; max-width: 100%;">
             <span class="col" style="margin-left: 100px; text-align: left; font-family: Inter; font-weight: Light; font-size: 30px; display: flex; justify-content: flex-end; align-content: center; flex-direction: column;">
-                Book Title
+                <?php echo $book['booktitle']; ?>
             </span>
         </div>
         <form method="post" action="complete.php">
@@ -41,6 +41,11 @@ if (isset($_GET["booktitle"])) {
                     <?php
                     echo '<img src="' . $book['linkimage'] . '" class="img-thumbnail" style="width:250px; height:350px;">';
                     ?>
+                    <div class="col-7" style="width: 70%;">
+                        <?php
+                        echo '<a href="' . $book['link'] . '" target="_blank">Buy this book</a>';
+                        ?>
+                    </div>
 
                 </div>
                 <div class="col-5" style=" width:700px; height: 370px; margin-top:30px;">
@@ -142,9 +147,7 @@ if (isset($_GET["booktitle"])) {
             </div>
             <div class="row" style="max-width: 100%;">
                 <div class="col-9" style="width: 70%;">
-                    <?php
-                    echo '<a href="' . $book['link'] . '" target="_blank"  style="position:relative; left:23.3%; top:10%;">Buy this book</a>';
-                    ?>
+
                 </div>
                 <div class="col-2" style="width: 15%; margin-top: 60px;">
                     <!-- <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
