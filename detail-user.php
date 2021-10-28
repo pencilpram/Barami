@@ -1,4 +1,17 @@
-<?php session_start(); ?>
+<?php
+session_start();
+$mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+if (isset($_GET["userid"])) {
+    $userid = $_GET["userid"];
+    $select_query = "SELECT * FROM users WHERE userid = '$userid'";
+    $select_result = $mysqli->query($select_query);
+    if ($select_result) {
+        $users = $select_result->fetch_array();
+    } else {
+        echo "No user!!<br/>";
+        echo $mysqli->error;
+    }
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,129 +36,127 @@
                 Admin Mode
             </span>
         </div>
-        <div class="row" style=" max-width: 100%;">
-            <div class="col-2" style="margin-left: 150px; margin-top:30px; height:450px;">
-                
-            </div>
-            <div class="col-6" style=" width:700px; height: 370px; margin-top:30px;">
-                <div class="row">
-                    <!-- Title -->
-                    <div class="mt-3 mb-3 row" style="margin-left: 10px;">
+        <div class="row" style="height:100px; max-width: 100%;">
+            <span class="col-8" style="margin-left: 100px;top: 100px; text-align: left; font-family: Inter; 
+                    font-weight: Light; font-size: 45px; display: flex; justify-content: flex-end; align-content: center; 
+                    flex-direction: column;">
+                User Detail
+            </span>
+        </div>
+        <!-- Green box -->
+        <div class="row" style=" max-width: 100%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <div class="greenbox" style="width: 700px; height: 420px;">
+                <form role="form" method="post" action="login.php">
+                    <div class="row">
+                        <!-- UID -->
+                        <div class="mt-3 mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                User ID</label>
+                            <div class="col-4">
+                                <div class="form-control" style="width:50%;">
+                                    <?php echo $users['userid'] ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Title -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Title</label>
+                            <div class="col-4">
+                                <div class="form-control" style="width:50%;">
+                                    <?php echo $users['title'] ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Name -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Name</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <div class="form-control">
+                                    <?php echo $users['firstname'] ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Surname -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Surname</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <div class="form-control">
+                                    <?php echo $users['lastname'] ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Age + BirthDate-->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Age</label>
+                            <div class="col-2" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <div class="form-control">
+                                    <?php echo $users['age'] ?>
+                                </div>
+                            </div>
+                            <label class="col-2 col-form-label " style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                BirthDate</label>
+                            <div class="col-3" style="width: 31%; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <div class="form-control">
+                                    <?php echo $users['birthdate'] ?>
+                                </div>
+                            </div>
 
-                        <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            User ID</label>
-                        <div class="col-8">
-                            <div>
-                                <input type="text" class="form-control" name="userid" value="<?php echo $book['booktitle'] ?>">
-                            </div>
                         </div>
-                    </div>
-                    <div class=" mt-3 mb-3 row" style="margin-left: 10px;">
-                        <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Authors Name</label>
-                        <div class="col-8">
-                            <div>
-                                <input type="text" class="form-control" name="authorsname" value="<?php echo $book['authorsname'] ?>">
+                        <!-- Gender + Usergroup-->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Gender</label>
+                            <div class="col-3">
+                                <div class="form-control">
+                                    <?php echo $users['gender'] ?>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                        <label class="col-3 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Publisher</label>
-                        <div class="col-8">
-                            <div>
-                                <input type="text" class="form-control" name="publisher" value="<?php echo $book['publisher'] ?>">
+                            <label class="col-3 col-form-label" style="width:25%; text-align: center; font-family: Inter; font-weight: Light; 
+                                        font-size: 18px; display: flex; justify-content: center; align-content: center; 
+                                        flex-direction: column;">User Group</label>
+                            <div class="col-3">
+                                <div class="form-control">
+                                    <?php echo $users['usergroup'] ?>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                        <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                                                display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Page</label>
-                        <div class="col-2">
-                            <div>
-                                <input type="text" class="form-control" name="numberofpage" value="<?php echo $book['numberofpage'] ?>">
-                            </div>
-                        </div>
-                        <label class="col-3 col-form-label" style="text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                                                                            display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Category</label>
-                        <div class="col-3">
-                            <div>
-                                <input type="text" class="form-control" name="genre" value="<?php echo $book['genre'] ?>">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 mb-3 row" style="margin-left: 10px;">
-                        <label class="col-2 col-form-label" style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                                                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Amount</label>
-                        <div class="col-2">
-                            <div>
-                                <input type="text" class="form-control" name="amount" value="<?php echo $book['amount'] ?>">
-                            </div>
-                        </div>
-                        <label class="col-3 col-form-label" style=" text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                                                                                                                    display: flex; justify-content: center; align-content: center; flex-direction: column;">
-                            Available</label>
-                        <div class="col-2">
-                            <div>
-                                <input type="text" class="form-control" name="available_amount" value="<?php echo $book['available_amount'] ?>">
-                            </div>
-                        </div>
 
-                        <?php
-                        if ($book['genre'] == "Encyclopedia") {
-                            echo "<a class='col-2' href='Library_Map/1A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Philosophy") {
-                            echo "<a class='col-2' href='Library_Map/2A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Computer & Tech") {
-                            echo "<a class='col-2' href='Library_Map/3A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Magazine") {
-                            echo "<a class='col-2' href='Library_Map/4A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "History & Culture") {
-                            echo "<a class='col-2' href='Library_Map/5A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Art & Music") {
-                            echo "<a class='col-2' href='Library_Map/6A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Education") {
-                            echo "<a class='col-2' href='Library_Map/7A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Novel") {
-                            echo "<a class='col-2' href='Library_Map/9A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        } elseif ($book['genre'] == "Others") {
-                            echo "<a class='col-2' href='Library_Map/10A.png' style='text-align: center; font-family: Inter; font-weight: Light; font-size: 18px; display: flex; justify-content: center; align-content: center; flex-direction: column;'>Mapping</a>";
-                        }
-                        ?>
+                        </div>
+                        <!-- email -->
+                        <div class="mb-3 row" style="margin-left: 10px;">
+                            <label class="col-2 col-form-label " style="text-align: left; font-family: Inter; font-weight: Light; font-size: 18px; 
+                                        display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                Email</label>
+                            <div class="col-8" style="display: flex; justify-content: center; align-content: center; flex-direction: column;">
+                                <div class="form-control">
+                                    <?php echo $users['email'] ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-
+                </form>
             </div>
         </div>
         <div class="row" style="max-width: 100%;">
             <div class="col-7" style="width: 70%;">
-                <?php
-                echo '<a href="' . $book['link'] . '" style="position:relative; left:23.3%;">Buy this book</a>';
-                ?>
+
             </div>
-            <div class="col-2" style="width: 15%;">
-                <!-- <input type="submit" class="col btn btn-primary" style="width:200px; height: 50px; 
-                                                        border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
-                                                        border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
-                                                        background-color: #61F189" value="Borrow This Book" name="editprofile" formaction="complete.php"> -->
-
-                <input type="submit" class='col btn btn-primary' style='width:200px; height: 50px;
-                                                                border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
-                                                               border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px;
-                                                                background-color: #61F189 ;' value='Edit Book' name='editbook'>
-
+            <div class="col-1" style="width: 15%;">
             </div>
             </form>
-            <div class=" col-2" style="width: 15%;">
+            <div class=" col-3" style="width: 15%;">
                 <form role="form" method="post" action="home-Final-Adminmode.php" style="height: 50px; display: flex; 
-                                                                        justify-content: center; align-content: center; flex-direction: column;">
+                                                                        justify-content: center; align-content: center; flex-direction: column; position:relative; top:100%; right:40%;">
                     <input type="submit" class="col btn btn-primary" style="height: 50px; 
                                                                             border-top-left-radius: 35px; border-top-right-radius: 35px; border-bottom-left-radius: 35px; 
                                                                             border-bottom-right-radius: 35px; font-family: Inter; font-weight: Light; font-size: 18px; 
