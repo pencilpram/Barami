@@ -90,7 +90,7 @@
         ?>
         <!-- Register Button -->
         <div class="row" style="max-width: 100%; display: flex; justify-content: center; align-content: flex-end; flex-direction: column; margin-right: 40px;">
-            <form role="form" name="formregister" method="post" action="register.php" style="width: 140px; height: 50px; margin-top: 30px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
+            <form role="form" name="formregister" method="post" action="register.php" style="width: 140px; height: 50px; margin-top: 50px; display: flex; justify-content: center; align-content: center; flex-direction: column;">
                 <input type="submit" class="col btn btn-primary" style="width: 140px; height: 50px; border-top-left-radius: 35px;
                                                             border-top-right-radius: 35px; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; font-family: Inter;
                                                             font-weight: Light; font-size: 18px;background-color: rgba(38, 70, 83, 0.5); color: rgba(0, 0, 0, 1);" value="Register" name="register">

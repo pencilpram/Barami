@@ -141,10 +141,7 @@
 
                 <?php
                 $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
-                if (isset($_POST['search'])) {
-                    $searchby = $_POST["querytype"];
-                    $category = $_POST["category"];
-                    echo '<div class="row justify-content-center mt-3" style="max-width:100%">
+                echo '<div class="row justify-content-center mt-3" style="max-width:100%">
                             <table class="col-10 table table-striped table-hover" style="width:90%">
                                 <thead class="table-dark">
                                     <tr>
@@ -157,6 +154,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>';
+                if (isset($_POST['search'])) {
+                    $searchby = $_POST["querytype"];
+                    $category = $_POST["category"];
                     if (isset($_POST['query'])) {
                         $search = $_POST['query'];
                         //echo $search;
@@ -175,7 +175,7 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] <= 0) {
-                                        echo "<td class='col-1' style='text-alignment:center; background-color:red;'></td>";
+                                        echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
@@ -201,7 +201,7 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] <= 0) {
-                                        echo "<td class='col-1' style='background-color:red;'></td>";
+                                        echo "<td class='col-1' style='background-color:#eb7179;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
@@ -226,7 +226,7 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] <= 0) {
-                                        echo "<td class='col-1' style='background-color:red;'></td>";
+                                        echo "<td class='col-1' style='background-color:#eb7179;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
@@ -251,7 +251,7 @@
                                     echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                     echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                     if ($row["available_amount"] <= 0) {
-                                        echo "<td class='col-1' style='background-color:red;'></td>";
+                                        echo "<td class='col-1' style='background-color:#eb7179;'></td>";
                                     } else {
                                         echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                     }
@@ -276,7 +276,7 @@
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                 if ($row["available_amount"] <= 0) {
-                                    echo "<td class='col-1' style='background-color:red;'></td>";
+                                    echo "<td class='col-1' style='background-color:#eb7179;'></td>";
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                 }
@@ -301,7 +301,7 @@
                                 echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
                                 echo "<td class='col-3'>" . $row["publisher"] . "</td>";
                                 if ($row["available_amount"] <= 0) {
-                                    echo "<td class='col-1' style='background-color:red;'></td>";
+                                    echo "<td class='col-1' style='background-color:#eb7179;'></td>";
                                 } else {
                                     echo "<td class='col-1' style='background-color:lightgreen;'></td>";
                                 }
@@ -314,6 +314,34 @@
                         } else {
                             echo "No result";
                         }
+                    }
+                    echo '</tbody>
+                            </table>
+                        </div>';
+                } else {
+                    $query = "SELECT * FROM booksinformation";
+                    $result = $mysqli->query($query);
+                    if ($result) {
+                        $num = 0;
+                        while ($row = $result->fetch_array()) {
+                            echo "<tr> <td class='col-1'>" . ($num + 1) . "</td>";
+                            echo "<td class='col-4'>" . $row["booktitle"] . "</td>";
+                            echo "<td class='col-3'>" . $row["authorsname"] . "</td>";
+                            echo "<td class='col-3'>" . $row["publisher"] . "</td>";
+                            if ($row["available_amount"] <= 0) {
+                                echo "<td class='col-1' style='text-alignment:center; background-color:#eb7179;'></td>";
+                            } else {
+                                echo "<td class='col-1' style='background-color:lightgreen;'></td>";
+                            }
+                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deletebook.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='bin.png' width='24' height='24'></td>";
+                            echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-admin.php?booksinformationid=' . $row['booksinformationid'] . '">';
+                            echo "<img src='loupe.png' width='24' height='24'></td>";
+                            echo "</tr>";
+                            $num++;
+                        }
+                    } else {
+                        echo "No result";
                     }
                     echo '</tbody>
                             </table>

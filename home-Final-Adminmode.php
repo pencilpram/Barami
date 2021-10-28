@@ -428,6 +428,13 @@
                             echo '<option selected>Lastname</option>';
                             echo '<option>Email</option>';
                         }
+                        if ($_POST["querytype1"] == "Email") {
+                            echo '<option>Select Type</option>';
+                            echo '<option value=userid>UID</option>';
+                            echo '<option>Firstname</option>';
+                            echo '<option>Lastname</option>';
+                            echo '<option selected>Email</option>';
+                        }
                     } else {
                         echo '<option selected>Select Type</option>';
                         echo '<option value=userid>UID</option>';
@@ -448,25 +455,22 @@
                     font-family: Inter; font-weight: Light; font-size: 16px; background-color: #264653" value="Search" name="search1">
         </div>
 
-
-        <div class="row" style="width: 100%; margin-top: 30px; padding:8px;">
-            <div class="col-3" style="width:240px; text-align:center; padding:8px;">
-                <span>UID</span>
-            </div>
-            <div class="col-4" style="width:480px; text-align:center; padding:8px;">
-                <span>Name</span>
-            </div>
-            <div class="col-2" style="width:240px; text-align:center; padding:8px;">
-                <span>Gender</span>
-            </div>
-            <div class="col-2" style="width: 240px; text-align:center; padding:8px;">
-                <span>Usergroup</span>
-            </div>
-            <div class="col-1" style="width: 120px;"></div>
-            <div class="col-1" style="width: 120px;"></div>
-        </div>
         <?php
         $mysqli = new mysqli("localhost", "root", null, "Barami_Library");
+        echo '<div class="row justify-content-center mt-3" style="max-width:100%">
+                            <table class="col-10 table table-striped table-hover" style="width:90%">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">User ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">User Group</th>
+                                        <th scope="col">Delete</th>
+                                        <th scope="col">Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
         if (isset($_POST['search1'])) {
             $searchby1 = $_POST["querytype1"];
             if (isset($_POST['query1'])) {
@@ -476,20 +480,19 @@
                             OR (email LIKE '%$search1')";
                     $result1 = $mysqli->query($query1);
                     if ($result1) {
-                        echo "<table class='table'>";
                         while ($row = $result1->fetch_array()) {
                             echo "<tr>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                            echo "<td class='col-2' >" . $row["userid"] . "</td>";
+                            echo "<td class='col-2' >" . $row["firstname"] . "</td>";
+                            echo "<td class='col-2' >" . $row["lastname"] . "</td>";
+                            echo "<td class='col-2' >" . $row["gender"] . "</td>";
+                            echo "<td class='col-2' >" . $row["usergroup"] . "</td>";
+                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
                             echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-user.php?userid=' . $row['userid'] .'">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
                         }
-                        echo "</table>";
                     } else {
                         echo "No result";
                     }
@@ -497,20 +500,19 @@
                     $query1 = "SELECT * FROM users WHERE ($searchby1 LIKE '%$search1%')";
                     $result1 = $mysqli->query($query1);
                     if ($result1) {
-                        echo "<table class='table'>";
                         while ($row = $result1->fetch_array()) {
                             echo "<tr>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
-                            echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
-                            echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                            echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                            echo "<td class='col-2' >" . $row["userid"] . "</td>";
+                            echo "<td class='col-2' >" . $row["firstname"] . "</td>";
+                            echo "<td class='col-2' >" . $row["lastname"] . "</td>";
+                            echo "<td class='col-2' >" . $row["gender"] . "</td>";
+                            echo "<td class='col-2' >" . $row["usergroup"] . "</td>";
+                            echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
                             echo "<img src='bin.png' width='24' height='24'></td>";
                             echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-user.php?userid=' . $row['userid'] . '">';
                             echo "<img src='loupe.png' width='24' height='24'></td>";
                             echo "</tr>";
                         }
-                        echo "</table>";
                     } else {
                         echo "No result";
                     }
@@ -519,24 +521,49 @@
                 $query1 = "SELECT * FROM users WHERE ($searchby1 LIKE '%$search1%')";
                 $result1 = $mysqli->query($query1);
                 if ($result1) {
-                    echo "<table class='table'>";
                     while ($row = $result1->fetch_array()) {
                         echo "<tr>";
-                        echo "<td class='col-2' style='text-align:center;'>" . $row["userid"] . "</td>";
-                        echo "<td class='col-4' style='text-align:center;'>" . $row["firstname"] . " " . $row["lastname"] . "</td>";
-                        echo "<td class='col-2' style='text-align:center;'>" . $row["gender"] . "</td>";
-                        echo "<td class='col-2' style='text-align:center;'>" . $row["usergroup"] . "</td>";
-                        echo '<td class="col-1" style="text-align:center; background-color: red; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                        echo "<td class='col-2' >" . $row["userid"] . "</td>";
+                        echo "<td class='col-2' >" . $row["firstname"] . "</td>";
+                        echo "<td class='col-2' >" . $row["lastname"] . "</td>";
+                        echo "<td class='col-2' >" . $row["gender"] . "</td>";
+                        echo "<td class='col-2' >" . $row["usergroup"] . "</td>";
+                        echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
                         echo "<img src='bin.png' width='24' height='24'></td>";
                         echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-user.php?userid=' . $row['userid'] . '">';
                         echo "<img src='loupe.png' width='24' height='24'></td>";
                         echo "</tr>";
                     }
-                    echo "</table>";
                 } else {
                     echo "No result";
                 }
             }
+            echo '</tbody>
+                            </table>
+                        </div>';
+        } else {
+            $query1 = "SELECT * FROM users";
+            $result1 = $mysqli->query($query1);
+            if ($result1) {
+                while ($row = $result1->fetch_array()) {
+                    echo "<tr>";
+                    echo "<td class='col-2' >" . $row["userid"] . "</td>";
+                    echo "<td class='col-2' >" . $row["firstname"] . "</td>";
+                    echo "<td class='col-2' >" . $row["lastname"] . "</td>";
+                    echo "<td class='col-2' >" . $row["gender"] . "</td>";
+                    echo "<td class='col-2' >" . $row["usergroup"] . "</td>";
+                    echo '<td class="col-1" style="text-align:center; background-color: #eb7179; margin-right:10px;"><a href="deleteuser.php?userid=' . $row['userid'] . '">';
+                    echo "<img src='bin.png' width='24' height='24'></td>";
+                    echo '<td class="col-1" style="text-align:center; margin-right:10px;"><a href="detail-user.php?userid=' . $row['userid'] . '">';
+                    echo "<img src='loupe.png' width='24' height='24'></td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "No result";
+            }
+            echo '</tbody>
+                            </table>
+                        </div>';
         }
         ?>
 
